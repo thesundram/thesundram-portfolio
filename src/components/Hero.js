@@ -15,18 +15,18 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
-  const roles = [
-    'SOFTWARE ENGINEER',
-    'SOFTWARE DEVELOPER',
-    'FULL STACK DEVELOPER',
-    'WEB DEVELOPER',
-    'APP DEVELOPER',
-    'UI/UX DESIGNER',
-    'PROBLEM SOLVER',
-    'TECH ENTHUSIAST'
-  ]
-
   useEffect(() => {
+    const roles = [
+      'SOFTWARE ENGINEER',
+      'SOFTWARE DEVELOPER',
+      'FULL STACK DEVELOPER',
+      'WEB DEVELOPER',
+      'APP DEVELOPER',
+      'UI/UX DESIGNER',
+      'PROBLEM SOLVER',
+      'TECH ENTHUSIAST'
+    ]
+    
     const handleTyping = () => {
       const i = loopNum % roles.length
       const fullText = roles[i]
@@ -48,7 +48,7 @@ export default function Hero() {
 
     const timer = setTimeout(handleTyping, typingSpeed)
     return () => clearTimeout(timer)
-  }, [text, isDeleting, loopNum, typingSpeed, roles])
+  }, [text, isDeleting, loopNum, typingSpeed])
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -244,7 +244,7 @@ export default function Hero() {
             >
               <div className="relative">
                 <h2 className="text-2xl font-semibold lg:text-3xl">
-                  I'm a{' '}
+                  I&apos;m a{' '}
                   <motion.span
                     className="relative inline-block text-primary glow-text"
                     animate={{

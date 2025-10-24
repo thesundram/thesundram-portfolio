@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Image from 'next/image'
 import { ExternalLink, Github, Eye, Search, Star, Calendar, Users, Code2, Zap, Award } from 'lucide-react'
 
 export default function Portfolio() {
@@ -215,12 +216,15 @@ export default function Portfolio() {
               className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/10 hover:border-primary/40 transition-all duration-500 shadow-xl"
             >
               <div className="relative overflow-hidden">
-                <motion.img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-700"
-                  whileHover={{ scale: 1.15 }}
-                />
+                <motion.div whileHover={{ scale: 1.15 }}>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={500}
+                    height={300}
+                    className="w-full h-48 object-cover transition-transform duration-700"
+                  />
+                </motion.div>
                 
                 {/* Status Badge */}
                 <motion.div
@@ -398,9 +402,11 @@ export default function Portfolio() {
               className="bg-gray-900 rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <Image
                 src={selectedProject.image}
                 alt={selectedProject.title}
+                width={600}
+                height={400}
                 className="w-full h-64 object-cover rounded-lg mb-6"
               />
               <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>

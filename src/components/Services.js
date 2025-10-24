@@ -163,7 +163,7 @@ export default function Services() {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-accent px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            <span>Let's Discuss Your Project</span>
+            <span>Let&apos;s Discuss Your Project</span>
             <motion.div
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}

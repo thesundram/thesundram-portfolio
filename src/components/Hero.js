@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Download, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Eye, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star } from 'lucide-react'
 
 export default function Hero() {
   const [text, setText] = useState('')
@@ -11,8 +11,7 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(150)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const heroRef = useRef(null)
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, 150])
+
 
   useEffect(() => {
     const roles = [
@@ -69,7 +68,7 @@ export default function Hero() {
       ref={heroRef}
       id="home"
       className="relative flex items-center justify-center min-h-screen overflow-hidden lg:ml-64 xl:ml-72"
-      style={{ y }}
+
     >
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
@@ -242,38 +241,51 @@ export default function Hero() {
               className="space-y-6"
             >
               <div className="relative">
-                <h2 className="text-2xl font-semibold lg:text-3xl">
-                  I&apos;m a{' '}
-                  <motion.span
-                    className="relative inline-block text-primary glow-text"
-                    animate={{
-                      textShadow: [
-                        "0 0 10px #ec1839",
-                        "0 0 20px #ec1839, 0 0 30px #ec1839",
-                        "0 0 40px #ec1839, 0 0 50px #ec1839",
-                        "0 0 20px #ec1839, 0 0 30px #ec1839",
-                        "0 0 10px #ec1839"
-                      ]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
+                <div className="min-h-[4rem] flex flex-wrap items-center gap-3">
+                  <h2 className="text-xl font-semibold text-white sm:text-2xl lg:text-3xl">
+                    I&apos;m a
+                  </h2>
+                  <motion.div
+                    className="relative overflow-hidden"
+                    initial={{ width: 0 }}
+                    animate={{ width: "auto" }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                   >
                     <motion.span
-                      key={text}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
+                      className="relative text-xl font-bold tracking-wide uppercase text-primary sm:text-2xl lg:text-3xl"
                     >
-                      {text}
+                      <motion.span
+                        key={text}
+                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.8 }}
+                        transition={{ 
+                          duration: 0.4, 
+                          ease: "easeOut",
+                          type: "spring",
+                          stiffness: 200
+                        }}
+                        className="inline-block"
+                      >
+                        {text}
+                      </motion.span>
+                      <motion.span
+                        className="ml-2 typing-cursor text-accent"
+                        animate={{ 
+                          opacity: [1, 0.3, 1],
+                          scale: [1, 0.8, 1]
+                        }}
+                        transition={{ 
+                          duration: 1.2, 
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        |
+                      </motion.span>
                     </motion.span>
-                    <motion.span
-                      className="typing-cursor"
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ duration: 0.8, repeat: Infinity }}
-                    >
-                      ||
-                    </motion.span>
-                  </motion.span>
-                </h2>
+                  </motion.div>
+                </div>
 
                 {/* Enhanced floating tech icons */}
                 <div className="absolute top-0 hidden -right-20 lg:block">
@@ -361,7 +373,7 @@ export default function Hero() {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Download size={22} className="relative z-10" />
+                  <Eye size={22} className="relative z-10" />
                 </motion.div>
                 <span className="relative z-10">View CV</span>
                 <motion.div

@@ -22,7 +22,7 @@ export default function ThemeToggle() {
       onClick={() => setIsDark(!isDark)}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed z-50 p-3 text-white transition-all duration-300 border rounded-full top-6 right-6 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-primary/20"
+      className="fixed z-50 p-3 text-white transition-all duration-300 border rounded-full top-52 right-6 lg:top-6 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-primary/20"
     >
       <motion.div
         animate={{ rotate: isDark ? 0 : 180 }}

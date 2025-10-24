@@ -144,15 +144,10 @@ export default function ColorSwitcher() {
             initial={{ opacity: 0, x: 20, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.8 }}
-            className="fixed top-44 right-6 bg-black/60 backdrop-blur-xl rounded-2xl p-4 border border-white/20 z-50 w-64 shadow-2xl"
+            className="fixed top-44 right-6 bg-black/60 backdrop-blur-xl rounded-2xl p-3 border border-white/20 z-50 w-auto shadow-2xl"
           >
             <div className="space-y-4">
-              <div className="text-center">
-                <h4 className="flex items-center justify-center space-x-2 text-sm font-semibold text-white">
-                  <Settings size={16} />
-                  <span>Theme Colors</span>
-                </h4>
-              </div>
+
               
               <div className="space-y-2">
                 {[
@@ -164,31 +159,23 @@ export default function ColorSwitcher() {
                 ].map((theme) => (
                   <motion.button
                     key={theme.name}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => applyTheme(theme)}
-                    className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-all duration-300 ${
+                    className={`flex items-center justify-center space-x-1 p-2 rounded-lg transition-all duration-300 ${
                       activeColor === theme.name 
                         ? 'bg-white/20 ring-2 ring-white/30' 
                         : 'hover:bg-white/10'
                     }`}
                   >
-                    <div className="flex space-x-1">
-                      <div 
-                        className="w-4 h-4 rounded-full border border-white/20"
-                        style={{ backgroundColor: theme.primary }}
-                      />
-                      <div 
-                        className="w-4 h-4 rounded-full border border-white/20"
-                        style={{ backgroundColor: theme.accent }}
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-white flex-1 text-left">
-                      {theme.label}
-                    </span>
-                    {activeColor === theme.name && (
-                      <div className="w-2 h-2 bg-white rounded-full" />
-                    )}
+                    <div 
+                      className="w-6 h-6 rounded-full border border-white/20"
+                      style={{ backgroundColor: theme.primary }}
+                    />
+                    <div 
+                      className="w-6 h-6 rounded-full border border-white/20"
+                      style={{ backgroundColor: theme.accent }}
+                    />
                   </motion.button>
                 ))}
               </div>

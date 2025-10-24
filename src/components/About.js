@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Calendar, MapPin, Phone, Mail, Award, Code, Briefcase, ExternalLink } from 'lucide-react'
+import { Calendar, MapPin, Phone, Mail, Award, Code, Briefcase, ExternalLink, Eye, Atom, Zap, Palette, Wind, Circle, FileCode, Database, Link, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor } from 'lucide-react'
 import Timeline from './Timeline'
 import BirthdayWish from './BirthdayWish'
 import { Toaster } from 'react-hot-toast'
@@ -36,26 +36,28 @@ export default function About() {
 
   const skillCategories = {
     frontend: [
-      { name: 'React & Next.js', level: 'Expert', icon: '⚛️', color: 'from-blue-500 to-cyan-500' },
-      { name: 'JavaScript & TypeScript', level: 'Expert', icon: '⚡', color: 'from-yellow-500 to-orange-500' },
-      { name: 'HTML5 & CSS3', level: 'Expert', icon: '🎨', color: 'from-pink-500 to-rose-500' },
-      { name: 'Tailwind CSS', level: 'Advanced', icon: '💨', color: 'from-teal-500 to-blue-500' }
+      { name: 'React & Next.js', level: 'Expert', icon: Atom, color: 'from-blue-500 to-cyan-500' },
+      { name: 'JavaScript & TypeScript', level: 'Expert', icon: Zap, color: 'from-yellow-500 to-orange-500' },
+      { name: 'HTML5 & CSS3', level: 'Expert', icon: Palette, color: 'from-pink-500 to-rose-500' },
+      { name: 'Tailwind CSS', level: 'Advanced', icon: Wind, color: 'from-teal-500 to-blue-500' }
     ],
     backend: [
-      { name: 'Node.js & Express', level: 'Advanced', icon: '🟢', color: 'from-green-500 to-emerald-500' },
-      { name: 'Python & Django', level: 'Intermediate', icon: '🐍', color: 'from-blue-600 to-purple-600' },
-      { name: 'MongoDB & SQL', level: 'Advanced', icon: '🗄️', color: 'from-orange-500 to-red-500' },
-      { name: 'REST APIs', level: 'Expert', icon: '🔗', color: 'from-indigo-500 to-purple-500' }
+      { name: 'Node.js & Express', level: 'Advanced', icon: Circle, color: 'from-green-500 to-emerald-500' },
+      { name: 'Python & Django', level: 'Intermediate', icon: FileCode, color: 'from-blue-600 to-purple-600' },
+      { name: 'MongoDB & SQL', level: 'Advanced', icon: Database, color: 'from-orange-500 to-red-500' },
+      { name: 'REST APIs', level: 'Expert', icon: Link, color: 'from-indigo-500 to-purple-500' }
     ],
     mobile: [
-      { name: 'React Native', level: 'Advanced', icon: '📱', color: 'from-purple-500 to-pink-500' },
-      { name: 'Flutter & Dart', level: 'Intermediate', icon: '🦋', color: 'from-blue-400 to-cyan-400' },
-      { name: 'Firebase', level: 'Advanced', icon: '🔥', color: 'from-orange-400 to-yellow-400' }
+      { name: 'React Native', level: 'Advanced', icon: Smartphone, color: 'from-purple-500 to-pink-500' },
+      { name: 'Flutter & Dart', level: 'Intermediate', icon: Layers, color: 'from-blue-400 to-cyan-400' },
+      { name: 'Firebase', level: 'Advanced', icon: Flame, color: 'from-orange-400 to-yellow-400' },
+      { name: 'Expo & CLI', level: 'Advanced', icon: Settings, color: 'from-indigo-500 to-blue-500' }
     ],
     tools: [
-      { name: 'Git & GitHub', level: 'Expert', icon: '🔧', color: 'from-gray-600 to-gray-800' },
-      { name: 'Docker', level: 'Intermediate', icon: '🐳', color: 'from-blue-500 to-blue-700' },
-      { name: 'AWS & Cloud', level: 'Intermediate', icon: '☁️', color: 'from-orange-500 to-yellow-500' }
+      { name: 'Git & GitHub', level: 'Expert', icon: GitBranch, color: 'from-gray-600 to-gray-800' },
+      { name: 'Docker', level: 'Intermediate', icon: Container, color: 'from-blue-500 to-blue-700' },
+      { name: 'AWS & Cloud', level: 'Intermediate', icon: Cloud, color: 'from-orange-500 to-yellow-500' },
+      { name: 'VS Code & IDEs', level: 'Expert', icon: Monitor, color: 'from-purple-600 to-indigo-600' }
     ]
   }
 
@@ -158,7 +160,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative py-20 overflow-hidden lg:ml-64 xl:ml-72">
+    <section id="about" className="relative py-20 overflow-hidden pt-24 lg:pt-20 lg:ml-64 xl:ml-72">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black/50"></div>
       <motion.div 
@@ -293,55 +295,150 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* Personal Information Grid */}
-            <motion.div variants={itemVariants} className="space-y-4">
+            {/* Personal Information Cards */}
+            <motion.div variants={itemVariants} className="space-y-6">
               <h4 className="mb-6 text-xl font-semibold text-white">Personal Information</h4>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                {personalInfo.map((info, index) => {
-                  const Icon = info.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.02, x: 5 }}
-                      className="flex items-center p-4 space-x-3 transition-all duration-300 border rounded-lg bg-white/5 backdrop-blur-sm border-white/10 hover:border-primary/30"
-                    >
-                      <Icon size={20} className={info.color} />
-                      <div className="flex-1">
-                        <span className="text-sm text-gray-400">{info.label}:</span>
-                        {info.link ? (
-                          <a
-                            href={info.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-2 text-white transition-colors duration-300 hover:text-primary group"
-                          >
-                            <span>{info.value}</span>
-                            <ExternalLink size={14} className="transition-opacity opacity-0 group-hover:opacity-100" />
-                          </a>
-                        ) : info.label === 'Birthday' ? (
-                          <div className="flex items-center space-x-2">
-                            <span className="text-white">{info.value}</span>
-                            <motion.button
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              onClick={() => setShowBirthdayWish(true)}
-                              className="px-2 py-1 text-xs text-white transition-all duration-300 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 hover:shadow-lg"
+              
+              {/* Main Info Card */}
+              <motion.div 
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="relative p-6 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group"
+              >
+                <motion.div
+                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-t-xl"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  transition={{ duration: 0.8 }}
+                />
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {personalInfo.slice(0, 4).map((info, index) => {
+                    const Icon = info.icon
+                    return (
+                      <motion.div
+                        key={index}
+                        whileHover={{ scale: 1.02, x: 5 }}
+                        className="flex items-center p-3 space-x-3 transition-all duration-300 border rounded-lg bg-white/5 backdrop-blur-sm border-white/10 hover:border-primary/30"
+                      >
+                        <Icon size={20} className={info.color} />
+                        <div className="flex-1">
+                          <span className="text-sm text-gray-400">{info.label}:</span>
+                          {info.link ? (
+                            <a
+                              href={info.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 text-white transition-colors duration-300 hover:text-primary group"
                             >
-                              🎂 Wish
-                            </motion.button>
-                          </div>
-                        ) : (
-                          <span className="block text-white">{info.value}</span>
-                        )}
-                      </div>
+                              <span>{info.value}</span>
+                              <ExternalLink size={14} className="transition-opacity opacity-0 group-hover:opacity-100" />
+                            </a>
+                          ) : info.label === 'Birthday' ? (
+                            <div className="flex items-center space-x-2">
+                              <span className="text-white">{info.value}</span>
+                              <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setShowBirthdayWish(true)}
+                                className="px-2 py-1 text-xs text-white transition-all duration-300 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 hover:shadow-lg"
+                              >
+                                🎂 Wish
+                              </motion.button>
+                            </div>
+                          ) : (
+                            <span className="block text-white">{info.value}</span>
+                          )}
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              </motion.div>
+              
+              {/* Additional Info Card */}
+              <motion.div 
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="p-6 border shadow-lg bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-xl border-white/20 group"
+              >
+                <motion.div
+                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-primary rounded-t-xl"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                  {personalInfo.slice(4).map((info, index) => {
+                    const Icon = info.icon
+                    return (
+                      <motion.div
+                        key={index}
+                        whileHover={{ scale: 1.02, x: 5 }}
+                        className="flex items-center p-3 space-x-3 transition-all duration-300 border rounded-lg bg-white/5 backdrop-blur-sm border-white/10 hover:border-accent/30"
+                      >
+                        <Icon size={20} className={info.color} />
+                        <div className="flex-1">
+                          <span className="text-sm text-gray-400">{info.label}:</span>
+                          {info.link ? (
+                            <a
+                              href={info.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 text-white transition-colors duration-300 hover:text-accent group"
+                            >
+                              <span>{info.value}</span>
+                              <ExternalLink size={14} className="transition-opacity opacity-0 group-hover:opacity-100" />
+                            </a>
+                          ) : (
+                            <span className="block text-white">{info.value}</span>
+                          )}
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              </motion.div>
+              
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 gap-4 mt-6 md:grid-cols-3">
+                {[
+                  { number: '5+', label: 'Internships', color: 'from-primary/20 to-accent/20', border: 'border-primary/30', icon: '🎓' },
+                  { number: '20+', label: 'Projects', color: 'from-accent/20 to-primary/20', border: 'border-accent/30', icon: '🚀' },
+                  { number: '2+', label: 'Years Experience', color: 'from-green-500/20 to-emerald-500/20', border: 'border-green-500/30', icon: '⭐' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ 
+                      scale: 1.08, 
+                      rotateY: index % 2 === 0 ? 5 : -5,
+                      boxShadow: '0 20px 40px rgba(236, 24, 57, 0.2)'
+                    }}
+                    className={`relative p-6 text-center border bg-gradient-to-br ${stat.color} rounded-xl ${stat.border} overflow-hidden group cursor-pointer`}
+                  >
+                    <motion.div
+                      className="absolute text-2xl transition-opacity top-2 right-2 opacity-30 group-hover:opacity-60"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    >
+                      {stat.icon}
                     </motion.div>
-                  )
-                })}
+                    <motion.div 
+                      className="text-3xl font-bold gradient-text"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                    >
+                      {stat.number}
+                    </motion.div>
+                    <div className="text-sm text-gray-300 transition-colors group-hover:text-white">{stat.label}</div>
+                    
+                    <motion.div
+                      className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-primary/10 to-accent/10 group-hover:opacity-100"
+                    />
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 
-            {/* Hire Me Button */}
-            <motion.div variants={itemVariants}>
+            {/* Action Buttons */}
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(236, 24, 57, 0.3)' }}
@@ -351,6 +448,16 @@ export default function About() {
                 <Briefcase size={20} />
                 <span>Hire Me</span>
               </motion.a>
+              
+              <motion.a
+                href="/cv"
+                whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-8 py-4 space-x-2 font-semibold text-white transition-all duration-300 border rounded-full border-primary/30 bg-white/10 backdrop-blur-sm hover:bg-primary/20"
+              >
+                <Eye size={20} />
+                <span>View CV</span>
+              </motion.a>
             </motion.div>
           </div>
 
@@ -358,16 +465,26 @@ export default function About() {
           <motion.div variants={itemVariants} className="space-y-8">
             <h4 className="mb-6 text-xl font-semibold text-white">My Skills</h4>
             
-            <div className="space-y-8">
+            <div className="space-y-6">
               {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
                 <motion.div
                   key={category}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: categoryIndex * 0.2, duration: 0.6 }}
-                  className="space-y-4"
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="relative p-6 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group"
                 >
-                  <h5 className="text-lg font-semibold capitalize text-primary">
+                  <motion.div
+                    className={`absolute top-0 left-0 w-full h-1 rounded-t-xl ${
+                      categoryIndex % 2 === 0 ? 'bg-gradient-to-r from-primary to-accent' : 'bg-gradient-to-r from-accent to-primary'
+                    }`}
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '100%' }}
+                    transition={{ delay: categoryIndex * 0.1, duration: 0.8 }}
+                  />
+                  
+                  <h5 className="mb-4 text-lg font-semibold capitalize text-primary">
                     {category === 'frontend' ? 'Frontend' : 
                      category === 'backend' ? 'Backend' :
                      category === 'mobile' ? 'Mobile' : 'Tools & Others'}
@@ -385,7 +502,7 @@ export default function About() {
                       >
                         <div className="flex items-center space-x-3">
                           <div className={`p-2 rounded-lg bg-gradient-to-r ${skill.color} text-white text-sm`}>
-                            {skill.icon}
+                            <skill.icon size={16} />
                           </div>
                           <div className="flex-1">
                             <div className="font-medium text-white transition-colors group-hover:text-primary">
@@ -415,45 +532,7 @@ export default function About() {
               ))}
             </div>
 
-            {/* Enhanced Stats Cards */}
-            <div className="grid grid-cols-2 gap-4 mt-8 md:grid-cols-3">
-              {[
-                { number: '5+', label: 'Internships', color: 'from-primary/20 to-accent/20', border: 'border-primary/30', icon: '🎓' },
-                { number: '20+', label: 'Projects', color: 'from-accent/20 to-primary/20', border: 'border-accent/30', icon: '🚀' },
-                { number: '2+', label: 'Years Experience', color: 'from-green-500/20 to-emerald-500/20', border: 'border-green-500/30', icon: '⭐' }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ 
-                    scale: 1.08, 
-                    rotateY: index % 2 === 0 ? 5 : -5,
-                    boxShadow: '0 20px 40px rgba(236, 24, 57, 0.2)'
-                  }}
-                  className={`p-6 text-center border bg-gradient-to-br ${stat.color} rounded-xl ${stat.border} relative overflow-hidden group cursor-pointer`}
-                >
-                  <motion.div
-                    className="absolute text-2xl transition-opacity top-2 right-2 opacity-30 group-hover:opacity-60"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  >
-                    {stat.icon}
-                  </motion.div>
-                  <motion.div 
-                    className="text-3xl font-bold gradient-text"
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-                  >
-                    {stat.number}
-                  </motion.div>
-                  <div className="text-sm text-gray-300 transition-colors group-hover:text-white">{stat.label}</div>
-                  
-                  {/* Hover effect overlay */}
-                  <motion.div
-                    className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-primary/10 to-accent/10 group-hover:opacity-100"
-                  />
-                </motion.div>
-              ))}
-            </div>
+
           </motion.div>
         </motion.div>
 

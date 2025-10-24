@@ -144,7 +144,7 @@ export default function ColorSwitcher() {
             initial={{ opacity: 0, x: 20, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.8 }}
-            className="fixed z-50 w-auto p-3 border shadow-2xl top-48 right-6 bg-black/60 backdrop-blur-xl rounded-2xl border-white/20"
+            className="fixed z-50 w-auto p-3 border shadow-2xl top-52 right-6 bg-black/60 backdrop-blur-xl rounded-2xl border-white/20"
           >
             <div className="space-y-4">
 

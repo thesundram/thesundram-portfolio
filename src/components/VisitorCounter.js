@@ -36,7 +36,7 @@ export default function VisitorCounter() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="fixed bottom-48 right-6 bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/20 z-[55] min-w-[200px]"
+          className="fixed top-52 right-6 bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/20 z-[55] min-w-[200px]"
         >
           <div className="space-y-3">
             <h4 className="text-sm font-semibold text-center text-white">Site Analytics</h4>

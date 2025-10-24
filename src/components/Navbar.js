@@ -23,13 +23,24 @@ export default function Navbar() {
       
       // Update active section based on scroll position
       const sections = navItems.map(item => item.href.substring(1))
-      const currentSection = sections.find(section => {
+      let currentSection = null
+      let minDistance = Infinity
+      
+      sections.forEach(section => {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
+          const sectionTop = rect.top
+          
+          // Check if section is prominently visible
+          if (sectionTop <= 150 && rect.bottom >= 150) {
+            const distance = Math.abs(sectionTop)
+            if (distance < minDistance) {
+              minDistance = distance
+              currentSection = section
+            }
+          }
         }
-        return false
       })
       
       if (currentSection) {
@@ -42,11 +53,32 @@ export default function Navbar() {
   }, [])
 
   const scrollToSection = (href) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    console.log('Scrolling to:', href)
+    
+    // Close mobile menu first
     setIsOpen(false)
+    
+    // Wait a bit for menu to close, then scroll
+    setTimeout(() => {
+      const element = document.querySelector(href)
+      if (element) {
+        console.log('Element found:', element)
+        // Immediately set active section on click
+        const sectionId = href.substring(1)
+        setActiveSection(sectionId)
+        
+        // Scroll with offset for mobile header
+        const yOffset = -80
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+        
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      } else {
+        console.log('Element not found for:', href)
+        console.log('Available elements with IDs:', 
+          Array.from(document.querySelectorAll('[id]')).map(el => '#' + el.id)
+        )
+      }
+    }, 100)
   }
 
   return (
@@ -59,7 +91,7 @@ export default function Navbar() {
         className="fixed top-0 left-0 z-50 flex-col hidden w-64 h-full border-r xl:w-72 bg-gradient-to-b from-gray-900/95 to-black/95 backdrop-blur-lg border-primary/20 lg:flex"
       >
         {/* Enhanced Logo */}
-        <div className="p-6">
+        <div className="p-4">
           <motion.div
             whileHover={{ scale: 1.05, rotateY: 5 }}
             className="relative text-center"
@@ -79,9 +111,9 @@ export default function Navbar() {
                   textShadow: "0 0 20px #ec1839, 0 0 40px #ec1839",
                   scale: 1.1
                 }}
-                className="relative z-10 flex items-center justify-center w-16 h-16 mx-auto mb-3 shadow-2xl bg-gradient-to-br from-primary to-accent rounded-xl"
+                className="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-3 shadow-2xl bg-gradient-to-br from-primary to-accent rounded-xl"
               >
-                <span className="text-2xl font-bold text-white orbitron">SP</span>
+                <span className="text-lg font-bold text-white orbitron">SP</span>
               </motion.div>
               
               {/* Orbiting dots */}
@@ -97,7 +129,7 @@ export default function Navbar() {
             
             {/* Name */}
             <motion.h1 
-              className="mb-2 text-2xl font-bold orbitron gradient-text"
+              className="mb-2 text-lg font-bold orbitron gradient-text"
               whileHover={{ 
                 scale: 1.05,
                 textShadow: "0 0 10px #ec1839"
@@ -128,8 +160,8 @@ export default function Navbar() {
         </div>
 
         {/* Navigation Items */}
-        <div className="flex-1 px-6">
-          <ul className="space-y-4">
+        <div className="flex-1 px-4">
+          <ul className="space-y-2">
             {navItems.map((item, index) => {
               const Icon = item.icon
               const isActive = activeSection === item.href.substring(1)
@@ -289,7 +321,7 @@ export default function Navbar() {
               }}
               whileTap={{ scale: 0.9 }}
               transition={{ duration: 0.6 }}
-              className="relative flex items-center justify-center w-12 h-12 rounded-xl shadow-2xl bg-gradient-to-br from-primary via-accent to-primary overflow-hidden"
+              className="relative flex items-center justify-center w-12 h-12 overflow-hidden shadow-2xl rounded-xl bg-gradient-to-br from-primary via-accent to-primary"
             >
               {/* Animated background */}
               <motion.div
@@ -302,15 +334,15 @@ export default function Navbar() {
             
             <div className="flex flex-col">
               <motion.span
-                className="text-lg font-bold orbitron gradient-text leading-none"
+                className="text-lg font-bold leading-none uppercase orbitron gradient-text"
                 whileHover={{ 
                   textShadow: "0 0 15px #ec1839"
                 }}
               >
-                Sundram
+                theSundram
               </motion.span>
               <motion.span 
-                className="text-xs text-gray-400 uppercase tracking-wider"
+                className="text-xs tracking-wider text-gray-400 uppercase"
                 animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
@@ -360,7 +392,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto', y: 0 }}
             exit={{ opacity: 0, height: 0, y: -20 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed left-0 right-0 z-40 top-20 bg-gradient-to-b from-black/98 via-gray-900/98 to-black/98 backdrop-blur-2xl border-b border-primary/30 lg:hidden shadow-2xl"
+            className="fixed left-0 right-0 z-40 border-b shadow-2xl top-16 bg-gradient-to-b from-black/98 via-gray-900/98 to-black/98 backdrop-blur-2xl border-primary/30 lg:hidden"
           >
             {/* Menu background pattern */}
             <div className="absolute inset-0 opacity-5">
@@ -372,9 +404,9 @@ export default function Navbar() {
               <motion.div 
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center mb-6"
+                className="mb-6 text-center"
               >
-                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Navigation</h3>
+                <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase">Navigation</h3>
                 <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mt-2 rounded-full"></div>
               </motion.div>
               
@@ -392,7 +424,10 @@ export default function Navbar() {
                       transition={{ delay: index * 0.1, duration: 0.3 }}
                     >
                       <motion.button
-                        onClick={() => scrollToSection(item.href)}
+                        onClick={() => {
+                          console.log('Mobile menu clicked:', item.href)
+                          scrollToSection(item.href)
+                        }}
                         whileHover={{ x: 5, scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`w-full flex items-center space-x-4 px-5 py-4 rounded-xl transition-all duration-300 group relative overflow-hidden ${
@@ -405,7 +440,7 @@ export default function Navbar() {
                         {isActive && (
                           <motion.div
                             layoutId="mobileActiveIndicator"
-                            className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-accent rounded-r-full"
+                            className="absolute top-0 bottom-0 left-0 w-1 rounded-r-full bg-gradient-to-b from-primary to-accent"
                             initial={{ scaleY: 0 }}
                             animate={{ scaleY: 1 }}
                             transition={{ duration: 0.3 }}
@@ -432,7 +467,7 @@ export default function Navbar() {
                         </motion.div>
                         
                         <div className="flex-1 text-left">
-                          <span className="font-medium text-base">{item.name}</span>
+                          <span className="text-base font-medium">{item.name}</span>
                           {isActive && (
                             <motion.div 
                               initial={{ width: 0 }}
@@ -446,7 +481,7 @@ export default function Navbar() {
                           <motion.div
                             initial={{ scale: 0, rotate: -180 }}
                             animate={{ scale: 1, rotate: 0 }}
-                            className="w-2 h-2 bg-primary rounded-full"
+                            className="w-2 h-2 rounded-full bg-primary"
                           />
                         )}
                       </motion.button>
@@ -460,7 +495,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="mt-6 pt-4 border-t border-white/10 text-center"
+                className="pt-4 mt-6 text-center border-t border-white/10"
               >
                 <div className="flex items-center justify-center space-x-1 text-xs text-gray-400">
                   <motion.div 
@@ -468,7 +503,7 @@ export default function Navbar() {
                     animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
-                  <span>Available for projects</span>
+                  <span>Available for hire </span>
                 </div>
               </motion.div>
             </div>

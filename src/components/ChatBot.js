@@ -216,7 +216,7 @@ export default function ChatBot() {
                   <Bot size={16} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">Sundram's AI</h3>
+                  <h3 className="font-semibold text-white">Sundram&apos;s AI</h3>
                   <p className="text-xs text-gray-400">Online</p>
                 </div>
               </div>

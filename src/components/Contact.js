@@ -137,7 +137,7 @@ export default function Contact() {
           <h2 className="mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text">Let&apos;s Work Together</h2>
           <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-primary to-accent"></div>
           <p className="max-w-3xl mx-auto mt-6 text-xl leading-relaxed text-gray-300">
-            Ready to bring your ideas to life? I'm here to help you build amazing digital experiences.
+            Ready to bring your ideas to life? I&apos;m here to help you build amazing digital experiences.
           </p>
           <div className="flex justify-center mt-8">
             <div className="flex items-center px-4 py-2 space-x-2 border rounded-full bg-green-500/20 border-green-500/30">

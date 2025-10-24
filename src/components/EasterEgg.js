@@ -9,9 +9,9 @@ export default function EasterEgg() {
   const [sequence, setSequence] = useState([])
   const [showReward, setShowReward] = useState(false)
 
-  const secretCode = ['s', 'u', 'n', 'd', 'r', 'a', 'm']
-
   useEffect(() => {
+    const secretCode = ['s', 'u', 'n', 'd', 'r', 'a', 'm']
+    
     const handleKeyPress = (e) => {
       if (!e.key) return
       const newSequence = [...sequence, e.key.toLowerCase()].slice(-7)
@@ -30,7 +30,7 @@ export default function EasterEgg() {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [sequence, secretCode])
+  }, [sequence])
 
   return (
     <AnimatePresence>

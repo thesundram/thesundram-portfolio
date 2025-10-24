@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Image from 'next/image'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 
 export default function Blog() {
@@ -62,9 +63,11 @@ export default function Blog() {
               className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-primary/30 transition-all duration-300 group cursor-pointer"
             >
               <div className="relative overflow-hidden">
-                <img
+                <Image
                   src={blog.image}
                   alt={blog.title}
+                  width={400}
+                  height={250}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">

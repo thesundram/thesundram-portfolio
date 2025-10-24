@@ -8,14 +8,6 @@ export default function ColorSwitcher() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeColor, setActiveColor] = useState('red')
 
-  const colorThemes = [
-    { name: 'red', primary: '#ec1839', accent: '#f39c12', label: '🔥 Red Fire' },
-    { name: 'blue', primary: '#3b82f6', accent: '#06b6d4', label: '🌊 Ocean Blue' },
-    { name: 'purple', primary: '#8b5cf6', accent: '#ec4899', label: '✨ Purple Magic' },
-    { name: 'green', primary: '#10b981', accent: '#34d399', label: '🌿 Nature Green' },
-    { name: 'orange', primary: '#f97316', accent: '#fb923c', label: '🌅 Sunset Orange' }
-  ]
-
   const applyTheme = (theme) => {
     // Update CSS custom properties
     document.documentElement.style.setProperty('--color-primary', theme.primary)
@@ -118,6 +110,14 @@ export default function ColorSwitcher() {
   }
 
   useEffect(() => {
+    const colorThemes = [
+      { name: 'red', primary: '#ec1839', accent: '#f39c12', label: '🔥 Red Fire' },
+      { name: 'blue', primary: '#3b82f6', accent: '#06b6d4', label: '🌊 Ocean Blue' },
+      { name: 'purple', primary: '#8b5cf6', accent: '#ec4899', label: '✨ Purple Magic' },
+      { name: 'green', primary: '#10b981', accent: '#34d399', label: '🌿 Nature Green' },
+      { name: 'orange', primary: '#f97316', accent: '#fb923c', label: '🌅 Sunset Orange' }
+    ]
+    
     // Load saved theme or use default
     const savedTheme = localStorage.getItem('color-theme')
     const themeToApply = savedTheme 
@@ -125,7 +125,7 @@ export default function ColorSwitcher() {
       : colorThemes[0]
     
     applyTheme(themeToApply)
-  }, [colorThemes])
+  }, [])
 
   return (
     <>
@@ -155,7 +155,13 @@ export default function ColorSwitcher() {
               </div>
               
               <div className="space-y-2">
-                {colorThemes.map((theme) => (
+                {[
+                  { name: 'red', primary: '#ec1839', accent: '#f39c12', label: '🔥 Red Fire' },
+                  { name: 'blue', primary: '#3b82f6', accent: '#06b6d4', label: '🌊 Ocean Blue' },
+                  { name: 'purple', primary: '#8b5cf6', accent: '#ec4899', label: '✨ Purple Magic' },
+                  { name: 'green', primary: '#10b981', accent: '#34d399', label: '🌿 Nature Green' },
+                  { name: 'orange', primary: '#f97316', accent: '#fb923c', label: '🌅 Sunset Orange' }
+                ].map((theme) => (
                   <motion.button
                     key={theme.name}
                     whileHover={{ scale: 1.02 }}

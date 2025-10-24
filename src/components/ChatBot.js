@@ -158,9 +158,9 @@ export default function ChatBot() {
         }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className={`fixed bottom-20 right-6 z-[60] w-12 h-12 flex items-center justify-center bg-gradient-to-r from-primary to-accent rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${isOpen ? 'hidden' : 'block'}`}
+        className={`fixed bottom-20 right-4 sm:right-6 z-[60] w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-gradient-to-r from-primary to-accent rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${isOpen ? 'hidden' : 'block'}`}
       >
-        <MessageCircle size={24} className="text-white" />
+        <MessageCircle size={20} className="text-white sm:w-6 sm:h-6" />
         
         {/* Notification Badge */}
         {unreadCount > 0 && (
@@ -207,7 +207,7 @@ export default function ChatBot() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-20 right-6 z-[60] w-96 h-[500px] bg-black/90 backdrop-blur-lg border border-primary/20 rounded-2xl shadow-2xl overflow-hidden"
+            className="fixed bottom-20 right-2 sm:right-6 z-[60] w-[calc(100vw-16px)] sm:w-96 max-w-sm sm:max-w-none h-[500px] bg-black/90 backdrop-blur-lg border border-primary/20 rounded-2xl shadow-2xl overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-primary/20 bg-gradient-to-r from-primary/10 to-accent/10">

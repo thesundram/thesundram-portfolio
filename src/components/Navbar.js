@@ -258,63 +258,127 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Header */}
+      {/* Enhanced Mobile Header */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 lg:hidden transition-all duration-300 ${
-          scrolled ? 'bg-black/90 backdrop-blur-lg border-b border-primary/20' : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 lg:hidden transition-all duration-500 ${
+          scrolled 
+            ? 'bg-gradient-to-r from-black/95 via-gray-900/95 to-black/95 backdrop-blur-xl border-b border-primary/30 shadow-2xl' 
+            : 'bg-gradient-to-r from-transparent via-black/20 to-transparent backdrop-blur-sm'
         }`}
       >
+        {/* Animated top border */}
+        <motion.div
+          className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-primary"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: scrolled ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+        />
+        
         <div className="flex items-center justify-between p-4">
           <motion.div
-            whileHover={{ scale: 1.05, rotate: 5 }}
-            className="flex items-center space-x-2"
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center space-x-3"
           >
-            {/* Mobile Logo */}
+            {/* Enhanced Mobile Logo */}
             <motion.div
               whileHover={{ 
-                boxShadow: "0 0 20px rgba(236, 24, 57, 0.5)",
+                boxShadow: "0 0 30px rgba(236, 24, 57, 0.6)",
                 rotate: 360
               }}
+              whileTap={{ scale: 0.9 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center justify-center w-10 h-10 rounded-lg shadow-lg bg-gradient-to-br from-primary to-accent"
+              className="relative flex items-center justify-center w-12 h-12 rounded-xl shadow-2xl bg-gradient-to-br from-primary via-accent to-primary overflow-hidden"
             >
-              <span className="text-sm font-bold text-white orbitron">SP</span>
+              {/* Animated background */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30 blur-sm"
+              />
+              <span className="relative z-10 text-lg font-bold text-white orbitron">SP</span>
             </motion.div>
             
-            <motion.span
-              className="text-xl font-bold uppercase orbitron gradient-text"
-              whileHover={{ 
-                textShadow: "0 0 10px #ec1839"
-              }}
-            >
-              theSundram
-            </motion.span>
+            <div className="flex flex-col">
+              <motion.span
+                className="text-lg font-bold orbitron gradient-text leading-none"
+                whileHover={{ 
+                  textShadow: "0 0 15px #ec1839"
+                }}
+              >
+                Sundram
+              </motion.span>
+              <motion.span 
+                className="text-xs text-gray-400 uppercase tracking-wider"
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Developer
+              </motion.span>
+            </div>
           </motion.div>
           
+          {/* Enhanced Menu Button */}
           <motion.button
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, rotate: 180 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 border rounded-lg bg-white/10 backdrop-blur-sm border-white/20"
+            className={`relative p-3 rounded-xl border transition-all duration-300 overflow-hidden ${
+              isOpen 
+                ? 'bg-primary/20 border-primary/50 text-primary' 
+                : 'bg-white/10 border-white/20 text-white hover:bg-primary/10 hover:border-primary/30'
+            }`}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {/* Button background animation */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ 
+                scale: isOpen ? 1 : 0, 
+                opacity: isOpen ? 1 : 0 
+              }}
+              transition={{ duration: 0.3 }}
+            />
+            
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.div>
           </motion.button>
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
+      {/* Enhanced Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed left-0 right-0 z-40 border-b top-16 bg-black/95 backdrop-blur-lg border-primary/20 lg:hidden"
+            initial={{ opacity: 0, height: 0, y: -20 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed left-0 right-0 z-40 top-20 bg-gradient-to-b from-black/98 via-gray-900/98 to-black/98 backdrop-blur-2xl border-b border-primary/30 lg:hidden shadow-2xl"
           >
-            <div className="p-4">
-              <ul className="space-y-2">
+            {/* Menu background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10"></div>
+            </div>
+            
+            <div className="relative z-10 p-6">
+              {/* Menu header */}
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center mb-6"
+              >
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Navigation</h3>
+                <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mt-2 rounded-full"></div>
+              </motion.div>
+              
+              <ul className="space-y-3">
                 {navItems.map((item, index) => {
                   const Icon = item.icon
                   const isActive = activeSection === item.href.substring(1)
@@ -322,25 +386,91 @@ export default function Navbar() {
                   return (
                     <motion.li
                       key={item.name}
-                      initial={{ x: -20, opacity: 0 }}
+                      initial={{ x: -30, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
+                      exit={{ x: -30, opacity: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.3 }}
                     >
-                      <button
+                      <motion.button
                         onClick={() => scrollToSection(item.href)}
-                        className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                        whileHover={{ x: 5, scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full flex items-center space-x-4 px-5 py-4 rounded-xl transition-all duration-300 group relative overflow-hidden ${
                           isActive
-                            ? 'bg-gradient-to-r from-primary/20 to-accent/20 text-primary'
-                            : 'hover:bg-white/5 text-gray-300'
+                            ? 'bg-gradient-to-r from-primary/25 to-accent/25 border border-primary/40 text-primary shadow-lg'
+                            : 'hover:bg-white/10 text-gray-300 hover:text-white border border-transparent hover:border-white/20'
                         }`}
                       >
-                        <Icon size={18} />
-                        <span>{item.name}</span>
-                      </button>
+                        {/* Active indicator line */}
+                        {isActive && (
+                          <motion.div
+                            layoutId="mobileActiveIndicator"
+                            className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-accent rounded-r-full"
+                            initial={{ scaleY: 0 }}
+                            animate={{ scaleY: 1 }}
+                            transition={{ duration: 0.3 }}
+                          />
+                        )}
+                        
+                        {/* Hover background */}
+                        <motion.div
+                          initial={{ x: '-100%' }}
+                          whileHover={{ x: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 -z-10"
+                        />
+                        
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className={`p-2 rounded-lg ${
+                            isActive 
+                              ? 'bg-primary/20 text-primary' 
+                              : 'bg-white/10 text-gray-400 group-hover:text-primary group-hover:bg-primary/10'
+                          }`}
+                        >
+                          <Icon size={20} />
+                        </motion.div>
+                        
+                        <div className="flex-1 text-left">
+                          <span className="font-medium text-base">{item.name}</span>
+                          {isActive && (
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              animate={{ width: '100%' }}
+                              className="h-0.5 bg-gradient-to-r from-primary to-accent rounded-full mt-1"
+                            />
+                          )}
+                        </div>
+                        
+                        {isActive && (
+                          <motion.div
+                            initial={{ scale: 0, rotate: -180 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            className="w-2 h-2 bg-primary rounded-full"
+                          />
+                        )}
+                      </motion.button>
                     </motion.li>
                   )
                 })}
               </ul>
+              
+              {/* Mobile menu footer */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-6 pt-4 border-t border-white/10 text-center"
+              >
+                <div className="flex items-center justify-center space-x-1 text-xs text-gray-400">
+                  <motion.div 
+                    className="w-2 h-2 bg-green-500 rounded-full"
+                    animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <span>Available for projects</span>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         )}

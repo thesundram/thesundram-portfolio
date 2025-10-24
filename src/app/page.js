@@ -20,7 +20,6 @@ import FloatingElements from '../components/FloatingElements'
 import ScrollProgress from '../components/ScrollProgress'
 import BackToTop from '../components/BackToTop'
 import CodeRain from '../components/CodeRain'
-import LiveClock from '../components/LiveClock'
 import EasterEgg from '../components/EasterEgg'
 import VisitorCounter from '../components/VisitorCounter'
 import ColorSwitcher from '../components/ColorSwitcher'
@@ -48,7 +47,6 @@ export default function Home() {
       <BackToTop />
       <FloatingElements />
       <CodeRain />
-      <LiveClock />
       <EasterEgg />
       <VisitorCounter />
       <ColorSwitcher />

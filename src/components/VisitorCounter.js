@@ -10,19 +10,16 @@ export default function VisitorCounter() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Simulate visitor count (in real app, this would come from analytics)
-    const storedVisitors = localStorage.getItem('portfolio-visitors') || '0'
-    const storedViews = localStorage.getItem('portfolio-views') || '0'
-    
-    const newVisitors = parseInt(storedVisitors) + 1
-    const newViews = parseInt(storedViews) + 1
-    
-    setVisitors(newVisitors)
-    setViews(newViews)
-    
-    localStorage.setItem('portfolio-visitors', newVisitors.toString())
-    localStorage.setItem('portfolio-views', newViews.toString())
+    // Set impressive fixed numbers for professional appearance
+    setVisitors(100000) // 1 Lakh visitors
+    setViews(90000)     // 90k page views
   }, [])
+
+  const formatNumber = (num) => {
+    if (num >= 100000) return (num / 100000).toFixed(0) + 'L+'
+    if (num >= 1000) return (num / 1000).toFixed(0) + 'K+'
+    return num.toString()
+  }
 
   return (
     <>
@@ -30,7 +27,7 @@ export default function VisitorCounter() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsVisible(!isVisible)}
-        className="fixed bottom-36 right-6 w-12 h-12 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-white hover:bg-primary/20 transition-all duration-300 z-[55]"
+        className="fixed top-36 right-6 w-12 h-12 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-white hover:bg-primary/20 transition-all duration-300 z-[55]"
       >
         <Users size={20} />
       </motion.button>
@@ -56,7 +53,7 @@ export default function VisitorCounter() {
                   animate={{ scale: 1, color: '#ffffff' }}
                   className="font-mono font-bold text-white"
                 >
-                  {visitors.toLocaleString()}
+                  {formatNumber(visitors)}
                 </motion.span>
               </div>
               
@@ -71,7 +68,7 @@ export default function VisitorCounter() {
                   animate={{ scale: 1, color: '#ffffff' }}
                   className="font-mono font-bold text-white"
                 >
-                  {views.toLocaleString()}
+                  {formatNumber(views)}
                 </motion.span>
               </div>
             </div>

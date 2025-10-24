@@ -133,7 +133,7 @@ export default function ColorSwitcher() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed z-50 p-3 text-white transition-all duration-300 border rounded-full top-36 right-6 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20"
+        className="fixed z-50 p-3 text-white transition-all duration-300 border rounded-full top-[5.5rem] right-6 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20"
       >
         <Palette size={20} />
       </motion.button>
@@ -144,7 +144,7 @@ export default function ColorSwitcher() {
             initial={{ opacity: 0, x: 20, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.8 }}
-            className="fixed top-44 right-6 bg-black/60 backdrop-blur-xl rounded-2xl p-3 border border-white/20 z-50 w-auto shadow-2xl"
+            className="fixed z-50 w-auto p-3 border shadow-2xl top-48 right-6 bg-black/60 backdrop-blur-xl rounded-2xl border-white/20"
           >
             <div className="space-y-4">
 
@@ -169,11 +169,11 @@ export default function ColorSwitcher() {
                     }`}
                   >
                     <div 
-                      className="w-6 h-6 rounded-full border border-white/20"
+                      className="w-6 h-6 border rounded-full border-white/20"
                       style={{ backgroundColor: theme.primary }}
                     />
                     <div 
-                      className="w-6 h-6 rounded-full border border-white/20"
+                      className="w-6 h-6 border rounded-full border-white/20"
                       style={{ backgroundColor: theme.accent }}
                     />
                   </motion.button>

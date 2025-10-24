@@ -173,7 +173,7 @@ export default function Achievements() {
           <div className="p-8 bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 rounded-2xl max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-4">Ready to Achieve More Together?</h3>
             <p className="text-gray-300 mb-6">
-              Let's work together to create something amazing and add more achievements to this list!
+              Let&apos;s work together to create something amazing and add more achievements to this list!
             </p>
             <motion.a
               href="#contact"

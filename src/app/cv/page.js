@@ -393,7 +393,7 @@ export default function CVPage() {
               transition={{ delay: 0.5, duration: 1 }}
             />
             <p className="relative z-10 text-lg leading-relaxed text-gray-200">
-              <span className="absolute font-serif text-2xl opacity-50 text-primary -top-2 -left-2">"</span>
+              <span className="absolute font-serif text-2xl opacity-50 text-primary -top-2 -left-2">&ldquo;</span>
               Versatile and results-driven <span className="font-semibold text-primary">Software Developer</span> | 
               <span className="font-semibold text-accent">Full Stack Developer</span> with experience building scalable web and 
               mobile applications using technologies like <span className="text-primary">React</span>, 
@@ -403,7 +403,7 @@ export default function CVPage() {
               with strong problem-solving and optimization abilities. Proficient in mobile and web development with a focus on 
               <span className="font-semibold text-primary">clean code</span>, <span className="font-semibold text-accent">security</span>, 
               and <span className="font-semibold text-primary">performance</span>.
-              <span className="absolute font-serif text-2xl opacity-50 text-primary -bottom-4 -right-2">"</span>
+              <span className="absolute font-serif text-2xl opacity-50 text-primary -bottom-4 -right-2">&rdquo;</span>
             </p>
           </motion.div>
         </motion.section>

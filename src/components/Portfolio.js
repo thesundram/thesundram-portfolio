@@ -125,18 +125,18 @@ export default function Portfolio() {
     )
 
   return (
-    <section id="portfolio" className="py-20 lg:ml-72 relative overflow-hidden">
+    <section id="portfolio" className="py-12 sm:py-16 md:py-20 lg:ml-72 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black/50"></div>
       
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold orbitron gradient-text mb-4">My Work</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
-          <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold orbitron gradient-text mb-3 sm:mb-4">My Work</h2>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full sm:w-20 sm:h-1 md:w-24"></div>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mt-4 sm:mt-6 max-w-3xl mx-auto leading-relaxed">
             Explore my latest projects showcasing modern web and mobile development
           </p>
           
@@ -145,37 +145,37 @@ export default function Portfolio() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.3 }}
-            className="max-w-md mx-auto mt-8 mb-6"
+            className="max-w-md mx-auto mt-6 mb-4 sm:mt-8 sm:mb-6"
           >
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 sm:left-4" size={16} />
               <input
                 type="text"
                 placeholder="Search projects, technologies..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-primary/50 transition-all"
+                className="w-full pl-10 pr-3 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-white placeholder-gray-400 focus:outline-none focus:border-primary/50 transition-all sm:pl-12 sm:pr-4 sm:py-3 sm:text-base"
               />
             </div>
           </motion.div>
           
           {/* Filter Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <div className="flex space-x-2 p-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6 sm:gap-4 sm:mt-8">
+            <div className="flex space-x-1 p-1.5 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 sm:space-x-2 sm:p-2">
               {categories.map((category) => (
                 <motion.button
                   key={category}
                   onClick={() => setActiveFilter(category)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 sm:px-6 sm:py-2 sm:text-sm ${
                     activeFilter === category
                       ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
                       : 'text-gray-400 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {category}
-                  <span className="ml-2 text-xs opacity-70">
+                  <span className="ml-1 text-xs opacity-70 sm:ml-2">
                     ({category === 'All' ? projects.length : projects.filter(p => p.category === category).length})
                   </span>
                 </motion.button>
@@ -185,7 +185,7 @@ export default function Portfolio() {
           
           {/* Results Count */}
           <motion.p 
-            className="text-center text-gray-400 mt-4"
+            className="text-center text-gray-400 mt-3 text-sm sm:mt-4"
             key={filteredProjects.length}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -196,7 +196,7 @@ export default function Portfolio() {
 
         <motion.div 
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
         >
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -222,31 +222,31 @@ export default function Portfolio() {
                     alt={project.title}
                     width={500}
                     height={300}
-                    className="w-full h-48 object-cover transition-transform duration-700"
+                    className="w-full h-40 object-cover transition-transform duration-700 sm:h-48"
                   />
                 </motion.div>
                 
                 {/* Status Badge */}
                 <motion.div
-                  className="absolute top-4 left-4 px-3 py-1 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-500/30"
+                  className="absolute top-3 left-3 px-2 py-0.5 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-500/30 sm:top-4 sm:left-4 sm:px-3 sm:py-1"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
                 >
                   <span className="text-green-400 text-xs font-medium flex items-center">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full mr-1.5 animate-pulse sm:w-2 sm:h-2 sm:mr-2"></div>
                     {project.status || 'Completed'}
                   </span>
                 </motion.div>
                 
                 {/* Rating */}
                 <motion.div
-                  className="absolute top-4 right-4 flex items-center space-x-1 px-2 py-1 bg-black/50 backdrop-blur-sm rounded-full"
+                  className="absolute top-3 right-3 flex items-center space-x-1 px-1.5 py-0.5 bg-black/50 backdrop-blur-sm rounded-full sm:top-4 sm:right-4 sm:px-2 sm:py-1"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 + 0.4 }}
                 >
-                  <Star size={12} className="text-yellow-400 fill-current" />
+                  <Star size={10} className="text-yellow-400 fill-current sm:w-3 sm:h-3" />
                   <span className="text-white text-xs font-medium">{project.rating || '4.5'}</span>
                 </motion.div>
                 
@@ -256,7 +256,7 @@ export default function Portfolio() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-between p-4"
+                      className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-between p-3 sm:p-4"
                     >
                       <motion.button
                         initial={{ y: 20, opacity: 0 }}
@@ -265,11 +265,11 @@ export default function Portfolio() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setSelectedProject(project)}
-                        className="p-3 bg-primary/80 backdrop-blur-sm rounded-full text-white hover:bg-primary transition-colors shadow-lg"
+                        className="p-2 bg-primary/80 backdrop-blur-sm rounded-full text-white hover:bg-primary transition-colors shadow-lg sm:p-3"
                       >
-                        <Eye size={20} />
+                        <Eye size={16} className="sm:w-5 sm:h-5" />
                       </motion.button>
-                      <div className="flex space-x-3">
+                      <div className="flex space-x-2 sm:space-x-3">
                         <motion.a
                           href={project.github}
                           target="_blank"
@@ -280,9 +280,9 @@ export default function Portfolio() {
                           transition={{ delay: 0.1 }}
                           whileHover={{ scale: 1.1, rotate: 360 }}
                           whileTap={{ scale: 0.9 }}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors shadow-lg"
+                          className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors shadow-lg sm:p-3"
                         >
-                          <Github size={20} />
+                          <Github size={16} className="sm:w-5 sm:h-5" />
                         </motion.a>
                         <motion.a
                           href={project.live}
@@ -294,9 +294,9 @@ export default function Portfolio() {
                           transition={{ delay: 0.2 }}
                           whileHover={{ scale: 1.1, rotate: -360 }}
                           whileTap={{ scale: 0.9 }}
-                          className="p-3 bg-accent/80 backdrop-blur-sm rounded-full text-white hover:bg-accent transition-colors shadow-lg"
+                          className="p-2 bg-accent/80 backdrop-blur-sm rounded-full text-white hover:bg-accent transition-colors shadow-lg sm:p-3"
                         >
-                          <ExternalLink size={20} />
+                          <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                         </motion.a>
                       </div>
                     </motion.div>
@@ -304,38 +304,38 @@ export default function Portfolio() {
                 </AnimatePresence>
               </div>
               
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs text-primary font-bold uppercase tracking-wider bg-primary/10 px-2 py-1 rounded-full">
+              <div className="p-4 sm:p-6">
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <span className="text-xs text-primary font-bold uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded-full sm:py-1">
                     {project.category}
                   </span>
-                  <div className="flex items-center space-x-2 text-xs text-gray-400">
-                    <Calendar size={12} />
+                  <div className="flex items-center space-x-1 text-xs text-gray-400 sm:space-x-2">
+                    <Calendar size={10} className="sm:w-3 sm:h-3" />
                     <span>{project.year || '2024'}</span>
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300 sm:text-xl sm:mb-3">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-2">
+                <p className="text-gray-300 text-xs leading-relaxed mb-3 line-clamp-2 sm:text-sm sm:mb-4">
                   {project.description}
                 </p>
                 
                 {/* Project Stats */}
-                <div className="flex items-center justify-between mb-4 text-xs text-gray-400">
+                <div className="flex items-center justify-between mb-3 text-xs text-gray-400 sm:mb-4">
                   <div className="flex items-center space-x-1">
-                    <Users size={12} />
+                    <Users size={10} className="sm:w-3 sm:h-3" />
                     <span>{project.team || 'Solo'}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Zap size={12} />
+                    <Zap size={10} className="sm:w-3 sm:h-3" />
                     <span>{project.duration || '2 months'}</span>
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.tech.slice(0, 3).map((tech, i) => (
                     <motion.span
                       key={i}
@@ -343,14 +343,14 @@ export default function Portfolio() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 + i * 0.05 }}
                       whileHover={{ scale: 1.1 }}
-                      className="px-3 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30 hover:bg-primary/30 transition-colors cursor-pointer"
+                      className="px-2 py-0.5 text-xs bg-primary/20 text-primary rounded-full border border-primary/30 hover:bg-primary/30 transition-colors cursor-pointer sm:px-3 sm:py-1"
                     >
                       {tech}
                     </motion.span>
                   ))}
                   {project.tech.length > 3 && (
                     <motion.span 
-                      className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600 hover:bg-gray-600/50 transition-colors cursor-pointer"
+                      className="px-2 py-0.5 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600 hover:bg-gray-600/50 transition-colors cursor-pointer sm:px-3 sm:py-1"
                       whileHover={{ scale: 1.1 }}
                       title={project.tech.slice(3).join(', ')}
                     >
@@ -369,7 +369,7 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8 }}
-          className="text-center mt-12"
+          className="text-center mt-8 sm:mt-12"
         >
           <motion.a
             href="https://github.com/thesundram"
@@ -377,9 +377,9 @@ export default function Portfolio() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(236, 24, 57, 0.3)' }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-accent px-8 py-4 rounded-full text-white font-semibold hover-lift"
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-accent px-6 py-3 rounded-full text-sm text-white font-semibold hover-lift sm:px-8 sm:py-4 sm:text-base"
           >
-            <Github size={20} />
+            <Github size={16} className="sm:w-5 sm:h-5" />
             <span>View All Projects</span>
           </motion.a>
         </motion.div>

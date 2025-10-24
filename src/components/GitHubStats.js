@@ -23,7 +23,7 @@ export default function GitHubStats() {
   ]
 
   return (
-    <section className="relative py-20 overflow-hidden lg:ml-64 xl:ml-72">
+    <section className="relative py-12 overflow-hidden sm:py-20 lg:ml-64 xl:ml-72">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-gray-900/50"></div>
       <motion.div 
@@ -43,14 +43,14 @@ export default function GitHubStats() {
         transition={{ duration: 6, repeat: Infinity }}
       />
       
-      <div className="container relative z-10 px-6 mx-auto" ref={ref}>
+      <div className="container relative z-10 px-4 mx-auto sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mb-16 text-center"
         >
           <motion.h2 
-            className="relative mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text"
+            className="relative mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl orbitron gradient-text"
             whileHover={{
               scale: 1.05,
               textShadow: "0 0 20px rgba(236, 24, 57, 0.8)"
@@ -72,13 +72,13 @@ export default function GitHubStats() {
             animate={inView ? { width: 96 } : {}}
             transition={{ delay: 0.5, duration: 0.8 }}
           />
-          <p className="max-w-2xl mx-auto mt-6 text-gray-300">
+          <p className="max-w-2xl mx-auto mt-6 text-sm text-gray-300 sm:text-base">
             My coding journey and contributions on GitHub
           </p>
         </motion.div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 gap-4 mb-16 sm:gap-6 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 mb-12 sm:gap-6 sm:mb-16 md:grid-cols-4">
           {githubStats.map((stat, index) => {
             const Icon = stat.icon
             return (
@@ -93,22 +93,22 @@ export default function GitHubStats() {
                   rotateY: 5,
                   boxShadow: '0 20px 40px rgba(236, 24, 57, 0.2)'
                 }}
-                className={`p-4 sm:p-6 bg-gradient-to-br ${stat.color} bg-opacity-10 border border-white/10 backdrop-blur-sm rounded-2xl text-center group hover:border-white/20 transition-all duration-300 relative overflow-hidden`}
+                className={`p-3 sm:p-6 bg-gradient-to-br ${stat.color} bg-opacity-10 border border-white/10 backdrop-blur-sm rounded-2xl text-center group hover:border-white/20 transition-all duration-300 relative overflow-hidden`}
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Icon size={24} className="mx-auto mb-3 text-white transition-transform group-hover:scale-110 sm:w-8 sm:h-8" />
+                  <Icon size={20} className="mx-auto mb-2 text-white transition-transform group-hover:scale-110 sm:w-8 sm:h-8 sm:mb-3" />
                 </motion.div>
                 <motion.div 
-                  className="mb-1 text-2xl font-bold gradient-text sm:text-3xl"
+                  className="mb-1 text-xl font-bold gradient-text sm:text-3xl"
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
                 >
                   {stat.value}
                 </motion.div>
-                <div className="text-xs text-gray-400 transition-colors group-hover:text-gray-300 sm:text-sm">{stat.label}</div>
+                <div className="text-xs text-gray-400 transition-colors group-hover:text-gray-300 sm:text-sm leading-tight">{stat.label}</div>
                 
                 {/* Hover effect overlay */}
                 <motion.div
@@ -126,22 +126,22 @@ export default function GitHubStats() {
           transition={{ delay: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h3 className="mb-6 text-xl font-bold text-center text-white sm:mb-8 sm:text-2xl">Most Used Languages</h3>
-          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
-            <div className="space-y-4">
+          <h3 className="mb-4 text-lg font-bold text-center text-white sm:mb-8 sm:text-2xl">Most Used Languages</h3>
+          <div className="grid gap-4 md:gap-8 md:grid-cols-2">
+            <div className="space-y-3 sm:space-y-4">
               {languages.map((lang, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.8 + index * 0.1 }}
-                  className="space-y-2"
+                  className="space-y-1.5 sm:space-y-2"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-white">{lang.name}</span>
-                    <span className="font-semibold text-primary">{lang.percentage}%</span>
+                    <span className="text-sm font-medium text-white sm:text-base">{lang.name}</span>
+                    <span className="text-sm font-semibold text-primary sm:text-base">{lang.percentage}%</span>
                   </div>
-                  <div className="h-3 overflow-hidden bg-gray-700 rounded-full">
+                  <div className="h-2 overflow-hidden bg-gray-700 rounded-full sm:h-3">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={inView ? { width: `${lang.percentage}%` } : {}}
@@ -159,7 +159,7 @@ export default function GitHubStats() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 1 }}
               whileHover={{ scale: 1.02, y: -3 }}
-              className="relative p-4 overflow-hidden border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6"
+              className="relative p-3 overflow-hidden border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6"
             >
               <motion.div
                 className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-t-2xl"
@@ -168,16 +168,16 @@ export default function GitHubStats() {
                 transition={{ delay: 1.2, duration: 0.8 }}
               />
               
-              <h4 className="flex items-center mb-4 text-base font-semibold text-white transition-colors group-hover:text-primary sm:text-lg">
+              <h4 className="flex items-center mb-3 text-sm font-semibold text-white transition-colors group-hover:text-primary sm:mb-4 sm:text-lg">
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Calendar className="mr-2" size={20} />
+                  <Calendar className="mr-2" size={16} />
                 </motion.div>
                 Recent Activity
               </h4>
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-4">
                 {[
                   { color: 'bg-green-500', text: 'Pushed to thesundram-portfolio', time: '2 hours ago' },
                   { color: 'bg-blue-500', text: 'Created new repository', time: '1 day ago' },
@@ -213,7 +213,7 @@ export default function GitHubStats() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1.2 }}
-          className="mt-12 text-center"
+          className="mt-8 text-center sm:mt-12"
         >
           <motion.a
             href="https://github.com/thesundram"
@@ -225,7 +225,7 @@ export default function GitHubStats() {
               y: -5
             }}
             whileTap={{ scale: 0.92 }}
-            className="relative inline-flex items-center px-10 py-5 space-x-3 overflow-hidden font-bold text-white transition-all duration-500 rounded-full shadow-2xl bg-gradient-to-r from-primary via-accent to-primary hover:shadow-xl group"
+            className="relative inline-flex items-center px-6 py-3 space-x-2 overflow-hidden font-bold text-white transition-all duration-500 rounded-full shadow-2xl bg-gradient-to-r from-primary via-accent to-primary hover:shadow-xl group sm:px-10 sm:py-5 sm:space-x-3"
           >
             <motion.div
               className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-r from-accent via-primary to-accent group-hover:opacity-100"
@@ -234,9 +234,9 @@ export default function GitHubStats() {
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <Github size={22} className="relative z-10" />
+              <Github size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
             </motion.div>
-            <span className="relative z-10 text-lg">View GitHub Profile</span>
+            <span className="relative z-10 text-sm sm:text-lg">View GitHub Profile</span>
           </motion.a>
         </motion.div>
       </div>

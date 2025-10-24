@@ -308,10 +308,10 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
         />
         
-        <div className="flex items-center justify-between p-4">
+        <div className="flex items-center justify-between px-3 py-3 sm:px-4 sm:py-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-2 sm:space-x-3"
           >
             {/* Enhanced Mobile Logo */}
             <motion.div
@@ -321,7 +321,7 @@ export default function Navbar() {
               }}
               whileTap={{ scale: 0.9 }}
               transition={{ duration: 0.6 }}
-              className="relative flex items-center justify-center w-12 h-12 overflow-hidden shadow-2xl rounded-xl bg-gradient-to-br from-primary via-accent to-primary"
+              className="relative flex items-center justify-center w-10 h-10 overflow-hidden shadow-2xl rounded-xl bg-gradient-to-br from-primary via-accent to-primary sm:w-12 sm:h-12"
             >
               {/* Animated background */}
               <motion.div
@@ -329,12 +329,12 @@ export default function Navbar() {
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30 blur-sm"
               />
-              <span className="relative z-10 text-lg font-bold text-white orbitron">SP</span>
+              <span className="relative z-10 text-base font-bold text-white orbitron sm:text-lg">SP</span>
             </motion.div>
             
             <div className="flex flex-col">
               <motion.span
-                className="text-lg font-bold leading-none uppercase orbitron gradient-text"
+                className="text-base font-bold leading-none uppercase orbitron gradient-text sm:text-lg"
                 whileHover={{ 
                   textShadow: "0 0 15px #ec1839"
                 }}
@@ -356,7 +356,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.1, rotate: 180 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(!isOpen)}
-            className={`relative p-3 rounded-xl border transition-all duration-300 overflow-hidden ${
+            className={`relative p-2 rounded-xl border transition-all duration-300 overflow-hidden sm:p-3 ${
               isOpen 
                 ? 'bg-primary/20 border-primary/50 text-primary' 
                 : 'bg-white/10 border-white/20 text-white hover:bg-primary/10 hover:border-primary/30'
@@ -378,7 +378,7 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               className="relative z-10"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} className="sm:w-6 sm:h-6" /> : <Menu size={20} className="sm:w-6 sm:h-6" />}
             </motion.div>
           </motion.button>
         </div>
@@ -392,14 +392,14 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto', y: 0 }}
             exit={{ opacity: 0, height: 0, y: -20 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed left-0 right-0 z-40 border-b shadow-2xl top-16 bg-gradient-to-b from-black/98 via-gray-900/98 to-black/98 backdrop-blur-2xl border-primary/30 lg:hidden"
+            className="fixed left-0 right-0 z-40 border-b shadow-2xl top-14 bg-gradient-to-b from-black/98 via-gray-900/98 to-black/98 backdrop-blur-2xl border-primary/30 lg:hidden sm:top-16"
           >
             {/* Menu background pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10"></div>
             </div>
             
-            <div className="relative z-10 p-6">
+            <div className="relative z-10 p-4 sm:p-6">
               {/* Menu header */}
               <motion.div 
                 initial={{ opacity: 0, y: -10 }}
@@ -430,7 +430,7 @@ export default function Navbar() {
                         }}
                         whileHover={{ x: 5, scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`w-full flex items-center space-x-4 px-5 py-4 rounded-xl transition-all duration-300 group relative overflow-hidden ${
+                        className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group relative overflow-hidden sm:space-x-4 sm:px-5 sm:py-4 ${
                           isActive
                             ? 'bg-gradient-to-r from-primary/25 to-accent/25 border border-primary/40 text-primary shadow-lg'
                             : 'hover:bg-white/10 text-gray-300 hover:text-white border border-transparent hover:border-white/20'
@@ -457,17 +457,17 @@ export default function Navbar() {
                         
                         <motion.div
                           whileHover={{ scale: 1.1, rotate: 5 }}
-                          className={`p-2 rounded-lg ${
+                          className={`p-1.5 rounded-lg sm:p-2 ${
                             isActive 
                               ? 'bg-primary/20 text-primary' 
                               : 'bg-white/10 text-gray-400 group-hover:text-primary group-hover:bg-primary/10'
                           }`}
                         >
-                          <Icon size={20} />
+                          <Icon size={18} className="sm:w-5 sm:h-5" />
                         </motion.div>
                         
                         <div className="flex-1 text-left">
-                          <span className="text-base font-medium">{item.name}</span>
+                          <span className="text-sm font-medium sm:text-base">{item.name}</span>
                           {isActive && (
                             <motion.div 
                               initial={{ width: 0 }}

@@ -85,7 +85,7 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-20 lg:ml-64 xl:ml-72 relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-16 md:py-20 lg:ml-64 xl:ml-72 relative overflow-hidden">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-gray-900/50"></div>
       <motion.div 
@@ -105,40 +105,40 @@ export default function Services() {
         transition={{ duration: 6, repeat: Infinity }}
       />
       
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold orbitron gradient-text mb-4">What I Do</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
-          <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold orbitron gradient-text mb-3 sm:mb-4">What I Do</h2>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full sm:w-20 sm:h-1 md:w-24"></div>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mt-4 sm:mt-6 max-w-3xl mx-auto leading-relaxed">
             I transform ideas into digital reality with cutting-edge technologies and creative solutions
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
+          <div className="flex flex-wrap justify-center gap-2 mt-4 sm:gap-3 sm:mt-6 md:gap-4 md:mt-8">
             <motion.div 
-              className="flex items-center space-x-2 px-4 py-2 bg-primary/20 border border-primary/30 rounded-full"
+              className="flex items-center space-x-1 px-3 py-1.5 bg-primary/20 border border-primary/30 rounded-full sm:space-x-2 sm:px-4 sm:py-2"
               whileHover={{ scale: 1.05 }}
             >
-              <span className="text-primary text-sm font-medium">💡 Custom solutions</span>
+              <span className="text-primary text-xs font-medium sm:text-sm">💡 Custom solutions</span>
             </motion.div>
             <motion.div 
-              className="flex items-center space-x-2 px-4 py-2 bg-accent/20 border border-accent/30 rounded-full"
+              className="flex items-center space-x-1 px-3 py-1.5 bg-accent/20 border border-accent/30 rounded-full sm:space-x-2 sm:px-4 sm:py-2"
               whileHover={{ scale: 1.05 }}
             >
-              <span className="text-accent text-sm font-medium">⚡ Fast delivery</span>
+              <span className="text-accent text-xs font-medium sm:text-sm">⚡ Fast delivery</span>
             </motion.div>
             <motion.div 
-              className="flex items-center space-x-2 px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full"
+              className="flex items-center space-x-1 px-3 py-1.5 bg-green-500/20 border border-green-500/30 rounded-full sm:space-x-2 sm:px-4 sm:py-2"
               whileHover={{ scale: 1.05 }}
             >
-              <span className="text-green-400 text-sm font-medium">🏆 Quality guaranteed</span>
+              <span className="text-green-400 text-xs font-medium sm:text-sm">🏆 Quality guaranteed</span>
             </motion.div>
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16">
           {services.map((service, index) => {
             const Icon = service.icon
             return (
@@ -150,7 +150,7 @@ export default function Services() {
                 whileHover={{ y: -15, scale: 1.05, rotateY: 5 }}
                 onHoverStart={() => setHoveredService(index)}
                 onHoverEnd={() => setHoveredService(null)}
-                className="group relative p-6 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-500 overflow-hidden cursor-pointer"
+                className="group relative p-4 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-500 overflow-hidden cursor-pointer sm:p-6"
               >
                 {/* Animated background gradient */}
                 <motion.div 
@@ -171,35 +171,35 @@ export default function Services() {
                 />
                 
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <motion.div 
-                      className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center shadow-lg`}
+                      className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center shadow-lg sm:w-14 sm:h-14 md:w-16 md:h-16`}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Icon size={28} className="text-white" />
+                      <Icon size={20} className="text-white sm:w-6 sm:h-6 md:w-7 md:h-7" />
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: hoveredService === index ? 1 : 0, scale: hoveredService === index ? 1 : 0 }}
                       className="flex items-center space-x-1"
                     >
-                      <Star size={16} className="text-yellow-400 fill-current" />
-                      <span className="text-sm text-gray-300">4.9</span>
+                      <Star size={14} className="text-yellow-400 fill-current sm:w-4 sm:h-4" />
+                      <span className="text-xs text-gray-300 sm:text-sm">4.9</span>
                     </motion.div>
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors sm:text-xl sm:mb-3">
                     {service.title}
                   </h3>
                   
-                  <p className="text-gray-400 leading-relaxed mb-4 text-sm">
+                  <p className="text-gray-400 leading-relaxed mb-3 text-xs sm:text-sm sm:mb-4">
                     {service.description}
                   </p>
                   
                   {/* Service features */}
                   <motion.div 
-                    className="space-y-2 mb-4"
+                    className="space-y-1 mb-3 sm:space-y-2 sm:mb-4"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ 
                       opacity: hoveredService === index ? 1 : 0, 
@@ -210,7 +210,7 @@ export default function Services() {
                     {service.features.map((feature, idx) => (
                       <motion.div 
                         key={idx}
-                        className="flex items-center space-x-2 text-sm text-gray-300"
+                        className="flex items-center space-x-1 text-xs text-gray-300 sm:space-x-2 sm:text-sm"
                         initial={{ x: -10, opacity: 0 }}
                         animate={{ 
                           x: hoveredService === index ? 0 : -10, 
@@ -218,7 +218,7 @@ export default function Services() {
                         }}
                         transition={{ delay: idx * 0.1 }}
                       >
-                        <CheckCircle size={14} className="text-green-400" />
+                        <CheckCircle size={12} className="text-green-400 sm:w-[14px] sm:h-[14px]" />
                         <span>{feature}</span>
                       </motion.div>
                     ))}
@@ -227,7 +227,7 @@ export default function Services() {
                   {/* Price and CTA */}
                   <div className="flex items-center justify-between">
                     <motion.span 
-                      className="text-primary font-semibold text-sm"
+                      className="text-primary font-semibold text-xs sm:text-sm"
                       animate={{ scale: hoveredService === index ? 1.05 : 1 }}
                     >
                       {service.price}
@@ -237,7 +237,7 @@ export default function Services() {
                       whileTap={{ scale: 0.9 }}
                       className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2 bg-primary/20 rounded-full hover:bg-primary/30"
                     >
-                      <ArrowRight size={16} className="text-primary" />
+                      <ArrowRight size={14} className="text-primary sm:w-4 sm:h-4" />
                     </motion.button>
                   </div>
                 </div>
@@ -253,31 +253,31 @@ export default function Services() {
           transition={{ delay: 1 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+          <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/10 sm:p-8">
             <motion.h3 
-              className="text-2xl font-bold text-white mb-4"
+              className="text-xl font-bold text-white mb-3 sm:text-2xl sm:mb-4"
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
               Ready to Start Your Project?
             </motion.h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-sm text-gray-300 mb-4 max-w-2xl mx-auto sm:text-base sm:mb-6">
               Get a free consultation and detailed project estimate. Let&apos;s turn your ideas into reality!
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4 mb-6">
+            <div className="flex flex-wrap justify-center gap-3 mb-4 sm:gap-4 sm:mb-6">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.05, boxShadow: '0 15px 40px rgba(236, 24, 57, 0.4)' }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-accent px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-accent px-6 py-3 rounded-full text-sm text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 sm:px-8 sm:py-4 sm:text-base"
               >
                 <span>Get Free Quote</span>
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <ArrowRight size={20} />
+                  <ArrowRight size={16} className="sm:w-5 sm:h-5" />
                 </motion.div>
               </motion.a>
               
@@ -285,23 +285,23 @@ export default function Services() {
                 href="tel:+917897403349"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-2 border-2 border-primary/30 px-8 py-4 rounded-full text-white font-semibold hover:bg-primary/10 transition-all duration-300"
+                className="inline-flex items-center space-x-2 border-2 border-primary/30 px-6 py-3 rounded-full text-sm text-white font-semibold hover:bg-primary/10 transition-all duration-300 sm:px-8 sm:py-4 sm:text-base"
               >
                 <span>Call Now</span>
               </motion.a>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-              <div className="flex items-center space-x-2">
-                <CheckCircle size={16} className="text-green-400" />
+            <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-400 sm:gap-6 sm:text-sm">
+              <div className="flex items-center space-x-1 sm:space-x-2">
+                <CheckCircle size={14} className="text-green-400 sm:w-4 sm:h-4" />
                 <span>Free consultation</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle size={16} className="text-green-400" />
+              <div className="flex items-center space-x-1 sm:space-x-2">
+                <CheckCircle size={14} className="text-green-400 sm:w-4 sm:h-4" />
                 <span>24-48h response</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle size={16} className="text-green-400" />
+              <div className="flex items-center space-x-1 sm:space-x-2">
+                <CheckCircle size={14} className="text-green-400 sm:w-4 sm:h-4" />
                 <span>Competitive rates</span>
               </div>
             </div>

@@ -99,34 +99,34 @@ export default function Blog() {
   ]
 
   return (
-    <section id="blog" className="relative py-20 overflow-hidden lg:ml-72">
+    <section id="blog" className="relative py-12 overflow-hidden sm:py-16 md:py-20 lg:ml-72">
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5"></div>
       
-      <div className="container relative z-10 px-6 mx-auto" ref={ref}>
+      <div className="container relative z-10 px-4 mx-auto sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="mb-16 text-center"
+          className="mb-8 text-center sm:mb-12 md:mb-16"
         >
-          <h2 className="mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text">Latest Blog</h2>
-          <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-primary to-accent"></div>
-          <p className="max-w-2xl mx-auto mt-6 text-gray-300">
+          <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl orbitron gradient-text">Latest Blog</h2>
+          <div className="w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r from-primary to-accent sm:w-20 sm:h-1 md:w-24"></div>
+          <p className="max-w-2xl mx-auto mt-4 text-sm text-gray-300 sm:mt-6 sm:text-base">
             Sharing knowledge and insights about web development and technology
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
+          <div className="flex flex-wrap justify-center gap-3 mt-6 sm:gap-4 sm:mt-8">
             <motion.div 
-              className="flex items-center px-4 py-2 space-x-2 border rounded-full bg-blue-500/20 border-blue-500/30"
+              className="flex items-center px-3 py-1.5 space-x-2 border rounded-full bg-blue-500/20 border-blue-500/30 sm:px-4 sm:py-2"
               whileHover={{ scale: 1.05 }}
             >
-              <BookOpen size={16} className="text-blue-400" />
-              <span className="text-sm font-medium text-blue-400">{blogs.length} Articles</span>
+              <BookOpen size={14} className="text-blue-400 sm:w-4 sm:h-4" />
+              <span className="text-xs font-medium text-blue-400 sm:text-sm">{blogs.length} Articles</span>
             </motion.div>
             <motion.div 
-              className="flex items-center px-4 py-2 space-x-2 border rounded-full bg-green-500/20 border-green-500/30"
+              className="flex items-center px-3 py-1.5 space-x-2 border rounded-full bg-green-500/20 border-green-500/30 sm:px-4 sm:py-2"
               whileHover={{ scale: 1.05 }}
             >
-              <TrendingUp size={16} className="text-green-400" />
-              <span className="text-sm font-medium text-green-400">Weekly Updates</span>
+              <TrendingUp size={14} className="text-green-400 sm:w-4 sm:h-4" />
+              <span className="text-xs font-medium text-green-400 sm:text-sm">Weekly Updates</span>
             </motion.div>
           </div>
         </motion.div>
@@ -135,7 +135,7 @@ export default function Blog() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="relative mb-16 overflow-hidden border shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border-white/20"
+          className="relative mb-8 overflow-hidden border shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border-white/20 sm:mb-12 md:mb-16"
         >
           <motion.div
             className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary"
@@ -151,7 +151,7 @@ export default function Blog() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="grid items-center gap-8 p-8 md:grid-cols-2 md:p-12"
+              className="grid items-center gap-6 p-4 md:grid-cols-2 sm:gap-8 sm:p-6 md:p-8 lg:p-12"
             >
               <div className="relative overflow-hidden rounded-2xl group">
                 <Image
@@ -159,51 +159,51 @@ export default function Blog() {
                   alt={blogs[featuredIndex].title}
                   width={500}
                   height={300}
-                  className="object-cover w-full transition-transform duration-500 h-60 group-hover:scale-110"
+                  className="object-cover w-full transition-transform duration-500 h-48 group-hover:scale-110 sm:h-56 md:h-60"
                 />
                 <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:opacity-100" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 text-xs text-white rounded-full bg-primary/90">
+                  <span className="px-2 py-0.5 text-xs text-white rounded-full bg-primary/90 sm:px-3 sm:py-1">
                     Featured
                   </span>
                 </div>
               </div>
               
               <div>
-                <div className="flex items-center mb-4 space-x-4 text-sm text-gray-400">
+                <div className="flex flex-wrap items-center mb-3 space-x-2 text-xs text-gray-400 sm:mb-4 sm:space-x-4 sm:text-sm">
                   <div className="flex items-center space-x-1">
-                    <Calendar size={14} />
+                    <Calendar size={12} className="sm:w-[14px] sm:h-[14px]" />
                     <span suppressHydrationWarning={true}>{new Date(blogs[featuredIndex].date).toLocaleDateString()}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Clock size={14} />
+                    <Clock size={12} className="sm:w-[14px] sm:h-[14px]" />
                     <span>{blogs[featuredIndex].readTime}</span>
                   </div>
-                  <span className="px-2 py-1 text-xs rounded-full bg-accent/20 text-accent">
+                  <span className="px-2 py-0.5 text-xs rounded-full bg-accent/20 text-accent sm:py-1">
                     {blogs[featuredIndex].category}
                   </span>
                 </div>
                 
-                <h3 className="mb-4 text-2xl font-bold text-white md:text-3xl">
+                <h3 className="mb-3 text-xl font-bold text-white sm:mb-4 sm:text-2xl md:text-3xl">
                   {blogs[featuredIndex].title}
                 </h3>
                 
-                <p className="mb-6 leading-relaxed text-gray-300">
+                <p className="mb-4 text-sm leading-relaxed text-gray-300 sm:mb-6 sm:text-base">
                   {blogs[featuredIndex].excerpt}
                 </p>
                 
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-4 text-sm text-gray-400">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                  <div className="flex items-center space-x-3 text-xs text-gray-400 sm:space-x-4 sm:text-sm">
                     <div className="flex items-center space-x-1">
-                      <Eye size={14} />
+                      <Eye size={12} className="sm:w-[14px] sm:h-[14px]" />
                       <span>{blogs[featuredIndex].views}</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <Heart size={14} />
+                      <Heart size={12} className="sm:w-[14px] sm:h-[14px]" />
                       <span>{blogs[featuredIndex].likes}</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <MessageCircle size={14} />
+                      <MessageCircle size={12} className="sm:w-[14px] sm:h-[14px]" />
                       <span>{blogs[featuredIndex].comments}</span>
                     </div>
                   </div>
@@ -212,30 +212,30 @@ export default function Blog() {
                 <motion.button
                   whileHover={{ scale: 1.05, x: 5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center px-6 py-3 space-x-2 font-semibold text-white transition-all duration-300 rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-lg"
+                  className="inline-flex items-center px-4 py-2 space-x-2 text-sm font-semibold text-white transition-all duration-300 rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-lg sm:px-6 sm:py-3 sm:text-base"
                 >
                   <span>Read Full Article</span>
-                  <ArrowRight size={18} />
+                  <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </motion.button>
               </div>
             </motion.div>
           </AnimatePresence>
           
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between p-6 border-t border-white/10">
+          <div className="flex items-center justify-between p-4 border-t border-white/10 sm:p-6">
             <button
               onClick={() => setFeaturedIndex(featuredIndex === 0 ? blogs.length - 1 : featuredIndex - 1)}
-              className="p-2 transition-colors rounded-full bg-white/10 hover:bg-primary/20"
+              className="p-1.5 transition-colors rounded-full bg-white/10 hover:bg-primary/20 sm:p-2"
             >
-              <ChevronLeft className="text-white" size={20} />
+              <ChevronLeft className="text-white" size={18} />
             </button>
             
-            <div className="flex space-x-2">
+            <div className="flex space-x-1.5 sm:space-x-2">
               {blogs.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setFeaturedIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 sm:w-3 sm:h-3 ${
                     index === featuredIndex ? 'bg-primary scale-125' : 'bg-white/30 hover:bg-white/50'
                   }`}
                 />
@@ -244,15 +244,15 @@ export default function Blog() {
             
             <button
               onClick={() => setFeaturedIndex(featuredIndex === blogs.length - 1 ? 0 : featuredIndex + 1)}
-              className="p-2 transition-colors rounded-full bg-white/10 hover:bg-primary/20"
+              className="p-1.5 transition-colors rounded-full bg-white/10 hover:bg-primary/20 sm:p-2"
             >
-              <ChevronRight className="text-white" size={20} />
+              <ChevronRight className="text-white" size={18} />
             </button>
           </div>
         </motion.div>
         
         {/* Blog Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {blogs.slice(1).map((blog, index) => (
             <motion.article
               key={index}
@@ -274,11 +274,11 @@ export default function Blog() {
                   alt={blog.title}
                   width={400}
                   height={200}
-                  className="object-cover w-full transition-transform duration-500 h-44 group-hover:scale-110"
+                  className="object-cover w-full transition-transform duration-500 h-36 group-hover:scale-110 sm:h-44"
                 />
                 <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:opacity-100" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 text-xs text-white rounded-full bg-primary/80">
+                  <span className="px-2 py-0.5 text-xs text-white rounded-full bg-primary/80 sm:px-3 sm:py-1">
                     {blog.category}
                   </span>
                 </div>
@@ -288,41 +288,41 @@ export default function Blog() {
                   className="absolute bottom-4 right-4"
                 >
                   <button className="p-2 transition-colors rounded-full bg-white/20 backdrop-blur-sm hover:bg-primary/30">
-                    <Share2 size={16} className="text-white" />
+                    <Share2 size={14} className="text-white sm:w-4 sm:h-4" />
                   </button>
                 </motion.div>
               </div>
               
-              <div className="relative z-10 p-6">
-                <div className="flex items-center justify-between mb-3 text-xs text-gray-400">
-                  <div className="flex items-center space-x-3">
+              <div className="relative z-10 p-4 sm:p-6">
+                <div className="flex items-center justify-between mb-2 text-xs text-gray-400 sm:mb-3">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="flex items-center space-x-1">
-                      <Calendar size={12} />
+                      <Calendar size={10} className="sm:w-3 sm:h-3" />
                       <span suppressHydrationWarning={true}>{new Date(blog.date).toLocaleDateString()}</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <Clock size={12} />
+                      <Clock size={10} className="sm:w-3 sm:h-3" />
                       <span>{blog.readTime}</span>
                     </div>
                   </div>
                 </div>
                 
-                <h3 className="mb-3 text-lg font-semibold text-white transition-colors group-hover:text-primary line-clamp-2">
+                <h3 className="mb-2 text-base font-semibold text-white transition-colors group-hover:text-primary line-clamp-2 sm:mb-3 sm:text-lg">
                   {blog.title}
                 </h3>
                 
-                <p className="mb-4 text-sm leading-relaxed text-gray-300 line-clamp-3">
+                <p className="mb-3 text-xs leading-relaxed text-gray-300 line-clamp-3 sm:mb-4 sm:text-sm">
                   {blog.excerpt}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3 text-xs text-gray-400">
+                  <div className="flex items-center space-x-2 text-xs text-gray-400 sm:space-x-3">
                     <div className="flex items-center space-x-1">
-                      <Eye size={12} />
+                      <Eye size={10} className="sm:w-3 sm:h-3" />
                       <span>{blog.views}</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <Heart size={12} />
+                      <Heart size={10} className="sm:w-3 sm:h-3" />
                       <span>{blog.likes}</span>
                     </div>
                   </div>
@@ -331,8 +331,8 @@ export default function Blog() {
                     className="flex items-center transition-colors text-primary group-hover:text-accent"
                     whileHover={{ x: 5 }}
                   >
-                    <span className="text-sm font-medium">Read More</span>
-                    <ArrowRight size={14} className="ml-1" />
+                    <span className="text-xs font-medium sm:text-sm">Read More</span>
+                    <ArrowRight size={12} className="ml-1 sm:w-[14px] sm:h-[14px]" />
                   </motion.div>
                 </div>
               </div>
@@ -345,34 +345,34 @@ export default function Blog() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8 }}
-          className="mt-16 text-center"
+          className="mt-8 text-center sm:mt-12 md:mt-16"
         >
-          <div className="p-8 border rounded-3xl bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border-white/10">
+          <div className="p-6 border rounded-3xl bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border-white/10 sm:p-8">
             <motion.h3 
-              className="mb-4 text-2xl font-bold text-white"
+              className="mb-3 text-xl font-bold text-white sm:mb-4 sm:text-2xl"
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
               Want to Read More?
             </motion.h3>
-            <p className="max-w-2xl mx-auto mb-6 text-gray-300">
+            <p className="max-w-2xl mx-auto mb-4 text-sm text-gray-300 sm:mb-6 sm:text-base">
               Subscribe to get the latest articles and insights delivered to your inbox weekly.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 15px 40px rgba(236, 24, 57, 0.4)' }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-4 space-x-2 font-semibold text-white transition-all duration-300 rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-xl"
+                className="inline-flex items-center px-6 py-3 space-x-2 text-sm font-semibold text-white transition-all duration-300 rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-xl sm:px-8 sm:py-4 sm:text-base"
               >
-                <BookOpen size={20} />
+                <BookOpen size={16} className="sm:w-5 sm:h-5" />
                 <span>View All Posts</span>
               </motion.button>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-4 space-x-2 font-semibold text-white transition-all duration-300 border-2 rounded-full border-primary/30 hover:bg-primary/10"
+                className="inline-flex items-center px-6 py-3 space-x-2 text-sm font-semibold text-white transition-all duration-300 border-2 rounded-full border-primary/30 hover:bg-primary/10 sm:px-8 sm:py-4 sm:text-base"
               >
                 <span>Subscribe</span>
               </motion.button>

@@ -66,47 +66,47 @@ export default function BirthdayWish({ isOpen, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/80 backdrop-blur-sm sm:p-4"
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="w-full max-w-md p-6 border bg-gradient-to-br from-gray-900 to-black rounded-xl border-primary/30"
+            className="w-full max-w-md p-4 border bg-gradient-to-br from-gray-900 to-black rounded-xl border-primary/30 sm:p-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
               <div className="flex items-center space-x-2">
-                <Gift className="text-primary" size={24} />
-                <h3 className="text-xl font-bold text-white">Send Birthday Wish</h3>
+                <Gift className="text-primary" size={20} />
+                <h3 className="text-lg font-bold text-white sm:text-xl">Send Birthday Wish</h3>
               </div>
               <button
                 onClick={onClose}
                 className="p-2 transition-colors rounded-lg hover:bg-white/10"
               >
-                <X size={20} className="text-gray-400" />
+                <X size={18} className="text-gray-400 sm:w-5 sm:h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-300">Your Name</label>
+                <label className="block mb-1.5 text-xs font-medium text-gray-300 sm:mb-2 sm:text-sm">Your Name</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 text-white placeholder-gray-400 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none"
+                  className="w-full px-3 py-2 text-sm text-white placeholder-gray-400 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none sm:px-4 sm:py-3 sm:text-base"
                   placeholder="Enter your name"
                   required
                 />
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-300">Birthday Message</label>
+                <label className="block mb-1.5 text-xs font-medium text-gray-300 sm:mb-2 sm:text-sm">Birthday Message</label>
                 
                 {/* Quick Message Options */}
-                <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="grid grid-cols-2 gap-1.5 mb-2 sm:gap-2 sm:mb-3">
                   {predefinedMessages.map((msg, index) => (
                     <motion.button
                       key={index}
@@ -114,7 +114,7 @@ export default function BirthdayWish({ isOpen, onClose }) {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setMessage(msg)}
-                      className="p-2 text-xs text-left text-gray-300 transition-all border rounded-lg bg-white/5 border-white/10 hover:border-primary/30 hover:text-white"
+                      className="p-1.5 text-xs text-left text-gray-300 transition-all border rounded-lg bg-white/5 border-white/10 hover:border-primary/30 hover:text-white sm:p-2"
                     >
                       Message {index + 1}
                     </motion.button>
@@ -125,8 +125,8 @@ export default function BirthdayWish({ isOpen, onClose }) {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={4}
-                  className="w-full px-4 py-3 text-white placeholder-gray-400 border rounded-lg resize-none bg-white/10 border-white/20 focus:border-primary focus:outline-none"
-                  placeholder="🎉 Happy Birthday Sundram! Write your wishes here or select from above..."
+                  className="w-full px-3 py-2 text-sm text-white placeholder-gray-400 border rounded-lg resize-none bg-white/10 border-white/20 focus:border-primary focus:outline-none sm:px-4 sm:py-3 sm:text-base"
+                  placeholder="🎉 Happy Birthday! Write your wishes here..."
                   required
                 />
               </div>
@@ -136,9 +136,9 @@ export default function BirthdayWish({ isOpen, onClose }) {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center w-full px-6 py-3 space-x-2 font-semibold text-white rounded-lg bg-gradient-to-r from-primary to-accent disabled:opacity-50"
+                className="flex items-center justify-center w-full px-4 py-2.5 space-x-2 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-primary to-accent disabled:opacity-50 sm:px-6 sm:py-3 sm:text-base"
               >
-                <Send size={18} />
+                <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
                 <span>{isSubmitting ? 'Sending...' : 'Send Wish 🎂'}</span>
               </motion.button>
             </form>

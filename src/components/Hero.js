@@ -148,35 +148,35 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="container relative z-10 px-6 py-16 mx-auto">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+      <div className="container relative z-10 px-4 py-8 mx-auto sm:px-6 sm:py-16">
+        <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
 
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             {/* Enhanced Greeting */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="space-y-4"
+              className="space-y-3 sm:space-y-4"
             >
               <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center space-x-2 text-lg text-gray-300"
+                className="flex items-center space-x-2 text-base text-gray-300 sm:text-lg"
               >
-                <span className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent"></span>
+                <span className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent sm:w-12"></span>
                 <span>Hi, I am</span>
               </motion.p>
 
               <motion.h1
-                className="relative text-5xl font-bold lg:text-7xl orbitron"
+                className="relative text-3xl font-bold sm:text-4xl md:text-5xl lg:text-7xl orbitron"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
@@ -225,9 +225,9 @@ export default function Hero() {
               {/* Animated underline */}
               <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: "200px" }}
+                animate={{ width: "150px" }}
                 transition={{ delay: 1, duration: 0.8 }}
-                className="h-1 rounded-full bg-gradient-to-r from-primary via-accent to-primary"
+                className="h-0.5 rounded-full bg-gradient-to-r from-primary via-accent to-primary sm:h-1 sm:w-[200px]"
               />
             </motion.div>
 
@@ -236,11 +236,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
               <div className="relative">
-                <div className="min-h-[4rem] flex flex-wrap items-center gap-3">
-                  <h2 className="text-xl font-semibold text-white sm:text-2xl lg:text-3xl">
+                <div className="min-h-[3rem] flex flex-wrap items-center gap-2 sm:min-h-[4rem] sm:gap-3">
+                  <h2 className="text-lg font-semibold text-white sm:text-xl md:text-2xl lg:text-3xl">
                     I&apos;m a
                   </h2>
                   <motion.div
@@ -250,7 +250,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
                     <motion.span
-                      className="relative text-xl font-bold tracking-wide uppercase text-primary sm:text-2xl lg:text-3xl"
+                      className="relative text-lg font-bold tracking-wide uppercase text-primary sm:text-xl md:text-2xl lg:text-3xl"
                     >
                       <motion.span
                         key={text}
@@ -331,7 +331,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className="max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg"
+                className="max-w-2xl text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg"
               >
                 Passionate about building <span className="font-semibold text-primary">fast, scalable, and user-focused</span> web & mobile applications. 
                 With <span className="font-semibold text-accent">2+ years of experience</span>, I turn ideas into seamless digital experiences 
@@ -344,7 +344,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3 sm:gap-4"
             >
               <motion.a
                 href="/cv"
@@ -354,7 +354,7 @@ export default function Hero() {
                   y: -8
                 }}
                 whileTap={{ scale: 0.92 }}
-                className="relative flex items-center px-6 py-3 space-x-2 overflow-hidden font-semibold text-white transition-all duration-500 rounded-full group bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100"
+                className="relative flex items-center px-4 py-2 space-x-2 overflow-hidden text-sm font-semibold text-white transition-all duration-500 rounded-full group bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 sm:px-6 sm:py-3 sm:text-base"
               >
                 <motion.div
                   className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-r from-accent via-primary to-accent group-hover:opacity-100"
@@ -371,7 +371,7 @@ export default function Hero() {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Eye size={22} className="relative z-10" />
+                  <Eye size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
                 </motion.div>
                 <span className="relative z-10">View CV</span>
                 <motion.div
@@ -390,7 +390,7 @@ export default function Hero() {
                   boxShadow: '0 15px 40px rgba(236, 24, 57, 0.3)'
                 }}
                 whileTap={{ scale: 0.92 }}
-                className="relative flex items-center px-6 py-3 space-x-2 overflow-hidden font-semibold transition-all duration-500 border-2 rounded-full group border-primary text-primary hover:text-white"
+                className="relative flex items-center px-4 py-2 space-x-2 overflow-hidden text-sm font-semibold transition-all duration-500 border-2 rounded-full group border-primary text-primary hover:text-white sm:px-6 sm:py-3 sm:text-base"
               >
                 <motion.div
                   className="absolute inset-0 transition-transform duration-500 origin-left transform scale-x-0 bg-gradient-to-r from-primary to-accent group-hover:scale-x-100"
@@ -399,7 +399,7 @@ export default function Hero() {
                   whileHover={{ scale: 1.2 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Mail size={22} className="relative z-10" />
+                  <Mail size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
                 </motion.div>
                 <span className="relative z-10">Contact Me</span>
               </motion.a>
@@ -410,10 +410,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6 }}
-              className="flex items-center space-x-6"
+              className="flex items-center space-x-4 sm:space-x-6"
             >
-              <span className="text-sm text-gray-400">Follow me:</span>
-              <div className="flex space-x-4">
+              <span className="text-xs text-gray-400 sm:text-sm">Follow me:</span>
+              <div className="flex space-x-3 sm:space-x-4">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon
                   return (
@@ -424,9 +424,9 @@ export default function Hero() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.2, y: -3 }}
                       whileTap={{ scale: 0.9 }}
-                      className={`p-3 bg-white/10 backdrop-blur-sm rounded-full text-gray-400 transition-all duration-300 hover:bg-white/20 ${social.color}`}
+                      className={`p-2 bg-white/10 backdrop-blur-sm rounded-full text-gray-400 transition-all duration-300 hover:bg-white/20 sm:p-3 ${social.color}`}
                     >
-                      <Icon size={20} />
+                      <Icon size={16} className="sm:w-5 sm:h-5" />
                     </motion.a>
                   )
                 })}
@@ -441,7 +441,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-96 lg:h-[500px] flex items-center justify-center"
+            className="relative h-64 flex items-center justify-center sm:h-80 md:h-96 lg:h-[500px]"
           >
             {/* Enhanced Profile Image */}
             <motion.div
@@ -452,7 +452,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
-                className="relative w-64 h-64 overflow-hidden rounded-full shadow-2xl lg:w-80 lg:h-80"
+                className="relative w-48 h-48 overflow-hidden rounded-full shadow-2xl sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80"
                 whileHover={{
                   boxShadow: '0 25px 50px rgba(236, 24, 57, 0.4), 0 0 0 1px rgba(236, 24, 57, 0.3)'
                 }}
@@ -512,9 +512,9 @@ export default function Hero() {
                   rotate: [0, 180, 360]
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-6 -right-6"
+                className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6"
               >
-                <Sparkles size={28} className="text-primary drop-shadow-lg" />
+                <Sparkles size={20} className="text-primary drop-shadow-lg sm:w-7 sm:h-7" />
               </motion.div>
               <motion.div
                 animate={{
@@ -523,9 +523,9 @@ export default function Hero() {
                   rotate: [360, 180, 0]
                 }}
                 transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                className="absolute -bottom-4 -left-4"
+                className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4"
               >
-                <Star size={20} className="text-accent drop-shadow-lg" />
+                <Star size={16} className="text-accent drop-shadow-lg sm:w-5 sm:h-5" />
               </motion.div>
             </motion.div>
 
@@ -567,17 +567,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 0.8 }}
-          className="absolute transform -translate-x-1/2 bottom-8 left-1/2"
+          className="absolute transform -translate-x-1/2 bottom-4 left-1/2 sm:bottom-8"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center space-y-4 text-gray-400 cursor-pointer group"
+            className="flex flex-col items-center space-y-2 text-gray-400 cursor-pointer group sm:space-y-4"
             onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
             whileHover={{ scale: 1.1 }}
           >
             <motion.span
-              className="text-sm font-medium transition-all duration-300 group-hover:text-primary group-hover:font-semibold"
+              className="text-xs font-medium transition-all duration-300 group-hover:text-primary group-hover:font-semibold sm:text-sm"
               animate={{
                 opacity: [0.6, 1, 0.6],
                 scale: [1, 1.05, 1]
@@ -597,7 +597,7 @@ export default function Hero() {
                 transition={{ duration: 2.5, repeat: Infinity }}
                 className="transition-all duration-300 group-hover:text-primary group-hover:drop-shadow-lg"
               >
-                <ArrowDown size={24} />
+                <ArrowDown size={20} className="sm:w-6 sm:h-6" />
               </motion.div>
 
               {/* Enhanced animated line */}

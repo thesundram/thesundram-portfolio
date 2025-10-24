@@ -160,7 +160,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative py-20 overflow-hidden pt-24 lg:pt-20 lg:ml-64 xl:ml-72">
+    <section id="about" className="relative py-12 overflow-hidden pt-20 sm:py-16 md:py-20 lg:pt-20 lg:ml-64 xl:ml-72">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black/50"></div>
       <motion.div 
@@ -201,16 +201,16 @@ export default function About() {
       />
 
       <Toaster position="top-right" />
-      <div className="container relative z-10 px-6 mx-auto" ref={ref}>
+      <div className="container relative z-10 px-4 mx-auto sm:px-6" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-8 text-center sm:mb-12 md:mb-16"
         >
           <motion.h2 
-            className="relative mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text"
+            className="relative mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl orbitron gradient-text"
             whileHover={{
               scale: 1.05,
               textShadow: "0 0 20px rgba(236, 24, 57, 0.8)"
@@ -227,7 +227,7 @@ export default function About() {
             />
           </motion.h2>
           <motion.div 
-            className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-primary to-accent"
+            className="w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r from-primary to-accent sm:w-20 sm:h-1 md:w-24"
             initial={{ width: 0 }}
             animate={inView ? { width: 96 } : {}}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -238,14 +238,14 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid items-start gap-12 lg:grid-cols-2"
+          className="grid items-start gap-8 lg:gap-12 lg:grid-cols-2"
         >
           {/* Left Column - Personal Info & Description */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Description */}
             <motion.div variants={itemVariants} className="space-y-6">
               <motion.h3 
-                className="text-2xl font-bold text-white lg:text-3xl"
+                className="text-xl font-bold text-white sm:text-2xl lg:text-3xl"
                 whileHover={{ x: 5 }}
               >
                 I&apos;m Sundram Pandey & I am a{' '}
@@ -260,9 +260,9 @@ export default function About() {
                 </motion.span>
               </motion.h3>
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <motion.p 
-                  className="relative text-lg leading-relaxed text-gray-300"
+                  className="relative text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg"
                   whileHover={{ x: 3 }}
                 >
                   <span className="absolute top-0 font-serif text-4xl -left-4 text-primary/20">&ldquo;</span>
@@ -398,7 +398,7 @@ export default function About() {
               </motion.div>
               
               {/* Stats Cards */}
-              <div className="grid grid-cols-2 gap-4 mt-6 md:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 mt-4 sm:gap-4 sm:mt-6 md:grid-cols-3">
                 {[
                   { number: '5+', label: 'Internships', color: 'from-primary/20 to-accent/20', border: 'border-primary/30', icon: '🎓' },
                   { number: '20+', label: 'Projects', color: 'from-accent/20 to-primary/20', border: 'border-accent/30', icon: '🚀' },
@@ -411,23 +411,23 @@ export default function About() {
                       rotateY: index % 2 === 0 ? 5 : -5,
                       boxShadow: '0 20px 40px rgba(236, 24, 57, 0.2)'
                     }}
-                    className={`relative p-6 text-center border bg-gradient-to-br ${stat.color} rounded-xl ${stat.border} overflow-hidden group cursor-pointer`}
+                    className={`relative p-4 text-center border bg-gradient-to-br ${stat.color} rounded-xl ${stat.border} overflow-hidden group cursor-pointer sm:p-6`}
                   >
                     <motion.div
-                      className="absolute text-2xl transition-opacity top-2 right-2 opacity-30 group-hover:opacity-60"
+                      className="absolute text-lg transition-opacity top-1 right-1 opacity-30 group-hover:opacity-60 sm:text-2xl sm:top-2 sm:right-2"
                       animate={{ rotate: 360 }}
                       transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     >
                       {stat.icon}
                     </motion.div>
                     <motion.div 
-                      className="text-3xl font-bold gradient-text"
+                      className="text-2xl font-bold gradient-text sm:text-3xl"
                       animate={{ scale: [1, 1.05, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
                     >
                       {stat.number}
                     </motion.div>
-                    <div className="text-sm text-gray-300 transition-colors group-hover:text-white">{stat.label}</div>
+                    <div className="text-xs text-gray-300 transition-colors group-hover:text-white sm:text-sm">{stat.label}</div>
                     
                     <motion.div
                       className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-primary/10 to-accent/10 group-hover:opacity-100"
@@ -438,14 +438,14 @@ export default function About() {
             </motion.div>
 
             {/* Action Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 sm:gap-4">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(236, 24, 57, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-4 space-x-2 font-semibold text-white rounded-full bg-gradient-to-r from-primary to-accent hover-lift"
+                className="inline-flex items-center px-6 py-3 space-x-2 text-sm font-semibold text-white rounded-full bg-gradient-to-r from-primary to-accent hover-lift sm:px-8 sm:py-4 sm:text-base"
               >
-                <Briefcase size={20} />
+                <Briefcase size={16} className="sm:w-5 sm:h-5" />
                 <span>Hire Me</span>
               </motion.a>
               
@@ -453,17 +453,17 @@ export default function About() {
                 href="/cv"
                 whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-4 space-x-2 font-semibold text-white transition-all duration-300 border rounded-full border-primary/30 bg-white/10 backdrop-blur-sm hover:bg-primary/20"
+                className="inline-flex items-center px-6 py-3 space-x-2 text-sm font-semibold text-white transition-all duration-300 border rounded-full border-primary/30 bg-white/10 backdrop-blur-sm hover:bg-primary/20 sm:px-8 sm:py-4 sm:text-base"
               >
-                <Eye size={20} />
+                <Eye size={16} className="sm:w-5 sm:h-5" />
                 <span>View CV</span>
               </motion.a>
             </motion.div>
           </div>
 
           {/* Right Column - Skills */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            <h4 className="mb-6 text-xl font-semibold text-white">My Skills</h4>
+          <motion.div variants={itemVariants} className="space-y-6 sm:space-y-8">
+            <h4 className="mb-4 text-lg font-semibold text-white sm:mb-6 sm:text-xl">My Skills</h4>
             
             <div className="space-y-6">
               {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
@@ -541,20 +541,20 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="mt-20"
+          className="mt-12 sm:mt-16 md:mt-20"
         >
-          <div className="grid gap-12 lg:grid-cols-2">
+          <div className="grid gap-8 lg:gap-12 lg:grid-cols-2">
             {/* Experience Section */}
             <motion.div variants={itemVariants}>
               <motion.h3 
-                className="flex items-center mb-6 text-2xl font-bold text-primary"
+                className="flex items-center mb-4 text-xl font-bold text-primary sm:mb-6 sm:text-2xl"
                 whileHover={{ x: 5 }}
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Briefcase className="mr-3" size={24} />
+                  <Briefcase className="mr-2 sm:mr-3" size={20} />
                 </motion.div>
                 Work Experience
               </motion.h3>
@@ -571,7 +571,7 @@ export default function About() {
                       x: 5,
                       boxShadow: '0 15px 30px rgba(236, 24, 57, 0.1)'
                     }}
-                    className="relative p-6 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group"
+                    className="relative p-4 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group sm:p-6"
                   >
                     <motion.div
                       className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-t-xl"
@@ -581,10 +581,10 @@ export default function About() {
                     />
                     
                     <div className="flex flex-col mb-3">
-                      <h4 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-primary">
+                      <h4 className="mb-1 text-base font-bold text-white transition-colors group-hover:text-primary sm:text-lg">
                         {exp.title}
                       </h4>
-                      <p className="mb-1 text-base font-semibold text-accent">{exp.company}</p>
+                      <p className="mb-1 text-sm font-semibold text-accent sm:text-base">{exp.company}</p>
                       <div className="flex items-center justify-between">
                         <p className="text-xs text-gray-400">{exp.location}</p>
                         <span className="px-2 py-1 text-xs font-medium rounded text-primary bg-primary/10">
@@ -592,7 +592,7 @@ export default function About() {
                         </span>
                       </div>
                     </div>
-                    <p className="text-sm leading-relaxed text-gray-300">{exp.description}</p>
+                    <p className="text-xs leading-relaxed text-gray-300 sm:text-sm">{exp.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -601,14 +601,14 @@ export default function About() {
             {/* Education Section */}
             <motion.div variants={itemVariants}>
               <motion.h3 
-                className="flex items-center mb-6 text-2xl font-bold text-primary"
+                className="flex items-center mb-4 text-xl font-bold text-primary sm:mb-6 sm:text-2xl"
                 whileHover={{ x: 5 }}
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Award className="mr-3" size={24} />
+                  <Award className="mr-2 sm:mr-3" size={20} />
                 </motion.div>
                 Education
               </motion.h3>
@@ -625,7 +625,7 @@ export default function About() {
                       x: -5,
                       boxShadow: '0 15px 30px rgba(243, 156, 18, 0.1)'
                     }}
-                    className="relative p-6 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group"
+                    className="relative p-4 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group sm:p-6"
                   >
                     <motion.div
                       className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-primary rounded-t-xl"
@@ -635,10 +635,10 @@ export default function About() {
                     />
                     
                     <div className="flex flex-col mb-3">
-                      <h4 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-accent">
+                      <h4 className="mb-1 text-base font-bold text-white transition-colors group-hover:text-accent sm:text-lg">
                         {edu.title}
                       </h4>
-                      <p className="mb-1 text-base font-semibold text-primary">{edu.company}</p>
+                      <p className="mb-1 text-sm font-semibold text-primary sm:text-base">{edu.company}</p>
                       <div className="flex items-center justify-between">
                         <p className="text-xs text-gray-400">{edu.location}</p>
                         <span className="px-2 py-1 text-xs font-medium rounded text-accent bg-accent/10">
@@ -646,7 +646,7 @@ export default function About() {
                         </span>
                       </div>
                     </div>
-                    <p className="text-sm leading-relaxed text-gray-300">{edu.description}</p>
+                    <p className="text-xs leading-relaxed text-gray-300 sm:text-sm">{edu.description}</p>
                   </motion.div>
                 ))}
               </div>

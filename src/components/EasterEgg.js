@@ -39,25 +39,25 @@ export default function EasterEgg() {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
         >
           <motion.div
             initial={{ y: 50 }}
             animate={{ y: 0 }}
-            className="text-center space-y-6"
+            className="text-center space-y-4 sm:space-y-6 max-w-sm sm:max-w-none"
           >
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
             >
-              <Gift size={80} className="text-primary mx-auto" />
+              <Gift size={60} className="text-primary mx-auto sm:w-20 sm:h-20" />
             </motion.div>
             
             <motion.h2
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="text-4xl font-bold gradient-text"
+              className="text-2xl font-bold gradient-text sm:text-4xl"
             >
               🎉 Easter Egg Found! 🎉
             </motion.h2>
@@ -66,7 +66,7 @@ export default function EasterEgg() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="text-xl text-gray-300"
+              className="text-base text-gray-300 sm:text-xl px-2"
             >
               You discovered the secret! Type &ldquo;SUNDRAM&rdquo; anywhere on the site.
             </motion.p>
@@ -75,9 +75,9 @@ export default function EasterEgg() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="space-y-4"
+                className="space-y-3 sm:space-y-4"
               >
-                <div className="text-lg text-accent">
+                <div className="text-base text-accent sm:text-lg px-2">
                   🎁 Special Reward: You&apos;re awesome for exploring!
                 </div>
                 
@@ -86,10 +86,10 @@ export default function EasterEgg() {
                     <motion.div
                       key={i}
                       initial={{ y: 0 }}
-                      animate={{ y: [-20, 0] }}
+                      animate={{ y: [-15, 0] }}
                       transition={{ delay: i * 0.1, repeat: Infinity, duration: 1 }}
                     >
-                      <Sparkles className="text-yellow-400" size={20} />
+                      <Sparkles className="text-yellow-400" size={16} />
                     </motion.div>
                   ))}
                 </div>

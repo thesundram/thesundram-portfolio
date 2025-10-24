@@ -205,19 +205,19 @@ export default function CVPage() {
         animate={{ y: 0, opacity: 1 }}
         className="sticky top-0 z-50 border-b shadow-2xl bg-black/90 backdrop-blur-xl border-white/10"
       >
-        <div className="container flex items-center justify-between px-6 py-4 mx-auto">
+        <div className="container flex items-center justify-between px-4 py-3 mx-auto sm:px-6 sm:py-4">
           <Link href="/">
             <motion.button
               whileHover={{ scale: 1.05, x: -8 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center px-4 py-2 space-x-3 text-gray-300 transition-all rounded-lg hover:text-white hover:bg-white/10"
+              className="flex items-center px-2 py-2 space-x-2 text-gray-300 transition-all rounded-lg hover:text-white hover:bg-white/10 sm:px-4 sm:space-x-3"
             >
-              <ArrowLeft size={20} />
-              <span className="font-medium">Back to Portfolio</span>
+              <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
+              <span className="text-sm font-medium sm:text-base">Back</span>
             </motion.button>
           </Link>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -233,10 +233,10 @@ export default function CVPage() {
                   alert('CV link copied to clipboard!')
                 }
               }}
-              className="p-3 transition-all rounded-full bg-white/10 hover:bg-white/20"
+              className="p-2 transition-all rounded-full bg-white/10 hover:bg-white/20 sm:p-3"
               title="Share CV"
             >
-              <Share2 size={18} className="text-gray-300" />
+              <Share2 size={16} className="text-gray-300 sm:w-[18px] sm:h-[18px]" />
             </motion.button>
             
             <motion.button
@@ -247,16 +247,17 @@ export default function CVPage() {
               }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.open('/images/Sundram_CV.pdf', '_blank')}
-              className="flex items-center px-8 py-3 space-x-2 font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-primary to-accent"
+              className="flex items-center px-4 py-2 space-x-1 text-sm font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-primary to-accent sm:px-8 sm:py-3 sm:space-x-2 sm:text-base"
             >
-              <Download size={20} />
-              <span>Download PDF</span>
+              <Download size={16} className="sm:w-5 sm:h-5" />
+              <span className="hidden sm:inline">Download PDF</span>
+              <span className="sm:hidden">PDF</span>
             </motion.button>
           </div>
         </div>
       </motion.header>
 
-      <div className="container max-w-4xl px-6 py-12 mx-auto">
+      <div className="container max-w-4xl px-4 py-6 mx-auto sm:px-6 sm:py-12">
         {/* Enhanced Personal Info Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -272,7 +273,7 @@ export default function CVPage() {
           />
           
           <motion.h1 
-            className="relative mb-6 text-6xl font-bold uppercase orbitron gradient-text"
+            className="relative mb-4 text-3xl font-bold uppercase orbitron gradient-text sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl"
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
@@ -289,7 +290,7 @@ export default function CVPage() {
           </motion.h1>
           
           <motion.p 
-            className="mb-8 text-2xl font-medium text-gray-300 uppercase"
+            className="mb-6 text-lg font-medium text-gray-300 uppercase sm:mb-8 sm:text-xl md:text-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -298,7 +299,7 @@ export default function CVPage() {
           </motion.p>
           
           <motion.div 
-            className="flex flex-wrap justify-center gap-8 text-sm"
+            className="flex flex-wrap justify-center gap-3 text-xs sm:gap-6 sm:text-sm md:gap-8"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
@@ -346,11 +347,11 @@ export default function CVPage() {
                   }}
                   whileHover={{ scale: 1.08, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center px-5 py-3 space-x-3 transition-all border rounded-lg cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/15 hover:border-white/20 group"
+                  className="flex items-center px-3 py-2 space-x-2 transition-all border rounded-lg cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/15 hover:border-white/20 group sm:px-5 sm:py-3 sm:space-x-3"
                   title={item.label}
                 >
-                  <Icon size={18} className={`${item.color} group-hover:scale-110 transition-transform`} />
-                  <span className="font-medium text-gray-300 transition-colors group-hover:text-white">{item.text}</span>
+                  <Icon size={16} className={`${item.color} group-hover:scale-110 transition-transform sm:w-[18px] sm:h-[18px]`} />
+                  <span className="text-xs font-medium text-gray-300 transition-colors group-hover:text-white sm:text-sm">{item.text}</span>
                 </motion.a>
               )
             })}
@@ -364,22 +365,22 @@ export default function CVPage() {
           variants={sectionVariants}
           initial="hidden"
           animate={isVisible.summary ? "visible" : "hidden"}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <motion.h2 
-            className="flex items-center mb-6 text-3xl font-bold text-primary"
+            className="flex items-center mb-4 text-2xl font-bold text-primary sm:mb-6 sm:text-3xl"
             whileHover={{ x: 5 }}
           >
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <User className="mr-3" size={28} />
+              <User className="mr-2 sm:mr-3" size={24} />
             </motion.div>
             Professional Summary
           </motion.h2>
           <motion.div 
-            className="relative p-8 border shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20"
+            className="relative p-4 border shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 sm:p-8"
             whileHover={{ 
               scale: 1.02,
               boxShadow: '0 25px 50px rgba(236, 24, 57, 0.1)'
@@ -392,7 +393,7 @@ export default function CVPage() {
               animate={{ width: '100%' }}
               transition={{ delay: 0.5, duration: 1 }}
             />
-            <p className="relative z-10 text-lg leading-relaxed text-gray-200">
+            <p className="relative z-10 text-sm leading-relaxed text-gray-200 sm:text-base md:text-lg">
               <span className="absolute font-serif text-2xl opacity-50 text-primary -top-2 -left-2">&ldquo;</span>
               Versatile and results-driven <span className="font-semibold text-primary">Software Developer</span> | 
               <span className="font-semibold text-accent">Full Stack Developer</span> with experience building scalable web and 
@@ -415,22 +416,22 @@ export default function CVPage() {
           variants={sectionVariants}
           initial="hidden"
           animate={isVisible.skills ? "visible" : "hidden"}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <motion.h2 
-            className="flex items-center mb-8 text-3xl font-bold text-primary"
+            className="flex items-center mb-4 text-2xl font-bold text-primary sm:mb-8 sm:text-3xl"
             whileHover={{ x: 5 }}
           >
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <Code className="mr-3" size={28} />
+              <Code className="mr-2 sm:mr-3" size={24} />
             </motion.div>
             Technical Skills
           </motion.h2>
           <motion.div 
-            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3"
             variants={staggerContainer}
             initial="hidden"
             animate={isVisible.skills ? "visible" : "hidden"}
@@ -447,7 +448,7 @@ export default function CVPage() {
                   y: -8,
                   boxShadow: '0 20px 40px rgba(236, 24, 57, 0.1)'
                 }}
-                className="relative p-8 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group"
+                className="relative p-4 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 md:p-8"
               >
                 <motion.div
                   className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-t-2xl"
@@ -455,10 +456,10 @@ export default function CVPage() {
                   whileInView={{ width: '100%' }}
                   transition={{ delay: index * 0.1, duration: 0.8 }}
                 />
-                <h3 className="mb-4 text-xl font-bold transition-colors text-accent group-hover:text-primary">
+                <h3 className="mb-3 text-lg font-bold transition-colors text-accent group-hover:text-primary sm:mb-4 sm:text-xl">
                   {skillGroup.category}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {skillGroup.items.map((skill, i) => (
                     <motion.span
                       key={i}
@@ -466,7 +467,7 @@ export default function CVPage() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: (index * 0.1) + (i * 0.05) }}
                       whileHover={{ scale: 1.1, y: -2 }}
-                      className="px-4 py-2 text-sm font-medium transition-all border rounded-full cursor-pointer bg-primary/20 text-primary border-primary/30 hover:bg-primary/30"
+                      className="px-3 py-1 text-xs font-medium transition-all border rounded-full cursor-pointer bg-primary/20 text-primary border-primary/30 hover:bg-primary/30 sm:px-4 sm:py-2 sm:text-sm"
                     >
                       {skill}
                     </motion.span>
@@ -484,23 +485,23 @@ export default function CVPage() {
           variants={sectionVariants}
           initial="hidden"
           animate={isVisible.experience ? "visible" : "hidden"}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <motion.h2 
-            className="flex items-center mb-8 text-3xl font-bold text-primary"
+            className="flex items-center mb-4 text-2xl font-bold text-primary sm:mb-8 sm:text-3xl"
             whileHover={{ x: 5 }}
           >
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <Briefcase className="mr-3" size={28} />
+              <Briefcase className="mr-2 sm:mr-3" size={24} />
             </motion.div>
             Work Experience
           </motion.h2>
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary opacity-30"></div>
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary opacity-30 sm:left-8"></div>
             
             <motion.div 
               className="space-y-8"
@@ -520,11 +521,11 @@ export default function CVPage() {
                     x: 10,
                     boxShadow: '0 20px 40px rgba(236, 24, 57, 0.1)'
                   }}
-                  className="relative p-8 ml-16 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group"
+                  className="relative p-4 ml-8 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 sm:ml-16 md:p-8"
                 >
                   {/* Timeline dot */}
                   <motion.div
-                    className="absolute w-4 h-4 border-4 border-black rounded-full -left-20 top-8 bg-primary"
+                    className="absolute w-3 h-3 border-2 border-black rounded-full -left-12 top-6 bg-primary sm:w-4 sm:h-4 sm:border-4 sm:-left-20 sm:top-8"
                     whileHover={{ scale: 1.5 }}
                     animate={{
                       boxShadow: [
@@ -542,23 +543,23 @@ export default function CVPage() {
                     transition={{ delay: index * 0.2, duration: 0.8 }}
                   />
                   
-                  <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="flex flex-col mb-3 sm:mb-4 lg:flex-row lg:items-start lg:justify-between">
                     <div className="flex-1">
-                      <h3 className="mb-2 text-2xl font-bold text-white transition-colors group-hover:text-primary">
+                      <h3 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-primary sm:mb-2 sm:text-xl md:text-2xl">
                         {exp.title}
                       </h3>
-                      <p className="mb-1 text-xl font-semibold text-accent">{exp.company}</p>
-                      <p className="text-sm text-gray-400">{exp.location} • {exp.type}</p>
+                      <p className="mb-1 text-base font-semibold text-accent sm:text-lg md:text-xl">{exp.company}</p>
+                      <p className="text-xs text-gray-400 sm:text-sm">{exp.location} • {exp.type}</p>
                     </div>
                     <motion.div 
-                      className="flex items-center px-4 py-2 mt-3 space-x-2 border rounded-lg lg:mt-0 bg-primary/10 border-primary/20"
+                      className="flex items-center px-3 py-1 mt-2 space-x-1 border rounded-lg lg:mt-0 bg-primary/10 border-primary/20 sm:px-4 sm:py-2 sm:space-x-2 sm:mt-3"
                       whileHover={{ scale: 1.05 }}
                     >
-                      <Calendar size={16} className="text-primary" />
-                      <span className="text-sm font-medium text-primary">{exp.period}</span>
+                      <Calendar size={14} className="text-primary sm:w-4 sm:h-4" />
+                      <span className="text-xs font-medium text-primary sm:text-sm">{exp.period}</span>
                     </motion.div>
                   </div>
-                  <p className="text-lg leading-relaxed text-gray-200">{exp.description}</p>
+                  <p className="text-sm leading-relaxed text-gray-200 sm:text-base md:text-lg">{exp.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -572,17 +573,17 @@ export default function CVPage() {
           variants={sectionVariants}
           initial="hidden"
           animate={isVisible.projects ? "visible" : "hidden"}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <motion.h2 
-            className="flex items-center mb-8 text-3xl font-bold text-primary"
+            className="flex items-center mb-4 text-2xl font-bold text-primary sm:mb-8 sm:text-3xl"
             whileHover={{ x: 5 }}
           >
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <Code className="mr-3" size={28} />
+              <Code className="mr-2 sm:mr-3" size={24} />
             </motion.div>
             Featured Projects
           </motion.h2>
@@ -604,7 +605,7 @@ export default function CVPage() {
                   y: -5,
                   boxShadow: '0 25px 50px rgba(236, 24, 57, 0.15)'
                 }}
-                className="relative p-8 overflow-hidden border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group"
+                className="relative p-4 overflow-hidden border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 md:p-8"
               >
                 <motion.div
                   className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-t-2xl"
@@ -615,32 +616,32 @@ export default function CVPage() {
                 
                 {/* Project number */}
                 <motion.div
-                  className="absolute flex items-center justify-center w-12 h-12 border rounded-full top-4 right-4 bg-primary/20 border-primary/30"
+                  className="absolute flex items-center justify-center w-8 h-8 border rounded-full top-3 right-3 bg-primary/20 border-primary/30 sm:w-10 sm:h-10 sm:top-4 sm:right-4 md:w-12 md:h-12"
                   whileHover={{ scale: 1.2, rotate: 360 }}
                 >
-                  <span className="text-lg font-bold text-primary">{index + 1}</span>
+                  <span className="text-sm font-bold text-primary sm:text-base md:text-lg">{index + 1}</span>
                 </motion.div>
                 
-                <div className="mb-4">
-                  <h3 className="mb-3 text-2xl font-bold text-white transition-colors group-hover:text-primary">
+                <div className="mb-3 sm:mb-4">
+                  <h3 className="mb-2 text-lg font-bold text-white transition-colors group-hover:text-primary sm:mb-3 sm:text-xl md:text-2xl">
                     {project.title}
                   </h3>
-                  <div className="flex flex-wrap gap-4 mb-3">
+                  <div className="flex flex-wrap gap-2 mb-2 sm:gap-3 sm:mb-3 md:gap-4">
                     <motion.span 
-                      className="px-4 py-2 text-sm font-medium border rounded-full bg-accent/20 text-accent border-accent/30"
+                      className="px-3 py-1 text-xs font-medium border rounded-full bg-accent/20 text-accent border-accent/30 sm:px-4 sm:py-2 sm:text-sm"
                       whileHover={{ scale: 1.05 }}
                     >
                       Tech: {project.tech}
                     </motion.span>
                     <motion.span 
-                      className="px-4 py-2 text-sm font-medium border rounded-full bg-primary/20 text-primary border-primary/30"
+                      className="px-3 py-1 text-xs font-medium border rounded-full bg-primary/20 text-primary border-primary/30 sm:px-4 sm:py-2 sm:text-sm"
                       whileHover={{ scale: 1.05 }}
                     >
                       Role: {project.role}
                     </motion.span>
                   </div>
                 </div>
-                <p className="text-lg leading-relaxed text-gray-200">{project.description}</p>
+                <p className="text-sm leading-relaxed text-gray-200 sm:text-base md:text-lg">{project.description}</p>
                 
                 {/* Hover effect overlay */}
                 <motion.div
@@ -657,11 +658,11 @@ export default function CVPage() {
                 href="https://github.com/thesundram"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-4 space-x-3 font-semibold transition-all border rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border-primary/30 text-primary hover:bg-gradient-to-r hover:from-primary/30 hover:to-accent/30"
+                className="inline-flex items-center px-4 py-2 space-x-2 font-semibold transition-all border rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border-primary/30 text-primary hover:bg-gradient-to-r hover:from-primary/30 hover:to-accent/30 sm:px-6 sm:py-3 sm:space-x-3 md:px-8 md:py-4"
                 whileHover={{ y: -2 }}
               >
-                <Eye size={20} />
-                <span>View More Projects on GitHub</span>
+                <Eye size={16} className="sm:w-5 sm:h-5" />
+                <span className="text-sm sm:text-base">View More Projects on GitHub</span>
               </motion.a>
             </motion.div>
           </motion.div>
@@ -674,22 +675,22 @@ export default function CVPage() {
           variants={sectionVariants}
           initial="hidden"
           animate={isVisible.education ? "visible" : "hidden"}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <motion.h2 
-            className="flex items-center mb-8 text-3xl font-bold text-primary"
+            className="flex items-center mb-4 text-2xl font-bold text-primary sm:mb-8 sm:text-3xl"
             whileHover={{ x: 5 }}
           >
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <GraduationCap className="mr-3" size={28} />
+              <GraduationCap className="mr-2 sm:mr-3" size={24} />
             </motion.div>
             Education & Certifications
           </motion.h2>
           <motion.div 
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
             variants={staggerContainer}
             initial="hidden"
             animate={isVisible.education ? "visible" : "hidden"}
@@ -706,7 +707,7 @@ export default function CVPage() {
                   x: 8,
                   boxShadow: '0 20px 40px rgba(236, 24, 57, 0.1)'
                 }}
-                className="relative p-8 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group"
+                className="relative p-4 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 md:p-8"
               >
                 <motion.div
                   className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-t-2xl"
@@ -715,20 +716,20 @@ export default function CVPage() {
                   transition={{ delay: index * 0.1, duration: 0.8 }}
                 />
                 
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between lg:flex-row lg:items-center lg:justify-between">
                   <div className="flex-1">
-                    <h3 className="mb-2 text-xl font-bold text-white transition-colors group-hover:text-primary">
+                    <h3 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-primary sm:mb-2 sm:text-xl">
                       {edu.degree}
                     </h3>
-                    <p className="mb-1 text-lg font-semibold text-accent">{edu.institution}</p>
-                    <p className="text-sm text-gray-400">{edu.location}</p>
+                    <p className="mb-1 text-base font-semibold text-accent sm:text-lg">{edu.institution}</p>
+                    <p className="text-xs text-gray-400 sm:text-sm">{edu.location}</p>
                   </div>
                   <motion.div 
-                    className="flex items-center px-4 py-2 mt-3 space-x-2 border rounded-lg lg:mt-0 bg-accent/10 border-accent/20"
+                    className="flex items-center px-3 py-1 mt-2 space-x-1 border rounded-lg sm:mt-3 sm:px-4 sm:py-2 sm:space-x-2 lg:mt-0 bg-accent/10 border-accent/20"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Calendar size={16} className="text-accent" />
-                    <span className="text-sm font-medium text-accent">{edu.period}</span>
+                    <Calendar size={14} className="text-accent sm:w-4 sm:h-4" />
+                    <span className="text-xs font-medium text-accent sm:text-sm">{edu.period}</span>
                   </motion.div>
                 </div>
               </motion.div>
@@ -743,22 +744,22 @@ export default function CVPage() {
           variants={sectionVariants}
           initial="hidden"
           animate={isVisible.achievements ? "visible" : "hidden"}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <motion.h2 
-            className="flex items-center mb-8 text-3xl font-bold text-primary"
+            className="flex items-center mb-4 text-2xl font-bold text-primary sm:mb-8 sm:text-3xl"
             whileHover={{ x: 5 }}
           >
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <Trophy className="mr-3" size={28} />
+              <Trophy className="mr-2 sm:mr-3" size={24} />
             </motion.div>
             Achievements & Activities
           </motion.h2>
           <motion.div 
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
             variants={staggerContainer}
             initial="hidden"
             animate={isVisible.achievements ? "visible" : "hidden"}
@@ -775,7 +776,7 @@ export default function CVPage() {
                   y: -5,
                   boxShadow: '0 20px 40px rgba(243, 156, 18, 0.2)'
                 }}
-                className="relative p-8 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group"
+                className="relative p-4 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 md:p-8"
               >
                 <motion.div
                   className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-primary rounded-t-2xl"
@@ -785,25 +786,25 @@ export default function CVPage() {
                 />
                 
                 <motion.div
-                  className="absolute p-2 border rounded-full top-4 right-4 bg-accent/20 border-accent/30"
+                  className="absolute p-1 border rounded-full top-3 right-3 bg-accent/20 border-accent/30 sm:p-2 sm:top-4 sm:right-4"
                   whileHover={{ scale: 1.2, rotate: 360 }}
                 >
-                  <Star size={20} className="text-accent" />
+                  <Star size={16} className="text-accent sm:w-5 sm:h-5" />
                 </motion.div>
                 
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between lg:flex-row lg:items-center lg:justify-between">
                   <div className="flex-1">
-                    <h3 className="mb-2 text-xl font-bold text-white transition-colors group-hover:text-accent">
+                    <h3 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-accent sm:mb-2 sm:text-xl">
                       {achievement.title}
                     </h3>
-                    <p className="text-lg font-semibold text-primary">{achievement.organization}</p>
+                    <p className="text-base font-semibold text-primary sm:text-lg">{achievement.organization}</p>
                   </div>
                   <motion.div 
-                    className="flex items-center px-4 py-2 mt-3 space-x-2 border rounded-lg lg:mt-0 bg-primary/10 border-primary/20"
+                    className="flex items-center px-3 py-1 mt-2 space-x-1 border rounded-lg sm:mt-3 sm:px-4 sm:py-2 sm:space-x-2 lg:mt-0 bg-primary/10 border-primary/20"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Calendar size={16} className="text-primary" />
-                    <span className="text-sm font-medium text-primary">{achievement.period}</span>
+                    <Calendar size={14} className="text-primary sm:w-4 sm:h-4" />
+                    <span className="text-xs font-medium text-primary sm:text-sm">{achievement.period}</span>
                   </motion.div>
                 </div>
               </motion.div>
@@ -835,14 +836,14 @@ export default function CVPage() {
             }}
             whileTap={{ scale: 0.92 }}
             onClick={() => window.open('/images/Sundram_CV.pdf', '_blank')}
-            className="relative px-16 py-6 text-xl font-bold text-white transition-all duration-500 border rounded-full shadow-2xl bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 border-white/20"
+            className="relative px-8 py-3 text-lg font-bold text-white transition-all duration-500 border rounded-full shadow-2xl bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 border-white/20 sm:px-12 sm:py-4 sm:text-xl md:px-16 md:py-6"
           >
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
-              className="inline-block mr-4"
+              className="inline-block mr-2 sm:mr-4"
             >
-              <Download size={28} />
+              <Download size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </motion.div>
             Download Complete CV
             

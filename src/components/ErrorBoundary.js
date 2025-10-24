@@ -19,12 +19,13 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-black text-white">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold mb-4">Something went wrong!</h2>
+        <div className="min-h-screen flex items-center justify-center bg-black text-white p-4">
+          <div className="text-center max-w-sm sm:max-w-none">
+            <h2 className="text-xl font-bold mb-3 sm:text-2xl sm:mb-4">Something went wrong!</h2>
+            <p className="text-sm text-gray-400 mb-4 sm:text-base sm:mb-6">We apologize for the inconvenience. Please try reloading the page.</p>
             <button 
               onClick={() => window.location.reload()}
-              className="px-6 py-3 bg-primary rounded-lg hover:bg-primary/80 transition-colors"
+              className="px-4 py-2 bg-primary rounded-lg hover:bg-primary/80 transition-colors text-sm sm:px-6 sm:py-3 sm:text-base"
             >
               Reload Page
             </button>

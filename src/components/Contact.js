@@ -114,7 +114,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-20 overflow-hidden lg:ml-64 xl:ml-72">
+    <section id="contact" className="relative py-12 overflow-hidden sm:py-20 lg:ml-64 xl:ml-72">
       <Toaster position="top-right" />
       
       {/* Enhanced Background */}
@@ -136,15 +136,15 @@ export default function Contact() {
         transition={{ duration: 6, repeat: Infinity }}
       />
       
-      <div className="container relative z-10 px-6 mx-auto" ref={ref}>
+      <div className="container relative z-10 px-4 mx-auto sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text">Let&apos;s Work Together</h2>
+          <h2 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl orbitron gradient-text">Let&apos;s Work Together</h2>
           <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-primary to-accent"></div>
-          <p className="max-w-3xl mx-auto mt-6 text-xl leading-relaxed text-gray-300">
+          <p className="max-w-3xl mx-auto mt-6 text-lg leading-relaxed text-gray-300 sm:text-xl">
             Ready to bring your ideas to life? I&apos;m here to help you build amazing digital experiences.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
@@ -184,7 +184,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 gap-6 mb-16 md:grid-cols-2 lg:grid-cols-4"
+            className="grid grid-cols-2 gap-4 mb-12 sm:gap-6 sm:mb-16 md:grid-cols-2 lg:grid-cols-4"
           >
             {contactInfo.map((info, index) => {
               const Icon = info.icon
@@ -200,7 +200,7 @@ export default function Contact() {
                   whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
                   onHoverStart={() => setHoveredCard(index)}
                   onHoverEnd={() => setHoveredCard(null)}
-                  className="relative p-6 overflow-hidden text-center transition-all duration-500 border group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border-white/10 rounded-2xl hover:border-primary/30"
+                  className="relative p-4 overflow-hidden text-center transition-all duration-500 border group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border-white/10 rounded-2xl hover:border-primary/30 sm:p-6"
                 >
                   <motion.div
                     className={`absolute inset-0 bg-gradient-to-br ${info.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
@@ -216,11 +216,11 @@ export default function Contact() {
                   />
                   
                   <motion.div 
-                    className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${info.color} rounded-2xl flex items-center justify-center shadow-lg relative z-10`}
+                    className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${info.color} rounded-2xl flex items-center justify-center shadow-lg relative z-10 sm:w-16 sm:h-16 sm:mb-4`}
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <Icon size={28} className="text-white" />
+                    <Icon size={20} className="text-white sm:w-7 sm:h-7" />
                     <motion.div
                       className="absolute inset-0 rounded-2xl bg-white/20"
                       initial={{ scale: 0, opacity: 0 }}
@@ -232,10 +232,10 @@ export default function Contact() {
                     />
                   </motion.div>
                   
-                  <h4 className="relative z-10 mb-2 font-bold text-white transition-colors group-hover:text-primary">
+                  <h4 className="relative z-10 mb-1 text-sm font-bold text-white transition-colors group-hover:text-primary sm:mb-2 sm:text-base">
                     {info.title}
                   </h4>
-                  <p className="relative z-10 text-sm text-gray-400 transition-colors group-hover:text-gray-300">
+                  <p className="relative z-10 text-xs text-gray-400 transition-colors group-hover:text-gray-300 sm:text-sm">
                     {info.value}
                   </p>
                   
@@ -257,7 +257,7 @@ export default function Contact() {
             })}
           </motion.div>
 
-          <div className="grid items-start gap-12 lg:grid-cols-2">
+          <div className="grid items-start gap-8 lg:gap-12 lg:grid-cols-2">
             {/* Left Side - Info */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -266,8 +266,8 @@ export default function Contact() {
               className="space-y-8"
             >
               <div className="space-y-6">
-                <h3 className="text-3xl font-bold text-white">Ready to Start?</h3>
-                <p className="text-lg leading-relaxed text-gray-300">
+                <h3 className="text-2xl font-bold text-white sm:text-3xl">Ready to Start?</h3>
+                <p className="text-base leading-relaxed text-gray-300 sm:text-lg">
                   I&apos;m passionate about creating digital solutions that make a difference. 
                   Whether you need a website, mobile app, or custom software, I&apos;m here to help.
                 </p>
@@ -346,13 +346,13 @@ export default function Contact() {
               initial={{ opacity: 0, x: 50 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-8 border bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border-white/10 rounded-2xl"
+              className="p-6 border bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border-white/10 rounded-2xl sm:p-8"
             >
               <div className="flex items-center mb-6 space-x-3">
                 <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-xl">
                   <Send size={20} className="text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Send Message</h3>
+                <h3 className="text-xl font-bold text-white sm:text-2xl">Send Message</h3>
               </div>
             
             <motion.form 
@@ -362,7 +362,7 @@ export default function Contact() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
                 <motion.div
                   className="space-y-2"
                   animate={{ scale: focusedField === 'name' ? 1.02 : 1 }}
@@ -382,7 +382,7 @@ export default function Contact() {
                       onChange={handleInputChange}
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15"
+                      className="w-full px-3 py-2 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15 sm:px-4 sm:py-3"
                       placeholder="Your Name"
                       required
                     />
@@ -414,7 +414,7 @@ export default function Contact() {
                       onChange={handleInputChange}
                       onFocus={() => setFocusedField('email')}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15"
+                      className="w-full px-3 py-2 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15 sm:px-4 sm:py-3"
                       placeholder="your.email@example.com"
                       required
                     />
@@ -447,7 +447,7 @@ export default function Contact() {
                     onChange={handleInputChange}
                     onFocus={() => setFocusedField('subject')}
                     onBlur={() => setFocusedField(null)}
-                    className="w-full px-4 py-3 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15"
+                    className="w-full px-3 py-2 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15 sm:px-4 sm:py-3"
                     placeholder="Project Discussion"
                     required
                   />
@@ -478,8 +478,8 @@ export default function Contact() {
                     onChange={handleInputChange}
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
-                    rows={6}
-                    className="w-full px-4 py-3 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg resize-none bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15"
+                    rows={4}
+                    className="w-full px-3 py-2 text-white placeholder-gray-400 transition-all duration-300 border rounded-lg resize-none bg-white/10 border-white/20 focus:border-primary focus:outline-none focus:bg-white/15 sm:px-4 sm:py-3 sm:rows-6"
                     placeholder="Tell me about your project..."
                     required
                   />

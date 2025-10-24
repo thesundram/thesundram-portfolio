@@ -246,7 +246,7 @@ export default function About() {
                 className="text-2xl font-bold text-white lg:text-3xl"
                 whileHover={{ x: 5 }}
               >
-                I'm Sundram Pandey & I am a{' '}
+                I&apos;m Sundram Pandey & I am a{' '}
                 <motion.span 
                   className="gradient-text"
                   animate={{
@@ -263,8 +263,8 @@ export default function About() {
                   className="relative text-lg leading-relaxed text-gray-300"
                   whileHover={{ x: 3 }}
                 >
-                  <span className="absolute top-0 font-serif text-4xl -left-4 text-primary/20">"</span>
-                  Hello! I'm <motion.span 
+                  <span className="absolute top-0 font-serif text-4xl -left-4 text-primary/20">&ldquo;</span>
+                  Hello! I&apos;m <motion.span 
                     className="font-semibold text-primary"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -277,7 +277,7 @@ export default function About() {
                     Software Engineer
                   </motion.span> from Mumbai, India. 
                   I specialize in creating modern web and mobile applications that solve real-world problems.
-                  <span className="absolute bottom-0 font-serif text-4xl -right-2 text-primary/20">"</span>
+                  <span className="absolute bottom-0 font-serif text-4xl -right-2 text-primary/20">&rdquo;</span>
                 </motion.p>
                 <p className="text-gray-300">
                   🎓 <strong>B.Tech in Computer Science</strong> from Chhatrapati Shivaji Maharaj University<br/>
@@ -286,7 +286,7 @@ export default function About() {
                   ⚡ <strong>Full-stack expertise</strong> in React, Node.js, React Native & Flutter
                 </p>
                 <p className="text-gray-300">
-                  When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
+                  When I&apos;m not coding, you&apos;ll find me exploring new technologies, contributing to open-source projects, 
                   or sharing knowledge with the developer community. I believe in writing clean, efficient code 
                   and creating user experiences that make a difference.
                 </p>

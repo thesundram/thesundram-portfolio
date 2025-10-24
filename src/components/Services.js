@@ -262,7 +262,7 @@ export default function Services() {
               Ready to Start Your Project?
             </motion.h3>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Get a free consultation and detailed project estimate. Let's turn your ideas into reality!
+              Get a free consultation and detailed project estimate. Let&apos;s turn your ideas into reality!
             </p>
             
             <div className="flex flex-wrap justify-center gap-4 mb-6">

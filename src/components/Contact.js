@@ -134,7 +134,7 @@ export default function Contact() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text">Let's Work Together</h2>
+          <h2 className="mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text">Let&apos;s Work Together</h2>
           <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-primary to-accent"></div>
           <p className="max-w-3xl mx-auto mt-6 text-xl leading-relaxed text-gray-300">
             Ready to bring your ideas to life? I'm here to help you build amazing digital experiences.
@@ -194,8 +194,8 @@ export default function Contact() {
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold text-white">Ready to Start?</h3>
                 <p className="text-lg leading-relaxed text-gray-300">
-                  I'm passionate about creating digital solutions that make a difference. 
-                  Whether you need a website, mobile app, or custom software, I'm here to help.
+                  I&apos;m passionate about creating digital solutions that make a difference. 
+                  Whether you need a website, mobile app, or custom software, I&apos;m here to help.
                 </p>
               </div>
 

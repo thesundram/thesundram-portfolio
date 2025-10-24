@@ -125,7 +125,7 @@ export default function ColorSwitcher() {
       : colorThemes[0]
     
     applyTheme(themeToApply)
-  }, [])
+  }, [colorThemes])
 
   return (
     <>

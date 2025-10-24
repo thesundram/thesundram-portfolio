@@ -30,7 +30,7 @@ export default function EasterEgg() {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [sequence])
+  }, [sequence, secretCode])
 
   return (
     <AnimatePresence>
@@ -68,7 +68,7 @@ export default function EasterEgg() {
               transition={{ delay: 1 }}
               className="text-xl text-gray-300"
             >
-              You discovered the secret! Type "SUNDRAM" anywhere on the site.
+              You discovered the secret! Type &ldquo;SUNDRAM&rdquo; anywhere on the site.
             </motion.p>
             
             {showReward && (
@@ -78,7 +78,7 @@ export default function EasterEgg() {
                 className="space-y-4"
               >
                 <div className="text-lg text-accent">
-                  🎁 Special Reward: You're awesome for exploring!
+                  🎁 Special Reward: You&apos;re awesome for exploring!
                 </div>
                 
                 <div className="flex justify-center space-x-2">

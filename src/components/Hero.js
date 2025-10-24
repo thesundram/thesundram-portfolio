@@ -13,7 +13,6 @@ export default function Hero() {
   const heroRef = useRef(null)
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
   useEffect(() => {
     const roles = [
@@ -70,7 +69,7 @@ export default function Hero() {
       ref={heroRef}
       id="home"
       className="relative flex items-center justify-center min-h-screen overflow-hidden lg:ml-64 xl:ml-72"
-      style={{ y, opacity }}
+      style={{ y }}
     >
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>

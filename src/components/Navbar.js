@@ -59,7 +59,7 @@ export default function Navbar() {
         className="fixed top-0 left-0 z-50 flex-col hidden w-64 h-full border-r xl:w-72 bg-gradient-to-b from-gray-900/95 to-black/95 backdrop-blur-lg border-primary/20 lg:flex"
       >
         {/* Enhanced Logo */}
-        <div className="p-8">
+        <div className="p-6">
           <motion.div
             whileHover={{ scale: 1.05, rotateY: 5 }}
             className="relative text-center"
@@ -189,7 +189,7 @@ export default function Navbar() {
         </div>
 
         {/* Enhanced Footer */}
-        <div className="p-6 space-y-4 border-t border-white/10">
+        <div className="p-3 space-y-3 border-t border-white/10">
           {/* Status Indicator */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -201,20 +201,18 @@ export default function Navbar() {
               transition={{ duration: 2, repeat: Infinity }}
               className="w-2 h-2 bg-green-500 rounded-full"
             />
-            <span className="text-green-400">Available for work</span>
+            <motion.span 
+              className="font-medium text-green-400"
+              animate={{ opacity: [0.8, 1, 0.8] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Available for work
+            </motion.span>
           </motion.div>
           
           {/* Enhanced Social Links */}
           <div className="space-y-3">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-xs text-center text-gray-400"
-            >
-              Connect with me
-            </motion.p>
-            
-            <div className="flex justify-center space-x-2">
+            <div className="flex items-center justify-center space-x-3">
               {[
                 { icon: Linkedin, href: 'http://linkedin.com/in/thesundram', label: 'LinkedIn', color: 'hover:bg-blue-500/20 hover:border-blue-500/30' },
                 { icon: Github, href: 'http://github.com/thesundram', label: 'GitHub', color: 'hover:bg-gray-500/20 hover:border-gray-500/30' },
@@ -256,7 +254,6 @@ export default function Navbar() {
             >
               &copy; {new Date().getFullYear()} Sundram Pandey
             </motion.p>
-            <p className="mt-1">Made with ❤️ in Mumbai</p>
           </div>
         </div>
       </motion.nav>

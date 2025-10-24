@@ -1,11 +1,13 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code, Smartphone, Palette, Search, Database, Cloud, Shield, Bot } from 'lucide-react'
+import { Code, Smartphone, Palette, Search, Database, Cloud, Shield, Bot, ArrowRight, CheckCircle, Star } from 'lucide-react'
 
 export default function Services() {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [hoveredService, setHoveredService] = useState(null)
 
   const services = [
     {
@@ -13,56 +15,72 @@ export default function Services() {
       title: 'Web Development',
       description: 'Modern responsive websites with React, Next.js, and cutting-edge technologies.',
       color: 'from-blue-500 to-cyan-500',
-      delay: 0.1
+      delay: 0.1,
+      features: ['React & Next.js', 'Responsive Design', 'SEO Optimized'],
+      price: 'Starting $500'
     },
     {
       icon: Smartphone,
       title: 'Mobile App Development',
       description: 'Cross-platform mobile apps using React Native and Flutter for iOS & Android.',
       color: 'from-green-500 to-emerald-500',
-      delay: 0.2
+      delay: 0.2,
+      features: ['React Native', 'Flutter & Dart', 'Cross-platform'],
+      price: 'Starting $800'
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
       description: 'Beautiful, intuitive user interfaces that provide exceptional user experiences.',
       color: 'from-purple-500 to-pink-500',
-      delay: 0.3
+      delay: 0.3,
+      features: ['Figma Design', 'Prototyping', 'User Research'],
+      price: 'Starting $300'
     },
     {
       icon: Database,
       title: 'Backend Development',
       description: 'Scalable APIs and databases with Node.js, MongoDB, and cloud integration.',
       color: 'from-orange-500 to-red-500',
-      delay: 0.4
+      delay: 0.4,
+      features: ['REST APIs', 'Database Design', 'Authentication'],
+      price: 'Starting $600'
     },
     {
       icon: Search,
       title: 'SEO Optimization',
       description: 'Improve your website visibility and ranking on search engines.',
       color: 'from-yellow-500 to-orange-500',
-      delay: 0.5
+      delay: 0.5,
+      features: ['Technical SEO', 'Content Strategy', 'Analytics'],
+      price: 'Starting $200'
     },
     {
       icon: Cloud,
       title: 'Cloud Solutions',
       description: 'Deploy and manage applications on AWS, Vercel, and other cloud platforms.',
       color: 'from-indigo-500 to-purple-500',
-      delay: 0.6
+      delay: 0.6,
+      features: ['AWS Deployment', 'CI/CD Pipeline', 'Monitoring'],
+      price: 'Starting $400'
     },
     {
       icon: Shield,
       title: 'Cybersecurity',
       description: 'Secure your applications with best practices and security implementations.',
       color: 'from-red-500 to-pink-500',
-      delay: 0.7
+      delay: 0.7,
+      features: ['Security Audit', 'Data Protection', 'SSL Setup'],
+      price: 'Starting $350'
     },
     {
       icon: Bot,
       title: 'AI Integration',
       description: 'Integrate AI and machine learning capabilities into your applications.',
       color: 'from-teal-500 to-blue-500',
-      delay: 0.8
+      delay: 0.8,
+      features: ['ChatBot Integration', 'API Integration', 'Custom AI'],
+      price: 'Starting $700'
     }
   ]
 
@@ -98,10 +116,25 @@ export default function Services() {
           <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto leading-relaxed">
             I transform ideas into digital reality with cutting-edge technologies and creative solutions
           </p>
-          <div className="flex justify-center mt-8">
-            <div className="flex items-center space-x-2 px-4 py-2 bg-primary/20 border border-primary/30 rounded-full">
-              <span className="text-primary text-sm font-medium">💡 Custom solutions for every project</span>
-            </div>
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <motion.div 
+              className="flex items-center space-x-2 px-4 py-2 bg-primary/20 border border-primary/30 rounded-full"
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="text-primary text-sm font-medium">💡 Custom solutions</span>
+            </motion.div>
+            <motion.div 
+              className="flex items-center space-x-2 px-4 py-2 bg-accent/20 border border-accent/30 rounded-full"
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="text-accent text-sm font-medium">⚡ Fast delivery</span>
+            </motion.div>
+            <motion.div 
+              className="flex items-center space-x-2 px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full"
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="text-green-400 text-sm font-medium">🏆 Quality guaranteed</span>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -115,34 +148,97 @@ export default function Services() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: service.delay, duration: 0.6 }}
                 whileHover={{ y: -15, scale: 1.05, rotateY: 5 }}
-                className="group relative p-6 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-300 overflow-hidden"
+                onHoverStart={() => setHoveredService(index)}
+                onHoverEnd={() => setHoveredService(null)}
+                className="group relative p-6 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-500 overflow-hidden cursor-pointer"
               >
-                {/* Background gradient on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                {/* Animated background gradient */}
+                <motion.div 
+                  className={`absolute inset-0 bg-gradient-to-br ${service.color}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredService === index ? 0.15 : 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+                
+                {/* Floating particles */}
+                <motion.div
+                  className="absolute top-4 right-4 w-2 h-2 bg-primary/60 rounded-full"
+                  animate={{
+                    scale: hoveredService === index ? [1, 1.5, 1] : 1,
+                    opacity: hoveredService === index ? [0.6, 1, 0.6] : 0.3
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
                 
                 <div className="relative z-10">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <Icon size={28} className="text-white" />
+                  <div className="flex items-center justify-between mb-4">
+                    <motion.div 
+                      className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center shadow-lg`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Icon size={28} className="text-white" />
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: hoveredService === index ? 1 : 0, scale: hoveredService === index ? 1 : 0 }}
+                      className="flex items-center space-x-1"
+                    >
+                      <Star size={16} className="text-yellow-400 fill-current" />
+                      <span className="text-sm text-gray-300">4.9</span>
+                    </motion.div>
                   </div>
                   
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
                   
-                  <p className="text-gray-400 leading-relaxed mb-4">
+                  <p className="text-gray-400 leading-relaxed mb-4 text-sm">
                     {service.description}
                   </p>
                   
                   {/* Service features */}
-                  <div className="space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex items-center space-x-2 text-sm text-gray-300">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                      <span>Fast delivery</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-sm text-gray-300">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                      <span>24/7 support</span>
-                    </div>
+                  <motion.div 
+                    className="space-y-2 mb-4"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ 
+                      opacity: hoveredService === index ? 1 : 0, 
+                      height: hoveredService === index ? 'auto' : 0 
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {service.features.map((feature, idx) => (
+                      <motion.div 
+                        key={idx}
+                        className="flex items-center space-x-2 text-sm text-gray-300"
+                        initial={{ x: -10, opacity: 0 }}
+                        animate={{ 
+                          x: hoveredService === index ? 0 : -10, 
+                          opacity: hoveredService === index ? 1 : 0 
+                        }}
+                        transition={{ delay: idx * 0.1 }}
+                      >
+                        <CheckCircle size={14} className="text-green-400" />
+                        <span>{feature}</span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                  
+                  {/* Price and CTA */}
+                  <div className="flex items-center justify-between">
+                    <motion.span 
+                      className="text-primary font-semibold text-sm"
+                      animate={{ scale: hoveredService === index ? 1.05 : 1 }}
+                    >
+                      {service.price}
+                    </motion.span>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2 bg-primary/20 rounded-full hover:bg-primary/30"
+                    >
+                      <ArrowRight size={16} className="text-primary" />
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>
@@ -150,28 +246,66 @@ export default function Services() {
           })}
         </div>
         
-        {/* Call to Action */}
+        {/* Enhanced Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1 }}
           className="text-center"
         >
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(236, 24, 57, 0.3)' }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-accent px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            <span>Let&apos;s Discuss Your Project</span>
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+          <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+            <motion.h3 
+              className="text-2xl font-bold text-white mb-4"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
             >
-              →
-            </motion.div>
-          </motion.a>
-          <p className="text-gray-400 text-sm mt-4">Free consultation • Quick response • Competitive rates</p>
+              Ready to Start Your Project?
+            </motion.h3>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Get a free consultation and detailed project estimate. Let's turn your ideas into reality!
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05, boxShadow: '0 15px 40px rgba(236, 24, 57, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-accent px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <span>Get Free Quote</span>
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight size={20} />
+                </motion.div>
+              </motion.a>
+              
+              <motion.a
+                href="tel:+917897403349"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-2 border-2 border-primary/30 px-8 py-4 rounded-full text-white font-semibold hover:bg-primary/10 transition-all duration-300"
+              >
+                <span>Call Now</span>
+              </motion.a>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center space-x-2">
+                <CheckCircle size={16} className="text-green-400" />
+                <span>Free consultation</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle size={16} className="text-green-400" />
+                <span>24-48h response</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle size={16} className="text-green-400" />
+                <span>Competitive rates</span>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

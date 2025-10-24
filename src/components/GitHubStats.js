@@ -78,7 +78,7 @@ export default function GitHubStats() {
         </motion.div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 gap-6 mb-16 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 mb-16 sm:gap-6 md:grid-cols-4">
           {githubStats.map((stat, index) => {
             const Icon = stat.icon
             return (
@@ -93,22 +93,22 @@ export default function GitHubStats() {
                   rotateY: 5,
                   boxShadow: '0 20px 40px rgba(236, 24, 57, 0.2)'
                 }}
-                className={`p-6 bg-gradient-to-br ${stat.color} bg-opacity-10 border border-white/10 backdrop-blur-sm rounded-2xl text-center group hover:border-white/20 transition-all duration-300 relative overflow-hidden`}
+                className={`p-4 sm:p-6 bg-gradient-to-br ${stat.color} bg-opacity-10 border border-white/10 backdrop-blur-sm rounded-2xl text-center group hover:border-white/20 transition-all duration-300 relative overflow-hidden`}
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Icon size={32} className="mx-auto mb-3 text-white transition-transform group-hover:scale-110" />
+                  <Icon size={24} className="mx-auto mb-3 text-white transition-transform group-hover:scale-110 sm:w-8 sm:h-8" />
                 </motion.div>
                 <motion.div 
-                  className="mb-1 text-3xl font-bold gradient-text"
+                  className="mb-1 text-2xl font-bold gradient-text sm:text-3xl"
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
                 >
                   {stat.value}
                 </motion.div>
-                <div className="text-sm text-gray-400 transition-colors group-hover:text-gray-300">{stat.label}</div>
+                <div className="text-xs text-gray-400 transition-colors group-hover:text-gray-300 sm:text-sm">{stat.label}</div>
                 
                 {/* Hover effect overlay */}
                 <motion.div
@@ -126,8 +126,8 @@ export default function GitHubStats() {
           transition={{ delay: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h3 className="mb-8 text-2xl font-bold text-center text-white">Most Used Languages</h3>
-          <div className="grid gap-8 md:grid-cols-2">
+          <h3 className="mb-6 text-xl font-bold text-center text-white sm:mb-8 sm:text-2xl">Most Used Languages</h3>
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
             <div className="space-y-4">
               {languages.map((lang, index) => (
                 <motion.div
@@ -159,7 +159,7 @@ export default function GitHubStats() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 1 }}
               whileHover={{ scale: 1.02, y: -3 }}
-              className="relative p-6 overflow-hidden border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group"
+              className="relative p-4 overflow-hidden border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6"
             >
               <motion.div
                 className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-t-2xl"
@@ -168,7 +168,7 @@ export default function GitHubStats() {
                 transition={{ delay: 1.2, duration: 0.8 }}
               />
               
-              <h4 className="flex items-center mb-4 text-lg font-semibold text-white transition-colors group-hover:text-primary">
+              <h4 className="flex items-center mb-4 text-base font-semibold text-white transition-colors group-hover:text-primary sm:text-lg">
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
@@ -198,7 +198,7 @@ export default function GitHubStats() {
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
                       />
-                      <span className="text-sm text-gray-300 transition-colors group-hover/item:text-white">{activity.text}</span>
+                      <span className="text-xs text-gray-300 transition-colors group-hover/item:text-white sm:text-sm">{activity.text}</span>
                     </div>
                     <span className="text-xs text-gray-500">{activity.time}</span>
                   </motion.div>

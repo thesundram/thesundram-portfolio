@@ -20,9 +20,7 @@ export default function Hero() {
       'FULL STACK DEVELOPER',
       'WEB DEVELOPER',
       'APP DEVELOPER',
-      'UI/UX DESIGNER',
-      'PROBLEM SOLVER',
-      'TECH ENTHUSIAST'
+      'UI/UX DESIGNER'
     ]
     
     const handleTyping = () => {

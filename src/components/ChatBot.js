@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send, User, Bot, Copy, Download, ExternalLink, Clock, Eye } from 'lucide-react'
 
 const botResponses = {
-  'hi': '👋 Hello! I am Sundram\'s AI assistant. I can tell you everything about his skills, projects, and how to get in touch with him!',
+  'hi': '👋 Hello! I am Sundram AI assistant. I can tell you everything about his skills, projects, and how to get in touch with him!',
   'hello': '🚀 Hi there! I am here to showcase Sundram Pandey - a passionate Software Engineer. What would you like to explore?',
   'skills': '💻 Sundram is a Full Stack Developer expert in:\n\n🔹 Frontend: React, Next.js, React Native, Flutter\n🔹 Backend: Node.js, Express, MongoDB, REST APIs\n🔹 Languages: JavaScript, TypeScript, Python\n🔹 Tools: Git, AWS, Firebase, Tailwind CSS\n\nHe builds scalable, modern applications!',
   'experience': '🏆 Sundram has 2+ years of experience:\n\n✅ Built 20+ web & mobile applications\n✅ Specialized in responsive UI/UX design\n✅ Expert in REST API development\n✅ Cloud integration & deployment\n✅ Authentication & security implementation\n\nHe is passionate about creating user-friendly solutions!',

@@ -1018,7 +1018,7 @@ export default function CVPage() {
                 subtitle: 'Quick Response',
                 icon: Mail,
                 color: 'from-red-500 to-pink-500',
-                action: () => window.open(`mailto:${personalInfo.email}?subject=Let's Work Together&body=Hi Sundram, I'd like to discuss a project with you.`)
+                action: () => window.open(`mailto:${personalInfo.email}?subject=Let's Work Together&body=Hi Sundram, I would like to discuss a project with you.`)
               },
               {
                 title: 'Call Now',

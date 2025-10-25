@@ -5,21 +5,21 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send, User, Bot, Copy, Download, ExternalLink, Clock, Eye } from 'lucide-react'
 
 const botResponses = {
-  'hi': '👋 Hello! I\'m Sundram\'s AI assistant. I can tell you everything about his skills, projects, and how to get in touch with him!',
-  'hello': '🚀 Hi there! I\'m here to showcase Sundram Pandey - a passionate Software Engineer. What would you like to explore?',
+  'hi': '👋 Hello! I am Sundram\'s AI assistant. I can tell you everything about his skills, projects, and how to get in touch with him!',
+  'hello': '🚀 Hi there! I am here to showcase Sundram Pandey - a passionate Software Engineer. What would you like to explore?',
   'skills': '💻 Sundram is a Full Stack Developer expert in:\n\n🔹 Frontend: React, Next.js, React Native, Flutter\n🔹 Backend: Node.js, Express, MongoDB, REST APIs\n🔹 Languages: JavaScript, TypeScript, Python\n🔹 Tools: Git, AWS, Firebase, Tailwind CSS\n\nHe builds scalable, modern applications!',
-  'experience': '🏆 Sundram has 2+ years of experience:\n\n✅ Built 20+ web & mobile applications\n✅ Specialized in responsive UI/UX design\n✅ Expert in REST API development\n✅ Cloud integration & deployment\n✅ Authentication & security implementation\n\nHe\'s passionate about creating user-friendly solutions!',
+  'experience': '🏆 Sundram has 2+ years of experience:\n\n✅ Built 20+ web & mobile applications\n✅ Specialized in responsive UI/UX design\n✅ Expert in REST API development\n✅ Cloud integration & deployment\n✅ Authentication & security implementation\n\nHe is passionate about creating user-friendly solutions!',
   'projects': '🎯 Sundram has created amazing projects:\n\n🔸 Threads - Real-time chat app (MERN + Socket.io)\n🔸 Socially - Social media platform (Next.js + PostgreSQL)\n🔸 Bookstore - React Native app with JWT auth\n🔸 E-commerce platforms with payment integration\n🔸 Portfolio websites & dashboards\n\nAll built with modern tech stacks and best practices!',
   'contact': '📞 Ready to connect with Sundram? Here are all the ways:\n\n📧 Email: thesundram29@gmail.com\n📱 Phone: +91 7897403349\n💼 LinkedIn: linkedin.com/in/thesundram\n🐙 GitHub: github.com/thesundram\n📱 Instagram: @the.sun29\n\n💡 He\'s available for freelance projects, full-time opportunities, and collaborations!',
-  'hire': '💼 Want to hire Sundram? Great choice!\n\n🎯 He\'s available for:\n✅ Full-time positions (Currently at Uttam Infotech)\n✅ Freelance projects\n✅ Contract work\n✅ Consultations\n\n📧 Email: thesundram29@gmail.com\n💬 Response time: Within 2-4 hours\n💰 Competitive rates & flexible terms',
-  'education': '🎓 Sundram\'s Background:\n\n📚 B.Tech in Computer Science & Engineering\n🏫 Chhatrapati Shivaji Maharaj University (2021-2025)\n🏆 Full Stack Development - LiveWire Training\n📜 Multiple certifications in web development\n💡 Self-taught in mobile app development\n\nAlways upgrading skills to deliver cutting-edge solutions!',
+  'hire': '💼 Want to hire Sundram? Great choice!\n\n🎯 He is available for:\n✅ Full-time positions (Currently at Uttam Infotech)\n✅ Freelance projects\n✅ Contract work\n✅ Consultations\n\n📧 Email: thesundram29@gmail.com\n💬 Response time: Within 2-4 hours\n💰 Competitive rates & flexible terms',
+  'education': '🎓 Sundram Background:\n\n📚 B.Tech in Computer Science & Engineering\n🏫 Chhatrapati Shivaji Maharaj University (2021-2025)\n🏆 Full Stack Development - LiveWire Training\n📜 Multiple certifications in web development\n💡 Self-taught in mobile app development\n\nAlways upgrading skills to deliver cutting-edge solutions!',
   'location': '🌍 Location & Availability:\n\n📍 Based in Mumbai, India\n🌐 Available for remote work globally\n⏰ Flexible with different time zones\n✈️ Open to relocation for right opportunity\n🏢 Currently working at Uttam Infotech Global Ventures\n\nReady to work with international teams!',
   'services': '🛠️ Services Sundram offers:\n\n🔹 Custom Web Development (React, Next.js)\n🔹 Mobile App Development (React Native, Flutter)\n🔹 E-commerce Solutions\n🔹 API Development & Integration\n🔹 UI/UX Design\n🔹 Website Optimization & SEO\n🔹 Technical Consulting\n🔹 Database Design (MongoDB, PostgreSQL)\n\n💯 Quality guaranteed with timely delivery!',
-  'achievements': '🏆 Sundram\'s Achievements:\n\n⭐ 500+ GitHub followers\n🚀 35+ repositories\n💼 5+ successful internships\n🎯 100+ GitHub stars\n🏅 Best Intern Award at Uttam Infotech\n📈 2+ years of professional experience\n\nConstantly growing and achieving new milestones!',
+  'achievements': '🏆 Sundram Achievements:\n\n⭐ 500+ GitHub followers\n🚀 35+ repositories\n💼 5+ successful internships\n🎯 100+ GitHub stars\n🏅 Best Intern Award at Uttam Infotech\n📈 2+ years of professional experience\n\nConstantly growing and achieving new milestones!',
   'technologies': '⚡ Technologies Sundram works with:\n\n🌐 Frontend: React, Next.js, HTML5, CSS3, Tailwind\n📱 Mobile: React Native, Flutter, Dart\n⚙️ Backend: Node.js, Express.js, Python\n🗄️ Databases: MongoDB, PostgreSQL, MySQL\n☁️ Cloud: AWS, Firebase, Vercel\n🔧 Tools: Git, Docker, Postman, VS Code\n\nAlways learning new technologies!',
   'salary': '💰 Salary & Rates Information:\n\n💼 Full-time: Competitive market rates\n🔄 Freelance: $15-25/hour (depending on project)\n📋 Contract: Negotiable based on scope\n⚡ Quick tasks: Fixed pricing available\n\n📧 Contact for detailed discussion: thesundram29@gmail.com\n💬 Free consultation for project estimation!',
   'availability': '📅 Current Availability:\n\n🏢 Full-time: Currently employed (open to better opportunities)\n💼 Freelance: Available for evening/weekend projects\n⏰ Response time: 2-4 hours during business hours\n🌍 Time zone: IST (GMT+5:30)\n\n📧 Reach out to discuss your project timeline!',
-  'default': '🤔 That\'s interesting! I can help you learn about:\n\n💻 Technical Skills & Technologies\n🏆 Work Experience & Achievements\n🎯 Projects Portfolio\n📞 Contact Information\n💼 Hiring Details & Availability\n🛠️ Services Offered\n💰 Rates & Salary Info\n\nWhat would you like to know?'
+  'default': '🤔 That is interesting! I can help you learn about:\n\n💻 Technical Skills & Technologies\n🏆 Work Experience & Achievements\n🎯 Projects Portfolio\n📞 Contact Information\n💼 Hiring Details & Availability\n🛠️ Services Offered\n💰 Rates & Salary Info\n\nWhat would you like to know?'
 }
 
 const quickQuestions = [
@@ -36,7 +36,7 @@ const quickQuestions = [
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { type: 'bot', text: 'Hi! I\'m Sundram\'s intelligent assistant! 🤖 I know everything about his skills, projects, and experience. Ask me anything!', timestamp: new Date() }
+    { type: 'bot', text: 'Hi! I am Sundram intelligent assistant! 🤖 I know everything about his skills, projects, and experience. Ask me anything!', timestamp: new Date() }
   ])
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
@@ -116,7 +116,7 @@ export default function ChatBot() {
     } catch (error) {
       console.error('AI API Error:', error)
       return { 
-        response: "I'm having connection issues right now. But I can tell you that Sundram is an amazing Full Stack Developer! 🚀 You can reach him at thesundram29@gmail.com", 
+        response: "I am having connection issues right now. But I can tell you that Sundram is an amazing Full Stack Developer! 🚀 You can reach him at thesundram29@gmail.com", 
         followUps: getFollowUpQuestions('contact') 
       }
     }
@@ -145,7 +145,7 @@ export default function ChatBot() {
       setTimeout(() => {
         setMessages(prev => [...prev, { 
           type: 'bot', 
-          text: "Sorry, I'm having trouble right now. But Sundram is a skilled developer ready to help with your projects! 💻", 
+          text: "Sorry, I am having trouble right now. But Sundram is a skilled developer ready to help with your projects! 💻", 
           followUps: [], 
           timestamp: new Date() 
         }])
@@ -169,7 +169,7 @@ export default function ChatBot() {
       setTimeout(() => {
         setMessages(prev => [...prev, { 
           type: 'bot', 
-          text: "I'm having some technical difficulties, but I'd love to tell you about Sundram! He's an expert in React, Node.js, and mobile development. 🚀", 
+          text: "I am having some technical difficulties, but I would love to tell you about Sundram! He is an expert in React, Node.js, and mobile development. 🚀", 
           followUps: [], 
           timestamp: new Date() 
         }])

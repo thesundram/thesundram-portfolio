@@ -1009,7 +1009,7 @@ export default function CVPage() {
             whileHover={{ scale: 1.05 }}
           >
             <MessageSquare className="mr-2 sm:mr-3" size={24} />
-            Let's Connect
+            Let us Connect
           </motion.h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
             {[

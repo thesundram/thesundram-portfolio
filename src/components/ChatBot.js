@@ -10,7 +10,7 @@ const botResponses = {
   'skills': '💻 Sundram is a Full Stack Developer expert in:\n\n🔹 Frontend: React, Next.js, React Native, Flutter\n🔹 Backend: Node.js, Express, MongoDB, REST APIs\n🔹 Languages: JavaScript, TypeScript, Python\n🔹 Tools: Git, AWS, Firebase, Tailwind CSS\n\nHe builds scalable, modern applications!',
   'experience': '🏆 Sundram has 2+ years of experience:\n\n✅ Built 20+ web & mobile applications\n✅ Specialized in responsive UI/UX design\n✅ Expert in REST API development\n✅ Cloud integration & deployment\n✅ Authentication & security implementation\n\nHe is passionate about creating user-friendly solutions!',
   'projects': '🎯 Sundram has created amazing projects:\n\n🔸 Threads - Real-time chat app (MERN + Socket.io)\n🔸 Socially - Social media platform (Next.js + PostgreSQL)\n🔸 Bookstore - React Native app with JWT auth\n🔸 E-commerce platforms with payment integration\n🔸 Portfolio websites & dashboards\n\nAll built with modern tech stacks and best practices!',
-  'contact': '📞 Ready to connect with Sundram? Here are all the ways:\n\n📧 Email: thesundram29@gmail.com\n📱 Phone: +91 7897403349\n💼 LinkedIn: linkedin.com/in/thesundram\n🐙 GitHub: github.com/thesundram\n📱 Instagram: @the.sun29\n\n💡 He\'s available for freelance projects, full-time opportunities, and collaborations!',
+  'contact': '📞 Ready to connect with Sundram? Here are all the ways:\n\n📧 Email: thesundram29@gmail.com\n📱 Phone: +91 7897403349\n💼 LinkedIn: linkedin.com/in/thesundram\n🐙 GitHub: github.com/thesundram\n📱 Instagram: @the.sun29\n\n💡 He is available for freelance projects, full-time opportunities, and collaborations!',
   'hire': '💼 Want to hire Sundram? Great choice!\n\n🎯 He is available for:\n✅ Full-time positions (Currently at Uttam Infotech)\n✅ Freelance projects\n✅ Contract work\n✅ Consultations\n\n📧 Email: thesundram29@gmail.com\n💬 Response time: Within 2-4 hours\n💰 Competitive rates & flexible terms',
   'education': '🎓 Sundram Background:\n\n📚 B.Tech in Computer Science & Engineering\n🏫 Chhatrapati Shivaji Maharaj University (2021-2025)\n🏆 Full Stack Development - LiveWire Training\n📜 Multiple certifications in web development\n💡 Self-taught in mobile app development\n\nAlways upgrading skills to deliver cutting-edge solutions!',
   'location': '🌍 Location & Availability:\n\n📍 Based in Mumbai, India\n🌐 Available for remote work globally\n⏰ Flexible with different time zones\n✈️ Open to relocation for right opportunity\n🏢 Currently working at Uttam Infotech Global Ventures\n\nReady to work with international teams!',
@@ -289,7 +289,7 @@ export default function ChatBot() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white sm:text-base">Sundram's AI</h3>
+                  <h3 className="text-sm font-semibold text-white sm:text-base">Sundram AI</h3>
                   <motion.p 
                     className="text-xs text-green-400"
                     animate={{ opacity: [0.6, 1, 0.6] }}

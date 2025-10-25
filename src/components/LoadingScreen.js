@@ -31,66 +31,66 @@ export default function LoadingScreen() {
           transition={{ duration: 0.8 }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black"
         >
-          <div className="space-y-12 text-center relative z-10">
+          <div className="px-4 space-y-8 text-center sm:space-y-12 relative z-10">
             {/* Enhanced Logo Animation */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 1.2, type: "spring", stiffness: 100 }}
-              className="relative mb-8"
+              className="relative mb-6 sm:mb-8"
             >
               <motion.div
-                className="relative flex items-center justify-center w-32 h-32 mx-auto"
-                whileHover={{ scale: 1.1 }}
+                className="relative flex items-center justify-center w-24 h-24 mx-auto sm:w-28 sm:h-28 lg:w-32 lg:h-32"
+                whileHover={{ scale: 1.05 }}
               >
                 {/* Main Logo */}
                 <motion.div
-                  className="relative z-10 flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-primary via-accent to-primary shadow-2xl"
+                  className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-primary via-accent to-primary shadow-2xl"
                   animate={{
                     boxShadow: [
-                      "0 0 20px rgba(236, 24, 57, 0.5)",
-                      "0 0 40px rgba(236, 24, 57, 0.8), 0 0 60px rgba(243, 156, 18, 0.4)",
-                      "0 0 20px rgba(236, 24, 57, 0.5)"
+                      "0 0 15px rgba(236, 24, 57, 0.5)",
+                      "0 0 30px rgba(236, 24, 57, 0.8), 0 0 45px rgba(243, 156, 18, 0.4)",
+                      "0 0 15px rgba(236, 24, 57, 0.5)"
                     ]
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <span className="text-3xl font-bold text-white orbitron">SP</span>
+                  <span className="text-xl font-bold text-white sm:text-2xl lg:text-3xl orbitron">SP</span>
                 </motion.div>
                 
                 {/* Multiple Rotating Rings */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 border-2 border-dashed rounded-full border-primary/40"
+                  className="absolute inset-0 border border-dashed rounded-full sm:border-2 border-primary/40"
                 />
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                  className="absolute border border-dotted rounded-full inset-2 border-accent/30"
+                  className="absolute border border-dotted rounded-full inset-1 sm:inset-2 border-accent/30"
                 />
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  className="absolute border border-solid rounded-full inset-4 border-blue-400/20"
+                  className="absolute border border-solid rounded-full inset-2 sm:inset-4 border-blue-400/20"
                 />
                 
                 {/* Pulsing Outer Ring */}
                 <motion.div
                   animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.7, 0.3]
+                    scale: [1, 1.15, 1],
+                    opacity: [0.3, 0.6, 0.3]
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute w-36 h-36 border border-primary/20 rounded-full"
+                  className="absolute w-28 h-28 border border-primary/20 rounded-full sm:w-32 sm:h-32 lg:w-36 lg:h-36"
                 />
               </motion.div>
             </motion.div>
 
             {/* Enhanced Progress Bar */}
-            <div className="w-80 mx-auto space-y-6">
+            <div className="w-64 mx-auto space-y-4 sm:w-72 lg:w-80 sm:space-y-6">
               <div className="relative">
-                <div className="relative h-3 overflow-hidden bg-gray-800/50 rounded-full border border-white/10">
+                <div className="relative h-2 overflow-hidden bg-gray-800/50 rounded-full border border-white/10 sm:h-3">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
@@ -98,15 +98,15 @@ export default function LoadingScreen() {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   />
                   <motion.div
-                    animate={{ x: [-100, 400] }}
+                    animate={{ x: [-60, 280] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 w-20 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                    className="absolute inset-0 w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 sm:w-20"
                   />
                 </div>
                 
                 {/* Progress Percentage */}
                 <motion.div
-                  className="absolute -top-8 left-0 text-xs font-bold text-primary"
+                  className="absolute -top-6 left-0 text-xs font-bold text-primary sm:-top-8"
                   animate={{ left: `${progress}%` }}
                   transition={{ duration: 0.3 }}
                 >
@@ -115,11 +115,11 @@ export default function LoadingScreen() {
               </div>
               
               <motion.div
-                className="text-center space-y-2"
+                className="text-center space-y-1 sm:space-y-2"
                 animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <p className="text-lg font-semibold text-white">
+                <p className="text-base font-semibold text-white sm:text-lg">
                   Loading Portfolio
                   <motion.span
                     animate={{ opacity: [0, 1, 0] }}
@@ -128,8 +128,8 @@ export default function LoadingScreen() {
                     ...
                   </motion.span>
                 </p>
-                <p className="text-sm text-gray-400">
-                  Preparing amazing experience for you
+                <p className="text-xs text-gray-400 sm:text-sm">
+                  Preparing amazing experience
                 </p>
               </motion.div>
             </div>
@@ -137,50 +137,50 @@ export default function LoadingScreen() {
             {/* Enhanced Floating Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {/* Floating Particles */}
-              {[...Array(15)].map((_, i) => (
+              {[...Array(10)].map((_, i) => (
                 <motion.div
                   key={i}
                   initial={{ 
-                    x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 600,
+                    x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 300 + i * 50,
                     y: typeof window !== 'undefined' ? window.innerHeight : 800,
                     opacity: 0
                   }}
                   animate={{ 
                     y: -100,
-                    opacity: [0, 1, 0],
-                    scale: [0.5, 1, 0.5]
+                    opacity: [0, 0.8, 0],
+                    scale: [0.3, 0.8, 0.3]
                   }}
                   transition={{ 
-                    duration: Math.random() * 4 + 3,
+                    duration: Math.random() * 3 + 2,
                     repeat: Infinity,
-                    delay: Math.random() * 3
+                    delay: Math.random() * 2
                   }}
-                  className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-primary to-accent"
+                  className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r from-primary to-accent sm:w-2 sm:h-2"
                 />
               ))}
               
               {/* Floating Icons */}
-              {['⚛️', '🚀', '💻', '⚡', '🎯'].map((icon, i) => (
+              {['⚛️', '🚀', '💻'].map((icon, i) => (
                 <motion.div
                   key={icon}
                   initial={{ 
-                    x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 300 + i * 100,
-                    y: typeof window !== 'undefined' ? window.innerHeight + 100 : 900,
+                    x: typeof window !== 'undefined' ? Math.random() * (window.innerWidth - 50) + 25 : 100 + i * 80,
+                    y: typeof window !== 'undefined' ? window.innerHeight + 50 : 900,
                     opacity: 0,
                     rotate: 0
                   }}
                   animate={{ 
-                    y: -100,
-                    opacity: [0, 0.7, 0],
-                    rotate: 360,
-                    x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 300 + i * 100
+                    y: -50,
+                    opacity: [0, 0.6, 0],
+                    rotate: 180,
+                    x: typeof window !== 'undefined' ? Math.random() * (window.innerWidth - 50) + 25 : 100 + i * 80
                   }}
                   transition={{ 
-                    duration: Math.random() * 5 + 4,
+                    duration: Math.random() * 4 + 3,
                     repeat: Infinity,
-                    delay: i * 0.5
+                    delay: i * 0.8
                   }}
-                  className="absolute text-2xl"
+                  className="absolute text-lg sm:text-xl lg:text-2xl"
                 >
                   {icon}
                 </motion.div>

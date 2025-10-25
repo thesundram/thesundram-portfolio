@@ -9,6 +9,10 @@ export default function ParticleBackground() {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
     
+    // Mobile detection and performance optimization
+    const isMobile = window.innerWidth < 768
+    const isLowEnd = navigator.hardwareConcurrency <= 4
+    
     // Set canvas size
     const resizeCanvas = () => {
       canvas.width = window.innerWidth
@@ -18,18 +22,18 @@ export default function ParticleBackground() {
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
-    // Particle system
+    // Particle system with mobile optimization
     const particles = []
-    const particleCount = 100
+    const particleCount = isMobile ? (isLowEnd ? 30 : 50) : 100
 
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
-        this.vx = (Math.random() - 0.5) * 0.5
-        this.vy = (Math.random() - 0.5) * 0.5
-        this.size = Math.random() * 2 + 1
-        this.opacity = Math.random() * 0.5 + 0.2
+        this.vx = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5)
+        this.vy = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5)
+        this.size = Math.random() * (isMobile ? 1.5 : 2) + (isMobile ? 0.5 : 1)
+        this.opacity = Math.random() * 0.4 + (isMobile ? 0.1 : 0.2)
       }
 
       update() {
@@ -56,8 +60,17 @@ export default function ParticleBackground() {
       particles.push(new Particle())
     }
 
-    // Animation loop
+    // Animation loop with mobile optimization
+    let frameCount = 0
     const animate = () => {
+      frameCount++
+      
+      // Reduce frame rate on mobile for better performance
+      if (isMobile && frameCount % 2 !== 0) {
+        requestAnimationFrame(animate)
+        return
+      }
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       
       particles.forEach(particle => {
@@ -65,34 +78,49 @@ export default function ParticleBackground() {
         particle.draw()
       })
 
-      // Draw connections
-      particles.forEach((particle, i) => {
-        particles.slice(i + 1).forEach(otherParticle => {
-          const dx = particle.x - otherParticle.x
-          const dy = particle.y - otherParticle.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
+      // Draw connections with mobile optimization
+      if (!isMobile || !isLowEnd) {
+        const connectionDistance = isMobile ? 80 : 100
+        particles.forEach((particle, i) => {
+          particles.slice(i + 1).forEach(otherParticle => {
+            const dx = particle.x - otherParticle.x
+            const dy = particle.y - otherParticle.y
+            const distance = Math.sqrt(dx * dx + dy * dy)
 
-          if (distance < 100) {
-            ctx.save()
-            ctx.globalAlpha = (100 - distance) / 100 * 0.2
-            ctx.strokeStyle = '#ec1839'
-            ctx.lineWidth = 1
-            ctx.beginPath()
-            ctx.moveTo(particle.x, particle.y)
-            ctx.lineTo(otherParticle.x, otherParticle.y)
-            ctx.stroke()
-            ctx.restore()
-          }
+            if (distance < connectionDistance) {
+              ctx.save()
+              ctx.globalAlpha = (connectionDistance - distance) / connectionDistance * (isMobile ? 0.15 : 0.2)
+              ctx.strokeStyle = '#ec1839'
+              ctx.lineWidth = isMobile ? 0.5 : 1
+              ctx.beginPath()
+              ctx.moveTo(particle.x, particle.y)
+              ctx.lineTo(otherParticle.x, otherParticle.y)
+              ctx.stroke()
+              ctx.restore()
+            }
+          })
         })
-      })
+      }
 
       requestAnimationFrame(animate)
     }
 
     animate()
 
+    // Pause animation when page is not visible (mobile battery optimization)
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Pause animation
+      } else {
+        animate()
+      }
+    }
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    
     return () => {
       window.removeEventListener('resize', resizeCanvas)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [])
 

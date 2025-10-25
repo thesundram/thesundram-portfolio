@@ -91,7 +91,7 @@ export default function Navbar() {
         className="fixed top-0 left-0 z-50 flex-col hidden w-64 h-full border-r xl:w-72 bg-gradient-to-b from-gray-900/95 to-black/95 backdrop-blur-lg border-primary/20 lg:flex"
       >
         {/* Enhanced Logo */}
-        <div className="p-4">
+        <div className="p-6">
           <motion.div
             whileHover={{ scale: 1.05, rotateY: 5 }}
             className="relative text-center"
@@ -111,9 +111,9 @@ export default function Navbar() {
                   textShadow: "0 0 20px #ec1839, 0 0 40px #ec1839",
                   scale: 1.1
                 }}
-                className="relative z-10 flex items-center justify-center w-12 h-12 mx-auto mb-3 shadow-2xl bg-gradient-to-br from-primary to-accent rounded-xl"
+                className="relative z-10 flex items-center justify-center w-16 h-16 mx-auto mb-3 shadow-2xl bg-gradient-to-br from-primary to-accent rounded-xl"
               >
-                <span className="text-lg font-bold text-white orbitron">SP</span>
+                <span className="text-2xl font-bold text-white orbitron">SP</span>
               </motion.div>
               
               {/* Orbiting dots */}
@@ -129,7 +129,7 @@ export default function Navbar() {
             
             {/* Name */}
             <motion.h1 
-              className="mb-2 text-lg font-bold orbitron gradient-text"
+              className="mb-2 text-2xl font-bold orbitron gradient-text"
               whileHover={{ 
                 scale: 1.05,
                 textShadow: "0 0 10px #ec1839"
@@ -142,7 +142,7 @@ export default function Navbar() {
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-3 text-xs tracking-widest text-gray-400 uppercase"
+              className="mb-3 text-sm tracking-widest text-gray-400 uppercase"
             >
               Software Engineer
             </motion.p>
@@ -161,7 +161,7 @@ export default function Navbar() {
 
         {/* Navigation Items */}
         <div className="flex-1 px-4">
-          <ul className="space-y-2">
+          <ul className="space-y-4">
             {navItems.map((item, index) => {
               const Icon = item.icon
               const isActive = activeSection === item.href.substring(1)
@@ -392,7 +392,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto', y: 0 }}
             exit={{ opacity: 0, height: 0, y: -20 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed left-0 right-0 z-40 border-b shadow-2xl top-14 bg-gradient-to-b from-black/98 via-gray-900/98 to-black/98 backdrop-blur-2xl border-primary/30 lg:hidden sm:top-16"
+            className="fixed left-0 right-0 z-50 border-b shadow-2xl top-14 bg-gradient-to-b from-black/98 via-gray-900/98 to-black/98 backdrop-blur-2xl border-primary/30 lg:hidden sm:top-16"
           >
             {/* Menu background pattern */}
             <div className="absolute inset-0 opacity-5">

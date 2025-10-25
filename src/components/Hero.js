@@ -65,8 +65,7 @@ export default function Hero() {
     <motion.section
       ref={heroRef}
       id="home"
-      className="relative flex items-center justify-center min-h-screen overflow-hidden lg:ml-64 xl:ml-72"
-
+      className="relative flex items-center justify-center min-h-screen pt-20 overflow-hidden sm:pt-24 lg:pt-0 lg:ml-64 xl:ml-72"
     >
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
@@ -169,14 +168,14 @@ export default function Hero() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center space-x-2 text-base text-gray-300 sm:text-lg"
+                className="flex items-center space-x-2 text-sm text-gray-300 sm:text-base lg:text-lg"
               >
-                <span className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent sm:w-12"></span>
+                <span className="w-6 h-0.5 bg-gradient-to-r from-primary to-accent sm:w-8 lg:w-12"></span>
                 <span>Hi, I am</span>
               </motion.p>
 
               <motion.h1
-                className="relative text-3xl font-bold sm:text-4xl md:text-5xl lg:text-7xl orbitron"
+                className="relative text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl orbitron"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
@@ -192,7 +191,7 @@ export default function Hero() {
                 >
                   Sundram
                   <motion.div
-                    className="absolute w-3 h-3 rounded-full -top-2 -right-2 bg-primary"
+                    className="absolute w-2 h-2 rounded-full sm:w-3 sm:h-3 -top-1 -right-1 sm:-top-2 sm:-right-2 bg-primary"
                     animate={{
                       scale: [0, 1, 0],
                       opacity: [0, 1, 0]
@@ -212,7 +211,7 @@ export default function Hero() {
                 >
                   Pandey
                   <motion.div
-                    className="absolute w-2 h-2 rounded-full -bottom-2 -left-2 bg-accent"
+                    className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 bg-accent"
                     animate={{
                       scale: [0, 1.5, 0],
                       opacity: [0, 1, 0]
@@ -225,9 +224,9 @@ export default function Hero() {
               {/* Animated underline */}
               <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: "150px" }}
+                animate={{ width: "100px" }}
                 transition={{ delay: 1, duration: 0.8 }}
-                className="h-0.5 rounded-full bg-gradient-to-r from-primary via-accent to-primary sm:h-1 sm:w-[200px]"
+                className="h-0.5 rounded-full bg-gradient-to-r from-primary via-accent to-primary sm:h-1 sm:w-[150px] lg:w-[200px]"
               />
             </motion.div>
 
@@ -239,8 +238,8 @@ export default function Hero() {
               className="space-y-4 sm:space-y-6"
             >
               <div className="relative">
-                <div className="min-h-[3rem] flex flex-wrap items-center gap-2 sm:min-h-[4rem] sm:gap-3">
-                  <h2 className="text-lg font-semibold text-white sm:text-xl md:text-2xl lg:text-3xl">
+                <div className="min-h-[2.5rem] flex flex-wrap items-center gap-2 sm:min-h-[3rem] lg:min-h-[4rem] sm:gap-3">
+                  <h2 className="text-base font-semibold text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
                     I&apos;m a
                   </h2>
                   <motion.div
@@ -441,7 +440,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-64 flex items-center justify-center sm:h-80 md:h-96 lg:h-[500px]"
+            className="relative h-72 flex items-center justify-center sm:h-80 md:h-96 lg:h-[500px] xl:h-[550px]"
           >
             {/* Enhanced Profile Image */}
             <motion.div
@@ -452,13 +451,13 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
-                className="relative w-48 h-48 overflow-hidden rounded-full shadow-2xl sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80"
+                className="relative w-56 h-56 overflow-hidden rounded-full shadow-2xl sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px]"
                 whileHover={{
                   boxShadow: '0 25px 50px rgba(236, 24, 57, 0.4), 0 0 0 1px rgba(236, 24, 57, 0.3)'
                 }}
               >
                 <motion.img
-                  src="/images/hero.jpg"
+                  src="/images/hero.webp"
                   alt="Sundram Pandey"
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   whileHover={{ filter: 'brightness(1.1) contrast(1.1)' }}
@@ -567,59 +566,92 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 0.8 }}
-          className="absolute transform -translate-x-1/2 bottom-4 left-1/2 sm:bottom-8"
+          className="absolute transform -translate-x-1/2 bottom-4 left-[40%] sm:bottom-8 lg:bottom-12"
         >
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center space-y-2 text-gray-400 cursor-pointer group sm:space-y-4"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center space-y-2 text-gray-400 cursor-pointer group sm:space-y-3 lg:space-y-4"
             onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
+            {/* Mobile-optimized text */}
             <motion.span
-              className="text-xs font-medium transition-all duration-300 group-hover:text-primary group-hover:font-semibold sm:text-sm"
+              className="text-xs font-medium transition-all duration-300 group-hover:text-primary group-hover:font-semibold sm:text-sm lg:text-base"
               animate={{
-                opacity: [0.6, 1, 0.6],
-                scale: [1, 1.05, 1]
+                opacity: [0.5, 1, 0.5],
+                scale: [1, 1.02, 1]
               }}
-              transition={{ duration: 3, repeat: Infinity }}
+              transition={{ duration: 2.5, repeat: Infinity }}
             >
-              Explore More
+              <span className="block sm:hidden">Scroll</span>
+              <span className="hidden sm:block">Explore More</span>
             </motion.span>
 
-            <div className="relative">
+            {/* Enhanced arrow container */}
+            <div className="relative p-2 sm:p-3">
+              {/* Background circle */}
+              <motion.div
+                className="absolute inset-0 border rounded-full bg-white/5 backdrop-blur-sm border-white/10"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              
+              {/* Main arrow */}
               <motion.div
                 animate={{
-                  y: [0, 10, 0],
-                  opacity: [1, 0.4, 1],
-                  scale: [1, 1.1, 1]
+                  y: [0, 6, 0],
+                  opacity: [1, 0.6, 1]
                 }}
-                transition={{ duration: 2.5, repeat: Infinity }}
-                className="transition-all duration-300 group-hover:text-primary group-hover:drop-shadow-lg"
+                transition={{ duration: 2, repeat: Infinity }}
+                className="relative z-10 transition-all duration-300 group-hover:text-primary group-hover:drop-shadow-lg"
               >
-                <ArrowDown size={20} className="sm:w-6 sm:h-6" />
+                <ArrowDown size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
               </motion.div>
 
-              {/* Enhanced animated line */}
+              {/* Mobile-friendly animated trail */}
               <motion.div
                 animate={{
-                  height: [0, 25, 0],
-                  opacity: [0, 1, 0]
+                  height: [0, 20, 0],
+                  opacity: [0, 0.8, 0]
                 }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: 0.8 }}
-                className="absolute top-7 left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-primary via-accent to-transparent rounded-full"
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                className="absolute top-8 left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-primary via-accent to-transparent rounded-full sm:top-9 lg:top-10"
               />
 
-              {/* Pulsing dot */}
+              {/* Multiple pulsing dots for mobile */}
+              <motion.div
+                animate={{
+                  scale: [0, 1.2, 0],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 transform -translate-x-1/2 rounded-full top-7 left-1/2 bg-primary sm:top-8 lg:top-9"
+              />
+              
               <motion.div
                 animate={{
                   scale: [0, 1, 0],
-                  opacity: [0, 1, 0]
+                  opacity: [0, 0.7, 0]
                 }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: 1.5 }}
-                className="absolute w-2 h-2 transform -translate-x-1/2 rounded-full top-8 left-1/2 bg-primary"
+                transition={{ duration: 2, repeat: Infinity, delay: 1.3 }}
+                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 transform -translate-x-1/2 rounded-full top-9 left-1/2 bg-accent sm:top-10 lg:top-11"
               />
             </div>
+
+            {/* Mobile swipe hint */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, delay: 3 }}
+              className="block text-xs text-gray-500 sm:hidden"
+            >
+              Swipe up
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

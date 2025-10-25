@@ -27,7 +27,7 @@ export default function VisitorCounter() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsVisible(!isVisible)}
-        className="fixed top-36 right-6 w-12 h-12 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-white hover:bg-primary/20 transition-all duration-300 z-[55]"
+        className="fixed z-50 flex items-center justify-center w-12 h-12 text-white transition-all duration-300 border rounded-full top-36 right-6 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-primary/20"
       >
         <Users size={20} />
       </motion.button>

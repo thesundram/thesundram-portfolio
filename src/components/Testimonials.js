@@ -80,34 +80,36 @@ export default function Testimonials() {
   ]
 
   return (
-    <section className="relative py-20 overflow-hidden lg:ml-72">
+    <section className="relative py-12 overflow-hidden sm:py-16 lg:py-20 lg:ml-72">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"></div>
       
-      <div className="container relative z-10 px-6 mx-auto" ref={ref}>
+      <div className="container relative z-10 px-4 mx-auto sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="mb-16 text-center"
+          className="mb-8 text-center sm:mb-12 lg:mb-16"
         >
-          <h2 className="mb-4 text-4xl font-bold lg:text-5xl orbitron gradient-text">Testimonials</h2>
-          <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-primary to-accent"></div>
-          <p className="max-w-2xl mx-auto mt-6 text-gray-300">
+          <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl lg:text-4xl xl:text-5xl orbitron gradient-text">Testimonials</h2>
+          <div className="w-16 h-1 mx-auto rounded-full sm:w-24 bg-gradient-to-r from-primary to-accent"></div>
+          <p className="max-w-2xl mx-auto mt-4 text-sm text-gray-300 sm:mt-6 sm:text-base">
             What colleagues and clients say about working with me
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
+          <div className="flex flex-wrap justify-center gap-2 mt-6 sm:gap-4 sm:mt-8">
             <motion.div 
-              className="flex items-center px-4 py-2 space-x-2 border rounded-full bg-yellow-500/20 border-yellow-500/30"
-              whileHover={{ scale: 1.05 }}
+              className="flex items-center px-3 py-2 space-x-2 border rounded-full sm:px-4 bg-yellow-500/20 border-yellow-500/30"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Star size={16} className="text-yellow-400 fill-current" />
-              <span className="text-sm font-medium text-yellow-400">5.0 Average Rating</span>
+              <Star size={14} className="text-yellow-400 fill-current sm:w-4 sm:h-4" />
+              <span className="text-xs font-medium text-yellow-400 sm:text-sm">5.0 Rating</span>
             </motion.div>
             <motion.div 
-              className="flex items-center px-4 py-2 space-x-2 border rounded-full bg-green-500/20 border-green-500/30"
-              whileHover={{ scale: 1.05 }}
+              className="flex items-center px-3 py-2 space-x-2 border rounded-full sm:px-4 bg-green-500/20 border-green-500/30"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <ThumbsUp size={16} className="text-green-400" />
-              <span className="text-sm font-medium text-green-400">100% Satisfaction</span>
+              <ThumbsUp size={14} className="text-green-400 sm:w-4 sm:h-4" />
+              <span className="text-xs font-medium text-green-400 sm:text-sm">100% Satisfaction</span>
             </motion.div>
           </div>
         </motion.div>
@@ -116,7 +118,7 @@ export default function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="relative mb-16 overflow-hidden border shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border-white/20"
+          className="relative mb-8 overflow-hidden border shadow-2xl sm:mb-12 lg:mb-16 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl sm:rounded-3xl border-white/20"
         >
           <motion.div
             className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary"
@@ -128,16 +130,16 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 100 }}
+              initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
-              className="p-8 md:p-12"
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.3 }}
+              className="p-4 sm:p-6 lg:p-8 xl:p-12"
             >
-              <div className="grid items-center gap-8 md:grid-cols-2">
+              <div className="space-y-6 lg:grid lg:items-center lg:gap-8 lg:grid-cols-2 lg:space-y-0">
                 <div>
-                  <Quote className="mb-6 text-primary/40" size={48} />
-                  <p className="mb-6 text-xl leading-relaxed text-gray-200 md:text-2xl">
+                  <Quote className="mb-4 text-primary/40 sm:mb-6" size={32} />
+                  <p className="mb-4 text-base leading-relaxed text-gray-200 sm:mb-6 sm:text-lg lg:text-xl xl:text-2xl">
                     &ldquo;{testimonials[currentIndex].text}&rdquo;
                   </p>
                   <div className="flex items-center mb-4">
@@ -148,36 +150,36 @@ export default function Testimonials() {
                         animate={{ scale: 1 }}
                         transition={{ delay: i * 0.1 }}
                       >
-                        <Star size={20} className="mr-1 text-yellow-400 fill-current" />
+                        <Star size={16} className="mr-1 text-yellow-400 fill-current sm:w-5 sm:h-5" />
                       </motion.div>
                     ))}
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-16 h-16 rounded-full border-2 border-primary/30 bg-gradient-to-r ${testimonials[currentIndex].bgColor} flex items-center justify-center shadow-lg`}>
-                      <span className="font-bold text-white">{testimonials[currentIndex].initials}</span>
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full border-2 border-primary/30 bg-gradient-to-r ${testimonials[currentIndex].bgColor} flex items-center justify-center shadow-lg`}>
+                      <span className="text-sm font-bold text-white sm:text-base">{testimonials[currentIndex].initials}</span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-white">{testimonials[currentIndex].name}</h4>
-                      <p className="text-primary">{testimonials[currentIndex].role}</p>
-                      <p className="text-sm text-gray-400">{testimonials[currentIndex].company}</p>
+                      <h4 className="text-lg font-bold text-white sm:text-xl">{testimonials[currentIndex].name}</h4>
+                      <p className="text-sm text-primary sm:text-base">{testimonials[currentIndex].role}</p>
+                      <p className="text-xs text-gray-400 sm:text-sm">{testimonials[currentIndex].company}</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="space-y-4">
-                  <div className="p-4 border rounded-xl bg-white/5 border-white/10">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="p-3 border sm:p-4 rounded-xl bg-white/5 border-white/10">
                     <div className="flex items-center mb-2">
-                      <Award className="mr-2 text-accent" size={16} />
-                      <span className="text-sm font-medium text-white">Project</span>
+                      <Award className="mr-2 text-accent" size={14} />
+                      <span className="text-xs font-medium text-white sm:text-sm">Project</span>
                     </div>
-                    <p className="text-gray-300">{testimonials[currentIndex].project}</p>
+                    <p className="text-sm text-gray-300 sm:text-base">{testimonials[currentIndex].project}</p>
                   </div>
-                  <div className="p-4 border rounded-xl bg-white/5 border-white/10">
+                  <div className="p-3 border sm:p-4 rounded-xl bg-white/5 border-white/10">
                     <div className="flex items-center mb-2">
-                      <ThumbsUp className="mr-2 text-green-400" size={16} />
-                      <span className="text-sm font-medium text-white">Completed</span>
+                      <ThumbsUp className="mr-2 text-green-400" size={14} />
+                      <span className="text-xs font-medium text-white sm:text-sm">Completed</span>
                     </div>
-                    <p className="text-gray-300">{testimonials[currentIndex].date}</p>
+                    <p className="text-sm text-gray-300 sm:text-base">{testimonials[currentIndex].date}</p>
                   </div>
                 </div>
               </div>
@@ -185,21 +187,21 @@ export default function Testimonials() {
           </AnimatePresence>
           
           {/* Navigation */}
-          <div className="flex items-center justify-between p-6 border-t border-white/10">
+          <div className="flex items-center justify-between p-4 border-t sm:p-6 border-white/10">
             <button
               onClick={() => setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}
-              className="p-2 transition-colors rounded-full bg-white/10 hover:bg-primary/20"
+              className="p-2 transition-colors rounded-full sm:p-3 bg-white/10 hover:bg-primary/20 active:bg-primary/30"
             >
-              <ChevronLeft className="text-white" size={20} />
+              <ChevronLeft className="text-white" size={18} />
             </button>
             
-            <div className="flex space-x-2">
+            <div className="flex space-x-1.5 sm:space-x-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'bg-primary scale-125' : 'bg-white/30 hover:bg-white/50'
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? 'bg-primary scale-125' : 'bg-white/30 hover:bg-white/50 active:bg-white/70'
                   }`}
                 />
               ))}
@@ -207,57 +209,59 @@ export default function Testimonials() {
             
             <button
               onClick={() => setCurrentIndex(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)}
-              className="p-2 transition-colors rounded-full bg-white/10 hover:bg-primary/20"
+              className="p-2 transition-colors rounded-full sm:p-3 bg-white/10 hover:bg-primary/20 active:bg-primary/30"
             >
-              <ChevronRight className="text-white" size={20} />
+              <ChevronRight className="text-white" size={18} />
             </button>
           </div>
         </motion.div>
         
         {/* All Testimonials Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10, scale: 1.02 }}
+              whileHover={{ y: -5, scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
               onHoverStart={() => setHoveredCard(index)}
               onHoverEnd={() => setHoveredCard(null)}
-              className="relative p-6 transition-all duration-300 border cursor-pointer bg-white/5 backdrop-blur-sm rounded-xl border-white/10 hover:border-primary/30 group"
+              className="relative p-4 transition-all duration-300 border cursor-pointer sm:p-6 bg-white/5 backdrop-blur-sm rounded-xl border-white/10 hover:border-primary/30 group"
             >
               <motion.div
                 className={`absolute inset-0 bg-gradient-to-br ${testimonial.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl`}
               />
               
-              <Quote className="absolute transition-colors top-4 right-4 text-primary/20 group-hover:text-primary/40" size={24} />
+              <Quote className="absolute transition-colors top-3 right-3 sm:top-4 sm:right-4 text-primary/20 group-hover:text-primary/40" size={20} />
               
               <div className="relative z-10">
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-3 sm:mb-4">
                   <motion.div 
-                    className={`w-12 h-12 rounded-full mr-4 border-2 border-primary/30 bg-gradient-to-r ${testimonial.bgColor} flex items-center justify-center shadow-lg`}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4 border-2 border-primary/30 bg-gradient-to-r ${testimonial.bgColor} flex items-center justify-center shadow-lg`}
+                    whileHover={{ scale: 1.05, rotate: 3 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <span className="text-sm font-bold text-white">{testimonial.initials}</span>
+                    <span className="text-xs font-bold text-white sm:text-sm">{testimonial.initials}</span>
                   </motion.div>
-                  <div>
-                    <h4 className="font-semibold text-white transition-colors group-hover:text-primary">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-400">{testimonial.role}</p>
-                    <p className="text-xs text-gray-500">{testimonial.company}</p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-sm font-semibold text-white transition-colors truncate sm:text-base group-hover:text-primary">{testimonial.name}</h4>
+                    <p className="text-xs text-gray-400 truncate sm:text-sm">{testimonial.role}</p>
+                    <p className="text-xs text-gray-500 truncate">{testimonial.company}</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <div className="flex">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={14} className="mr-1 text-yellow-400 fill-current" />
+                      <Star key={i} size={12} className="mr-1 text-yellow-400 fill-current sm:w-3.5 sm:h-3.5" />
                     ))}
                   </div>
                   <span className="text-xs text-gray-500">{testimonial.date}</span>
                 </div>
                 
-                <p className="text-sm leading-relaxed text-gray-300 transition-colors group-hover:text-gray-200">
+                <p className="text-xs leading-relaxed text-gray-300 transition-colors sm:text-sm group-hover:text-gray-200">
                   &ldquo;{testimonial.text}&rdquo;
                 </p>
                 
@@ -267,11 +271,11 @@ export default function Testimonials() {
                     opacity: hoveredCard === index ? 1 : 0, 
                     height: hoveredCard === index ? 'auto' : 0 
                   }}
-                  className="pt-4 mt-4 border-t border-white/10"
+                  className="pt-3 mt-3 border-t sm:pt-4 sm:mt-4 border-white/10"
                 >
-                  <div className="flex items-center text-xs text-accent">
-                    <Award size={12} className="mr-1" />
-                    <span>{testimonial.project}</span>
+                  <div className="flex items-center text-xs text-accent sm:text-sm">
+                    <Award size={12} className="mr-1 flex-shrink-0" />
+                    <span className="truncate">{testimonial.project}</span>
                   </div>
                 </motion.div>
               </div>

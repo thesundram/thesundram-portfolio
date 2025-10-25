@@ -457,7 +457,7 @@ export default function Hero() {
                 }}
               >
                 <motion.img
-                  src="/images/hero.webp"
+                  src="/images/hero.jpg"
                   alt="Sundram Pandey"
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   whileHover={{ filter: 'brightness(1.1) contrast(1.1)' }}

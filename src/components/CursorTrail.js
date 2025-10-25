@@ -49,7 +49,7 @@ export default function CursorTrail() {
       window.removeEventListener('themeChanged', handleThemeChange)
       window.removeEventListener('resize', checkTouchDevice)
     }
-  }, [])
+  }, [isTouchDevice])
 
   // Don't render on touch devices
   if (isTouchDevice) {

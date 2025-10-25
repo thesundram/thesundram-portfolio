@@ -62,7 +62,7 @@ export default function CVPage() {
     
     const timer = setTimeout(animateCounters, 1000)
     return () => clearTimeout(timer)
-  }, [])
+  }, [stats])
 
   // Intersection Observer for animations
   useEffect(() => {

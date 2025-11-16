@@ -186,6 +186,7 @@ npm run lint
 - **LinkedIn:** [linkedin.com/in/thesundram](https://linkedin.com/in/thesundram)
 - **GitHub:** [github.com/thesundram](https://github.com/thesundram)
 - **Instagram:** [instagram.com/the.sun29](https://instagram.com/the.sun29)
+- **Facebook:** [facebook.com/thesundram29](https://www.facebook.com/thesundram29)
 - **Portfolio:** [Live Demo](https://thesundram.vercel.app)
 
 ## 📄 License

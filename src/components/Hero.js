@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Eye, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star } from 'lucide-react'
+import { Eye, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star, Facebook } from 'lucide-react'
 
 export default function Hero() {
   const [text, setText] = useState('')
@@ -59,6 +59,7 @@ export default function Hero() {
     { icon: Github, href: 'http://github.com/thesundram', color: 'hover:text-gray-400' },
     { icon: Mail, href: 'mailto:thesundram29@gmail.com', color: 'hover:text-red-500' },
     { icon: Instagram, href: 'https://www.instagram.com/the.sun29/', color: 'hover:text-pink-500' },
+    { icon: Facebook, href: 'https://www.facebook.com/thesundram29', color: 'hover:text-blue-600' },
   ]
 
   return (

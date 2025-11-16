@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Home, User, Briefcase, Mail, Settings, Linkedin, Github, Instagram } from 'lucide-react'
+import { Menu, X, Home, User, Briefcase, Mail, Settings, Linkedin, Github, Instagram, Facebook } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '#home', icon: Home },
@@ -249,7 +249,8 @@ export default function Navbar() {
                 { icon: Linkedin, href: 'http://linkedin.com/in/thesundram', label: 'LinkedIn', color: 'hover:bg-blue-500/20 hover:border-blue-500/30' },
                 { icon: Github, href: 'http://github.com/thesundram', label: 'GitHub', color: 'hover:bg-gray-500/20 hover:border-gray-500/30' },
                 { icon: Mail, href: 'mailto:thesundram29@gmail.com', label: 'Email', color: 'hover:bg-red-500/20 hover:border-red-500/30' },
-                { icon: Instagram, href: 'https://www.instagram.com/the.sun29/', label: 'Instagram', color: 'hover:bg-pink-500/20 hover:border-pink-500/30' }
+                { icon: Instagram, href: 'https://www.instagram.com/the.sun29/', label: 'Instagram', color: 'hover:bg-pink-500/20 hover:border-pink-500/30' },
+                { icon: Facebook, href: 'https://www.facebook.com/thesundram29', label: 'Facebook', color: 'hover:bg-blue-600/20 hover:border-blue-600/30' }
               ].map((social, index) => {
                 const Icon = social.icon
                 return (

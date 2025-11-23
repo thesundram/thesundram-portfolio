@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Calendar, MapPin, Phone, Mail, Award, Code, Briefcase, ExternalLink, Eye, Atom, Zap, Palette, Wind, Circle, FileCode, Database, Link, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor } from 'lucide-react'
+import { Calendar, MapPin, Phone, Mail, Award, Code, Briefcase, ExternalLink, Eye, Atom, Zap, Palette, Wind, Circle, FileCode, Database, Link, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor, Cpu, Cog, Network, Factory } from 'lucide-react'
 import Timeline from './Timeline'
 import BirthdayWish from './BirthdayWish'
 import { Toaster } from 'react-hot-toast'
@@ -58,6 +58,12 @@ export default function About() {
       { name: 'Docker', level: 'Intermediate', icon: Container, color: 'from-blue-500 to-blue-700' },
       { name: 'AWS & Cloud', level: 'Intermediate', icon: Cloud, color: 'from-orange-500 to-yellow-500' },
       { name: 'VS Code & IDEs', level: 'Expert', icon: Monitor, color: 'from-purple-600 to-indigo-600' }
+    ],
+    automation: [
+      { name: 'PLC Programming', level: 'Advanced', icon: Cpu, color: 'from-emerald-500 to-teal-500' },
+      { name: 'PLC Data Read/Write (Python)', level: 'Advanced', icon: Cog, color: 'from-blue-500 to-indigo-500' },
+      { name: 'SCADA Systems', level: 'Intermediate', icon: Monitor, color: 'from-orange-500 to-red-500' },
+      { name: 'OPC UA', level: 'Intermediate', icon: Network, color: 'from-purple-500 to-violet-500' }
     ]
   }
 
@@ -108,7 +114,7 @@ export default function About() {
       title: 'Software Developer',
       company: 'Uttam Infotech Global Ventures Pvt Ltd',
       location: 'Mumbai, India • Full-time • On-site',
-      description: 'Working as a Software Developer in the Software Development team. Developing and maintaining mobile applications using React Native. Building responsive user interfaces with React.js and Next.js. Working with backend technologies like Node.js, Python, and REST APIs. Managing data with PostgreSQL, MySQL, and MongoDB.'
+      description: 'Developing and maintaining mobile applications using React Native, while building responsive and scalable user interfaces with React.js and Next.js. Working with backend technologies such as Node.js, Python, and REST APIs, and managing databases including PostgreSQL, MySQL, and MongoDB. Contributing to efficient, high-performance solutions as part of the development team, with hands-on involvement in full-stack and mobile development. Additionally, worked on industrial automation tasks involving PLC data communication using Python, OPC UA–based device connectivity, and basic SCADA monitoring.'
     },
     {
       period: 'Aug 2025 — Oct 2025',
@@ -160,7 +166,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative py-12 overflow-hidden pt-20 sm:py-16 md:py-20 lg:pt-20 lg:ml-64 xl:ml-72">
+    <section id="about" className="relative py-12 pt-20 overflow-hidden sm:py-16 md:py-20 lg:pt-20 lg:ml-64 xl:ml-72">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black/50"></div>
       <motion.div 
@@ -487,7 +493,9 @@ export default function About() {
                   <h5 className="mb-4 text-lg font-semibold capitalize text-primary">
                     {category === 'frontend' ? 'Frontend' : 
                      category === 'backend' ? 'Backend' :
-                     category === 'mobile' ? 'Mobile' : 'Tools & Others'}
+                     category === 'mobile' ? 'Mobile' :
+                     category === 'tools' ? 'Tools & Others' :
+                     category === 'automation' ? 'Automation & Industrial Systems' : category}
                   </h5>
                   
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">

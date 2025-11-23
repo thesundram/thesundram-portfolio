@@ -14,7 +14,7 @@ export default function Portfolio() {
   const [hoveredProject, setHoveredProject] = useState(null)
   const [viewMode, setViewMode] = useState('grid') // grid or list
   
-  const categories = ['All', 'Web Development', 'Mobile Development']
+  const categories = ['All', 'Web Development', 'Mobile Development', 'Industrial Automation']
 
   const projects = [
     {
@@ -76,13 +76,20 @@ export default function Portfolio() {
     },
     {
       id: 6,
-      title: 'Task Management System',
-      category: 'Web Development',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-      description: 'Collaborative task management with real-time updates and team collaboration',
-      tech: ['React', 'Express', 'PostgreSQL', 'Socket.io'],
+      title: 'PLC Data Read/Write with Python',
+      category: 'Industrial Automation',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=300&fit=crop',
+      description: 'Industrial automation system for PLC data communication using Python and OPC UA protocols',
+      longDescription: 'A comprehensive industrial automation solution that enables real-time communication with PLCs using Python. Features OPC UA protocol implementation, SCADA system integration, data logging, and real-time monitoring dashboard for industrial processes.',
+      tech: ['Python', 'OPC UA', 'SCADA', 'Industrial Protocols'],
       github: 'https://github.com/thesundram',
-      live: 'https://thesundram.netlify.app'
+      live: 'https://thesundram.netlify.app',
+      status: 'Completed',
+      year: '2024',
+      duration: '2 months',
+      team: 'Solo',
+      rating: 4.7,
+      features: ['PLC Communication', 'OPC UA Protocol', 'Real-time Monitoring', 'Data Logging']
     },
     {
       id: 7,

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Download, ArrowLeft, Mail, Phone, MapPin, Calendar, Award, Briefcase, User, Code, GraduationCap, Trophy, Star, Eye, Share2, Linkedin, Github, BarChart3, Clock, Zap, MessageSquare, Copy } from 'lucide-react'
+import { Download, ArrowLeft, Mail, Phone, MapPin, Calendar, Award, Briefcase, User, Code, GraduationCap, Trophy, Star, Eye, Share2, Linkedin, Github, BarChart3, Clock, Zap, MessageSquare, Copy, Atom, Palette, Wind, Circle, FileCode, Database, Link as LinkIcon, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor, Cpu, Cog, Network } from 'lucide-react'
 import Link from 'next/link'
 
 export default function CVPage() {
@@ -94,37 +94,38 @@ export default function CVPage() {
     age: age
   }
 
-  const skills = [
-    { 
-      category: 'Programming Languages', 
-      items: [
-        { name: 'JavaScript', level: 95 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'HTML/CSS', level: 98 },
-        { name: 'Node.js', level: 90 }
-      ]
-    },
-    { 
-      category: 'Frameworks/Libraries', 
-      items: [
-        { name: 'React', level: 95 },
-        { name: 'React Native', level: 90 },
-        { name: 'Next.js', level: 88 },
-        { name: 'Flutter', level: 85 },
-        { name: 'Express.js', level: 92 }
-      ]
-    },
-    { 
-      category: 'Database & Cloud', 
-      items: [
-        { name: 'MongoDB', level: 90 },
-        { name: 'PostgreSQL', level: 85 },
-        { name: 'Firebase', level: 88 },
-        { name: 'AWS', level: 75 }
-      ]
-    }
-  ]
+  const skillCategories = {
+    frontend: [
+      { name: 'React & Next.js', level: 'Expert', icon: Atom, color: 'from-blue-500 to-cyan-500' },
+      { name: 'JavaScript & TypeScript', level: 'Expert', icon: Zap, color: 'from-yellow-500 to-orange-500' },
+      { name: 'HTML5 & CSS3', level: 'Expert', icon: Palette, color: 'from-pink-500 to-rose-500' },
+      { name: 'Tailwind CSS', level: 'Advanced', icon: Wind, color: 'from-teal-500 to-blue-500' }
+    ],
+    backend: [
+      { name: 'Node.js & Express', level: 'Advanced', icon: Circle, color: 'from-green-500 to-emerald-500' },
+      { name: 'Python & Django', level: 'Intermediate', icon: FileCode, color: 'from-blue-600 to-purple-600' },
+      { name: 'MongoDB & SQL', level: 'Advanced', icon: Database, color: 'from-orange-500 to-red-500' },
+      { name: 'REST APIs', level: 'Expert', icon: LinkIcon, color: 'from-indigo-500 to-purple-500' }
+    ],
+    mobile: [
+      { name: 'React Native', level: 'Advanced', icon: Smartphone, color: 'from-purple-500 to-pink-500' },
+      { name: 'Flutter & Dart', level: 'Intermediate', icon: Layers, color: 'from-blue-400 to-cyan-400' },
+      { name: 'Firebase', level: 'Advanced', icon: Flame, color: 'from-orange-400 to-yellow-400' },
+      { name: 'Expo & CLI', level: 'Advanced', icon: Settings, color: 'from-indigo-500 to-blue-500' }
+    ],
+    tools: [
+      { name: 'Git & GitHub', level: 'Expert', icon: GitBranch, color: 'from-gray-600 to-gray-800' },
+      { name: 'Docker', level: 'Intermediate', icon: Container, color: 'from-blue-500 to-blue-700' },
+      { name: 'AWS & Cloud', level: 'Intermediate', icon: Cloud, color: 'from-orange-500 to-yellow-500' },
+      { name: 'VS Code & IDEs', level: 'Expert', icon: Monitor, color: 'from-purple-600 to-indigo-600' }
+    ],
+    automation: [
+      { name: 'PLC Programming', level: 'Advanced', icon: Cpu, color: 'from-emerald-500 to-teal-500' },
+      { name: 'PLC Data Read/Write (Python)', level: 'Advanced', icon: Cog, color: 'from-blue-500 to-indigo-500' },
+      { name: 'SCADA Systems', level: 'Intermediate', icon: Monitor, color: 'from-orange-500 to-red-500' },
+      { name: 'OPC UA', level: 'Intermediate', icon: Network, color: 'from-purple-500 to-violet-500' }
+    ]
+  }
 
   const experience = [
     {
@@ -133,7 +134,7 @@ export default function CVPage() {
       period: 'Sep 2025 — Present',
       location: 'Mumbai, India',
       type: 'Full-time • On-site',
-      description: 'Working as a Software Developer in the Software Development team. Developing and maintaining mobile applications using React Native. Building responsive user interfaces with React.js and Next.js. Working with backend technologies like Node.js, Python, and REST APIs. Managing data with PostgreSQL, MySQL, and MongoDB.'
+      description: 'Developing and maintaining mobile applications using React Native, while building responsive and scalable user interfaces with React.js and Next.js. Working with backend technologies such as Node.js, Python, and REST APIs, and managing databases including PostgreSQL, MySQL, and MongoDB. Contributing to efficient, high-performance solutions as part of the development team, with hands-on involvement in full-stack and mobile development. Additionally, worked on industrial automation tasks involving PLC data communication using Python, OPC UA–based device connectivity, and basic SCADA monitoring.'
     },
     {
       title: 'Software Development Intern',
@@ -206,6 +207,12 @@ export default function CVPage() {
       tech: 'React Native, Node.js, Express.js, MongoDB, JWT',
       role: 'Full Stack Developer',
       description: 'Built a mobile/web bookstore app with auth, CRUD, media uploads, infinite loading, and theme support. Deployed secure backend with CRON jobs and free API hosting.'
+    },
+    {
+      title: 'PLC Data Read/Write with Python',
+      tech: 'Python, OPC UA, SCADA, Industrial Protocols',
+      role: 'Industrial Automation Developer',
+      description: 'Developed industrial automation system for PLC data communication using Python and OPC UA protocols. Implemented real-time monitoring, data logging, and SCADA system integration for industrial processes.'
     }
   ]
 
@@ -520,7 +527,7 @@ export default function CVPage() {
                   >
                     {animatedStats[stat.key]}{stat.suffix}
                   </motion.div>
-                  <div className="text-xs text-gray-400 leading-tight sm:text-sm">{stat.label}</div>
+                  <div className="text-xs leading-tight text-gray-400 sm:text-sm">{stat.label}</div>
                 </motion.div>
               )
             })}
@@ -599,62 +606,74 @@ export default function CVPage() {
             </motion.div>
             Technical Skills
           </motion.h2>
-          <motion.div 
-            className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3"
-            variants={staggerContainer}
-            initial="hidden"
-            animate={isVisible.skills ? "visible" : "hidden"}
-          >
-            {skills.map((skillGroup, index) => (
+          <div className="space-y-6">
+            {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
               <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -5,
-                  boxShadow: '0 20px 40px rgba(236, 24, 57, 0.1)'
-                }}
-                className="relative p-4 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6"
+                key={category}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible.skills ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: categoryIndex * 0.2, duration: 0.6 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="relative p-6 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group"
               >
                 <motion.div
-                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-t-2xl"
+                  className={`absolute top-0 left-0 w-full h-1 rounded-t-xl ${
+                    categoryIndex % 2 === 0 ? 'bg-gradient-to-r from-primary to-accent' : 'bg-gradient-to-r from-accent to-primary'
+                  }`}
                   initial={{ width: 0 }}
                   whileInView={{ width: '100%' }}
-                  transition={{ delay: index * 0.1, duration: 0.8 }}
+                  transition={{ delay: categoryIndex * 0.1, duration: 0.8 }}
                 />
-                <h3 className="mb-4 text-lg font-bold transition-colors text-accent group-hover:text-primary sm:text-xl">
-                  {skillGroup.category}
-                </h3>
-                <div className="space-y-3">
-                  {skillGroup.items.map((skill, i) => (
+                
+                <h5 className="mb-4 text-lg font-semibold capitalize text-primary">
+                  {category === 'frontend' ? 'Frontend' : 
+                   category === 'backend' ? 'Backend' :
+                   category === 'mobile' ? 'Mobile' :
+                   category === 'tools' ? 'Tools & Others' :
+                   category === 'automation' ? 'Automation & Industrial Systems' : category}
+                </h5>
+                
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                  {skills.map((skill, index) => (
                     <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: (index * 0.1) + (i * 0.05) }}
-                      className="space-y-1"
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isVisible.skills ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ delay: categoryIndex * 0.2 + index * 0.1, duration: 0.5 }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="relative p-4 transition-all duration-300 border rounded-lg bg-white/5 backdrop-blur-sm border-white/10 hover:border-primary/30 group"
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-white sm:text-base">{skill.name}</span>
-                        <span className="text-sm font-semibold text-primary">{skill.level}%</span>
+                      <div className="flex items-center space-x-3">
+                        <div className={`p-2 rounded-lg bg-gradient-to-r ${skill.color} text-white text-sm`}>
+                          <skill.icon size={16} />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-medium text-white transition-colors group-hover:text-primary">
+                            {skill.name}
+                          </div>
+                          <div className={`text-xs ${
+                            skill.level === 'Expert' ? 'text-green-400' :
+                            skill.level === 'Advanced' ? 'text-blue-400' :
+                            'text-yellow-400'
+                          }`}>
+                            {skill.level}
+                          </div>
+                        </div>
+                        <div className={`w-2 h-2 rounded-full ${
+                          skill.level === 'Expert' ? 'bg-green-400' :
+                          skill.level === 'Advanced' ? 'bg-blue-400' :
+                          'bg-yellow-400'
+                        } opacity-0 group-hover:opacity-100 transition-opacity`}></div>
                       </div>
-                      <div className="h-2 overflow-hidden bg-gray-700 rounded-full">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ delay: (index * 0.1) + (i * 0.05) + 0.2, duration: 1, ease: "easeOut" }}
-                          className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
-                        />
-                      </div>
+                      
+                      {/* Hover effect */}
+                      <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300`}></div>
                     </motion.div>
                   ))}
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </motion.section>
 
         {/* Enhanced Experience */}

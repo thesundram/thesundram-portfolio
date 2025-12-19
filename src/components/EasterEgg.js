@@ -10,26 +10,7 @@ export default function EasterEgg() {
   const [showReward, setShowReward] = useState(false)
 
   useEffect(() => {
-    const secretCode = ['s', 'u', 'n', 'd', 'r', 'a', 'm']
-    
-    const handleKeyPress = (e) => {
-      if (!e.key) return
-      const newSequence = [...sequence, e.key.toLowerCase()].slice(-7)
-      setSequence(newSequence)
-      
-      if (newSequence.join('') === secretCode.join('')) {
-        setShowEgg(true)
-        setTimeout(() => setShowReward(true), 1000)
-        setTimeout(() => {
-          setShowEgg(false)
-          setShowReward(false)
-          setSequence([])
-        }, 5000)
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
+    // Easter egg disabled
   }, [sequence])
 
   return (
@@ -44,13 +25,13 @@ export default function EasterEgg() {
           <motion.div
             initial={{ y: 50 }}
             animate={{ y: 0 }}
-            className="text-center space-y-4 sm:space-y-6 max-w-sm sm:max-w-none"
+            className="max-w-sm space-y-4 text-center sm:space-y-6 sm:max-w-none"
           >
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
             >
-              <Gift size={60} className="text-primary mx-auto sm:w-20 sm:h-20" />
+              <Gift size={60} className="mx-auto text-primary sm:w-20 sm:h-20" />
             </motion.div>
             
             <motion.h2
@@ -66,7 +47,7 @@ export default function EasterEgg() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="text-base text-gray-300 sm:text-xl px-2"
+              className="px-2 text-base text-gray-300 sm:text-xl"
             >
               You discovered the secret! Type &ldquo;SUNDRAM&rdquo; anywhere on the site.
             </motion.p>
@@ -77,7 +58,7 @@ export default function EasterEgg() {
                 animate={{ opacity: 1, y: 0 }}
                 className="space-y-3 sm:space-y-4"
               >
-                <div className="text-base text-accent sm:text-lg px-2">
+                <div className="px-2 text-base text-accent sm:text-lg">
                   🎁 Special Reward: You&apos;re awesome for exploring!
                 </div>
                 

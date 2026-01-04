@@ -460,7 +460,7 @@ export default function Hero() {
                 <motion.img
                   src="/images/hero.png"
                   alt="Sundram Pandey"
-                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 background-blend-mode:multiply group-hover:background-blend-normal background-color:bg-gray-800"
                   whileHover={{ filter: 'brightness(1.1) contrast(1.1)' }}
                 />
                 {/* Enhanced overlay gradient */}

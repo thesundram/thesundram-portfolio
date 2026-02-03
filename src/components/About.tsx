@@ -9,7 +9,7 @@ import BirthdayWish from './BirthdayWish'
 
 export default function About() {
   const [ref, inView] = useInView({
-    threshold: 0.1,
+    threshold: 0,
     triggerOnce: true
   })
   const [showBirthdayWish, setShowBirthdayWish] = useState(false)

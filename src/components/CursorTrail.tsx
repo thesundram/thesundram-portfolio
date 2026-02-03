@@ -76,7 +76,7 @@ export default function CursorTrail() {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-[9999]"
+      className="hidden lg:block fixed inset-0 pointer-events-none z-[9999]"
       style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.3s ease' }}
     >
       {/* 1. Trailing Particles */}

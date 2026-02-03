@@ -9,11 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#ec1839',
-        'primary-dynamic': 'var(--color-primary, #ec1839)',
+        primary: 'var(--color-primary, #ec1839)',
         secondary: '#15151e',
-        accent: '#f39c12',
-        'accent-dynamic': 'var(--color-accent, #f39c12)',
+        accent: 'var(--color-accent, #f39c12)',
         dark: '#0a0a0a',
         light: '#f8f9fa',
       },

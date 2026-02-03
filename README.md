@@ -1,5 +1,15 @@
 # 🚀 Sundram Pandey - Modern Portfolio
 
+<div align="center">
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-AI-8E75B2?style=for-the-badge&logo=google)
+![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000?style=for-the-badge&logo=vercel)
+
+</div>
+
 A feature-rich, modern portfolio website built with Next.js 14, featuring advanced 3D elements, smooth animations, interactive components, and comprehensive functionality.
 
 ## ✨ Features
@@ -44,6 +54,7 @@ A feature-rich, modern portfolio website built with Next.js 14, featuring advanc
 - **Notifications:** React Hot Toast
 - **Intersection Observer:** React Intersection Observer
 - **Typing Effects:** React Typed
+- **AI Integration:** Google Gemini AI (Generative AI SDK)
 
 ## 🚀 Getting Started
 
@@ -56,6 +67,10 @@ cd thesundramportfolio
 2. **Install dependencies:**
 ```bash
 npm install
+# or
+pnpm install
+# or
+yarn install
 ```
 
 3. **Set up environment variables:**
@@ -64,9 +79,13 @@ cp .env.example .env.local
 # Add your email service credentials
 ```
 
-4. **Run the development server:**
+5. **Run the development server:**
 ```bash
 npm run dev
+# or
+pnpm dev
+# or
+yarn dev
 ```
 
 5. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
@@ -85,43 +104,41 @@ thesundramportfolio/
 ├── src/
 │   ├── app/
 │   │   ├── api/
+│   │   │   ├── chat/           # AI Chat API (Gemini)
 │   │   │   ├── send-contact/   # Contact form API
 │   │   │   └── send-birthday-wish/ # Birthday wish API
 │   │   ├── cv/                # CV page
 │   │   ├── globals.css        # Global styles
-│   │   ├── layout.js          # Root layout
-│   │   └── page.js            # Home page
+│   │   ├── layout.tsx         # Root layout
+│   │   └── page.tsx           # Home page
 │   ├── components/
-│   │   ├── About.js           # About section
-│   │   ├── Achievements.js    # Achievements showcase
-│   │   ├── Analytics.js       # Analytics component
-│   │   ├── BackToTop.js       # Back to top button
-│   │   ├── BirthdayWish.js    # Birthday wish feature
-│   │   ├── Blog.js            # Blog section
-│   │   ├── ChatBot.js         # AI chatbot
-│   │   ├── CodeRain.js        # Matrix-style code rain
-│   │   ├── ColorSwitcher.js   # Theme color switcher
-│   │   ├── Contact.js         # Contact form
-│   │   ├── CursorTrail.js     # Custom cursor effects
-│   │   ├── EasterEgg.js       # Hidden easter eggs
-│   │   ├── ErrorBoundary.js   # Error handling
-│   │   ├── FloatingElements.js # Floating animations
-│   │   ├── GitHubStats.js     # GitHub statistics
-│   │   ├── Hero.js            # Hero section
-│   │   ├── LiveClock.js       # Real-time clock
-│   │   ├── LoadingScreen.js   # Loading animation
-│   │   ├── Navbar.js          # Navigation bar
-│   │   ├── ParticleBackground.js # Particle system
-│   │   ├── PerformanceMonitor.js # Performance tracking
-│   │   ├── Portfolio.js       # Portfolio showcase
-│   │   ├── ScrollProgress.js  # Scroll indicator
-│   │   ├── Services.js        # Services section
-│   │   ├── Testimonials.js    # Client testimonials
-│   │   ├── ThemeToggle.js     # Dark/light theme
-│   │   ├── Timeline.js        # Experience timeline
-│   │   └── VisitorCounter.js  # Visitor tracking
+│   │   ├── About.tsx          # About section
+│   │   ├── Achievements.tsx   # Achievements showcase
+│   │   ├── BackToTop.tsx      # Back to top button
+│   │   ├── BirthdayWish.tsx   # Birthday wish feature
+│   │   ├── Blog.tsx           # Blog section
+│   │   ├── ChatBot.tsx        # AI chatbot (Gemini)
+│   │   ├── CodeRain.tsx       # Matrix-style code rain
+│   │   ├── ColorSwitcher.tsx  # Theme color switcher
+│   │   ├── Contact.tsx        # Contact form
+│   │   ├── CursorTrail.tsx    # Custom cursor effects
+│   │   ├── EasterEgg.tsx      # Hidden easter eggs
+│   │   ├── FloatingElements.tsx # Floating animations
+│   │   ├── GitHubStats.tsx    # GitHub statistics
+│   │   ├── Hero.tsx           # Hero section
+│   │   ├── LiveClock.tsx      # Real-time clock
+│   │   ├── LoadingScreen.tsx  # Loading animation
+│   │   ├── Navbar.tsx         # Navigation bar
+│   │   ├── ParticleBackground.tsx # Particle system
+│   │   ├── Portfolio.tsx      # Portfolio showcase
+│   │   ├── ScrollProgress.tsx # Scroll indicator
+│   │   ├── Services.tsx       # Services section
+│   │   ├── Testimonials.tsx   # Client testimonials
+│   │   ├── ThemeToggle.tsx    # Dark/light theme
+│   │   ├── Timeline.tsx       # Experience timeline
+│   │   └── VisitorCounter.tsx # Visitor tracking
 │   └── lib/
-│       └── emailjs.js         # Email service config
+│       └── emailjs.ts         # Email service config
 ├── .env.local                 # Environment variables
 ├── .eslintrc.json            # ESLint configuration
 ├── .gitignore                # Git ignore rules
@@ -195,4 +212,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Built with ❤️ by Sundram Pandey** | © 2025 All Rights Reserved
+**Built with ❤️ by Sundram Pandey** | © 2026 All Rights Reserved

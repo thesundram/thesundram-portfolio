@@ -2,14 +2,28 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
-import { Download, ArrowLeft, Mail, Phone, MapPin, Calendar, Award, Briefcase, User, Code, GraduationCap, Trophy, Star, Eye, Share2, Linkedin, Github, BarChart3, Clock, Zap, MessageSquare, Copy, Atom, Palette, Wind, Circle, FileCode, Database, Link as LinkIcon, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor, Cpu, Cog, Network } from 'lucide-react'
+import { Download, ArrowLeft, Mail, Phone, MapPin, Calendar, Award, Briefcase, User, Code, GraduationCap, Trophy, Star, Eye, Share2, Linkedin, Github, BarChart3, Clock, Zap, MessageSquare, Copy, Atom, Palette, Wind, Circle, FileCode, Database, Link as LinkIcon, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor, Cpu, Cog, Network, Factory, Sun, Moon } from 'lucide-react'
+
 import { toast } from 'sonner'
 import Link from 'next/link'
+import EasterEgg from '../../components/EasterEgg'
 
 export default function CVPage() {
   const [age, setAge] = useState<string>('21')
   const [activeSection, setActiveSection] = useState<string>('summary')
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({})
+  const [isDark, setIsDark] = useState(true)
+
+
+
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [isDark])
 
 
 
@@ -245,7 +259,7 @@ export default function CVPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden text-white bg-gradient-to-br from-black via-gray-900 to-black">
+    <div className="relative min-h-screen overflow-hidden transition-colors duration-300 bg-gray-50 text-gray-900 dark:bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black dark:text-white">
       {/* Animated Background */}
       {/* Enhanced Animated Background */}
       <div className="fixed inset-0 pointer-events-none">
@@ -274,21 +288,35 @@ export default function CVPage() {
       <motion.header
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="sticky top-0 z-50 border-b shadow-2xl bg-black/90 backdrop-blur-xl border-white/10"
+        className="fixed top-0 left-0 right-0 z-50 border-b shadow-md bg-white/80 dark:bg-black/90 backdrop-blur-xl border-gray-200 dark:border-white/10 transition-colors duration-300"
       >
-        <div className="container flex items-center justify-between px-4 py-3 mx-auto sm:px-6 sm:py-4">
-          <Link href="/">
-            <motion.button
-              whileHover={{ scale: 1.05, x: -8 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center px-2 py-2 space-x-2 text-gray-300 transition-all rounded-lg hover:text-white hover:bg-white/10 sm:px-4 sm:space-x-3"
-            >
-              <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
-              <span className="text-sm font-medium sm:text-base">Back</span>
-            </motion.button>
-          </Link>
+        <div className="flex items-center justify-between w-full px-3 py-3 sm:px-8 sm:py-4">
+          <div className="flex items-center gap-4">
+            <Link href="/">
+              <motion.button
+                whileHover={{ scale: 1.05, x: -8 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center px-2 py-2 space-x-2 text-gray-600 dark:text-gray-300 transition-all rounded-lg hover:text-primary dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 sm:px-4 sm:space-x-3"
+              >
+                <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
+                <span className="text-sm font-medium sm:text-base">Back</span>
+              </motion.button>
+            </Link>
+
+
+          </div>
 
           <div className="flex items-center space-x-2 sm:space-x-4">
+
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={() => setIsDark(!isDark)}
+              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-2 text-gray-600 transition-all rounded-full dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10"
+            >
+              {isDark ? <Moon size={20} /> : <Sun size={20} />}
+            </motion.button>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -305,10 +333,10 @@ export default function CVPage() {
                   toast.success('CV link copied!')
                 }
               }}
-              className="p-2 transition-all rounded-full bg-white/10 hover:bg-white/20 sm:p-3"
+              className="p-2 transition-all rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 sm:p-3"
               title="Share CV"
             >
-              <Share2 size={16} className="text-gray-300 sm:w-[18px] sm:h-[18px]" />
+              <Share2 size={16} className="sm:w-[18px] sm:h-[18px]" />
             </motion.button>
 
             <div className="flex space-x-2">
@@ -351,7 +379,7 @@ export default function CVPage() {
         </div>
       </motion.header>
 
-      <div className="container max-w-4xl px-3 py-4 mx-auto sm:px-6 sm:py-12">
+      <div className="container max-w-7xl px-3 py-4 pt-20 mx-auto sm:px-6 sm:py-12 sm:pt-24">
         {/* Enhanced Personal Info Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -366,25 +394,30 @@ export default function CVPage() {
             transition={{ delay: 0.5, duration: 0.8 }}
           />
 
-          <motion.h1
-            className="relative mb-3 text-2xl font-bold uppercase orbitron gradient-text sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-          >
-            {personalInfo.name}
-            <motion.div
-              className="absolute w-4 h-4 rounded-full -top-2 -right-4 bg-primary"
-              animate={{
-                scale: [0, 1, 0],
-                opacity: [0, 1, 0]
-              }}
-              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-            />
-          </motion.h1>
+
+
+          <EasterEgg>
+            <motion.h1
+              className="relative mb-3 text-2xl font-bold uppercase orbitron gradient-text sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl select-none"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+            >
+              {personalInfo.name}
+              <motion.div
+                className="absolute w-4 h-4 rounded-full -top-2 -right-4 bg-primary"
+                animate={{
+                  scale: [0, 1, 0],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              />
+            </motion.h1>
+          </EasterEgg>
 
           <motion.p
-            className="mb-4 text-base font-medium text-gray-300 uppercase sm:mb-8 sm:text-xl md:text-2xl"
+            className="mb-4 text-base font-medium text-gray-600 dark:text-gray-300 uppercase sm:mb-8 sm:text-xl md:text-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -393,7 +426,7 @@ export default function CVPage() {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap justify-center gap-2 text-xs sm:gap-6 sm:text-sm md:gap-8"
+            className="flex flex-wrap justify-center gap-1.5 text-[10px] sm:gap-6 sm:text-sm md:gap-8"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
@@ -402,7 +435,7 @@ export default function CVPage() {
               {
                 icon: Mail,
                 text: personalInfo.email,
-                color: 'text-red-400',
+                color: 'text-red-500 dark:text-red-400',
                 href: `mailto:${personalInfo.email}`,
                 label: 'Send Email',
                 copyText: personalInfo.email
@@ -410,7 +443,7 @@ export default function CVPage() {
               {
                 icon: Phone,
                 text: personalInfo.phone,
-                color: 'text-green-400',
+                color: 'text-green-500 dark:text-green-400',
                 href: `tel:${personalInfo.phone}`,
                 label: 'Call Now',
                 copyText: personalInfo.phone
@@ -418,7 +451,7 @@ export default function CVPage() {
               {
                 icon: MapPin,
                 text: personalInfo.location,
-                color: 'text-blue-400',
+                color: 'text-blue-500 dark:text-blue-400',
                 href: `https://maps.google.com/?q=${encodeURIComponent(personalInfo.location)}`,
                 label: 'View Location',
                 copyText: personalInfo.location
@@ -426,7 +459,7 @@ export default function CVPage() {
               {
                 icon: Linkedin,
                 text: 'LinkedIn',
-                color: 'text-blue-500',
+                color: 'text-blue-600 dark:text-blue-500',
                 href: 'https://linkedin.com/in/thesundram',
                 label: 'LinkedIn Profile',
                 copyText: 'https://linkedin.com/in/thesundram'
@@ -445,11 +478,11 @@ export default function CVPage() {
                     }}
                     whileHover={{ scale: 1.08, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center px-2 py-1.5 space-x-1.5 transition-all border rounded-lg cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/15 hover:border-white/20 group sm:px-5 sm:py-3 sm:space-x-3"
+                    className="flex items-center px-2 py-1.5 space-x-1 transition-all border rounded-lg cursor-pointer bg-white/50 dark:bg-white/5 backdrop-blur-sm border-gray-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/15 hover:border-gray-300 dark:hover:border-white/20 group sm:px-5 sm:py-3 sm:space-x-3 shadow-sm hover:shadow-md"
                     title={item.label}
                   >
-                    <Icon size={14} className={`${item.color} group-hover:scale-110 transition-transform sm:w-[18px] sm:h-[18px]`} />
-                    <span className="text-xs font-medium text-gray-300 transition-colors group-hover:text-white sm:text-sm truncate max-w-[120px] sm:max-w-none">{item.text}</span>
+                    <Icon size={12} className={`${item.color} group-hover:scale-110 transition-transform sm:w-[18px] sm:h-[18px]`} />
+                    <span className="text-[10px] font-medium text-gray-600 dark:text-gray-300 transition-colors group-hover:text-primary dark:group-hover:text-white sm:text-sm truncate max-w-[100px] sm:max-w-none">{item.text}</span>
                   </motion.a>
 
                   <motion.button
@@ -459,10 +492,10 @@ export default function CVPage() {
                     }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="absolute top-0 right-0 p-1.5 transition-all opacity-0 bg-white/10 rounded-full group-hover:opacity-100 hover:bg-white/20 sm:-top-1 sm:-right-1 sm:p-2"
+                    className="absolute top-0 right-0 p-1.5 transition-all opacity-0 bg-gray-100 dark:bg-white/10 rounded-full group-hover:opacity-100 hover:bg-gray-200 dark:hover:bg-white/20 sm:-top-1 sm:-right-1 sm:p-2"
                     title="Copy"
                   >
-                    <Copy size={12} className="text-gray-400 hover:text-white sm:w-3 sm:h-3" />
+                    <Copy size={12} className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white sm:w-3 sm:h-3" />
                   </motion.button>
                 </div>
               )
@@ -494,13 +527,13 @@ export default function CVPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 + index * 0.1 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className={`relative p-3 text-center border shadow-xl bg-gradient-to-br ${stat.color} bg-opacity-10 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6`}
+                  className={`relative p-3 text-center border shadow-xl bg-gradient-to-br ${stat.color} bg-opacity-10 dark:bg-opacity-10 backdrop-blur-lg rounded-2xl border-white/20 dark:border-white/10 group sm:p-6`}
                 >
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Icon size={20} className="mx-auto mb-2 text-white transition-transform group-hover:scale-110 sm:w-8 sm:h-8 sm:mb-3" />
+                    <Icon size={20} className="mx-auto mb-2 text-gray-800 dark:text-white transition-transform group-hover:scale-110 sm:w-8 sm:h-8 sm:mb-3" />
                   </motion.div>
                   <motion.div
                     className="mb-1 text-xl font-bold gradient-text sm:mb-2 sm:text-3xl lg:text-4xl"
@@ -509,7 +542,7 @@ export default function CVPage() {
                   >
                     {animatedStats[stat.key]}{stat.suffix}
                   </motion.div>
-                  <div className="text-xs leading-tight text-gray-400 sm:text-sm">{stat.label}</div>
+                  <div className="text-xs leading-tight text-gray-600 dark:text-gray-400 sm:text-sm">{stat.label}</div>
                 </motion.div>
               )
             })}
@@ -538,7 +571,7 @@ export default function CVPage() {
             Professional Summary
           </motion.h2>
           <motion.div
-            className="relative p-3 border shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 sm:p-8"
+            className="relative p-3 border shadow-2xl bg-white/50 dark:bg-white/5 backdrop-blur-lg rounded-2xl border-gray-200 dark:border-white/20 sm:p-8"
             whileHover={{
               scale: 1.02,
               boxShadow: '0 25px 50px rgba(236, 24, 57, 0.1)'
@@ -551,7 +584,7 @@ export default function CVPage() {
               animate={{ width: '100%' }}
               transition={{ delay: 0.5, duration: 1 }}
             />
-            <p className="relative z-10 text-sm leading-relaxed text-gray-200 sm:text-base md:text-lg">
+            <p className="relative z-10 text-sm leading-relaxed text-gray-700 dark:text-gray-200 sm:text-base md:text-lg">
               <span className="absolute font-serif text-xl opacity-50 text-primary -top-1 -left-1 sm:text-2xl sm:-top-2 sm:-left-2">&ldquo;</span>
               A visionary <span className="font-semibold text-primary">Full Stack Engineer</span> dedicated to building the future of web and mobile interactions.
               With a deep command of the <span className="font-semibold text-accent">React ecosystem</span> and <span className="text-primary">industrial automation protocols</span>, I engineer solutions that are not just functional, but exceptional.
@@ -590,7 +623,7 @@ export default function CVPage() {
                 animate={isVisible.skills ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: categoryIndex * 0.2, duration: 0.6 }}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="relative p-6 border shadow-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl border-white/20 group"
+                className="relative p-6 border shadow-lg bg-white/50 dark:bg-white/5 backdrop-blur-lg rounded-xl border-gray-200 dark:border-white/20 group"
               >
                 <motion.div
                   className={`absolute top-0 left-0 w-full h-1 rounded-t-xl ${categoryIndex % 2 === 0 ? 'bg-gradient-to-r from-primary to-accent' : 'bg-gradient-to-r from-accent to-primary'
@@ -616,19 +649,19 @@ export default function CVPage() {
                       animate={isVisible.skills ? { opacity: 1, scale: 1 } : {}}
                       transition={{ delay: categoryIndex * 0.2 + index * 0.1, duration: 0.5 }}
                       whileHover={{ scale: 1.05, y: -2 }}
-                      className="relative p-4 transition-all duration-300 border rounded-lg bg-white/5 backdrop-blur-sm border-white/10 hover:border-primary/30 group"
+                      className="relative p-4 transition-all duration-300 border rounded-lg bg-white/50 dark:bg-white/5 backdrop-blur-sm border-gray-200 dark:border-white/10 hover:border-primary/30 group"
                     >
                       <div className="flex items-center space-x-3">
                         <div className={`p-2 rounded-lg bg-gradient-to-r ${skill.color} text-white text-sm`}>
                           <skill.icon size={16} />
                         </div>
                         <div className="flex-1">
-                          <div className="font-medium text-white transition-colors group-hover:text-primary">
+                          <div className="font-medium text-gray-800 dark:text-white transition-colors group-hover:text-primary">
                             {skill.name}
                           </div>
-                          <div className={`text-xs ${skill.level === 'Expert' ? 'text-green-400' :
-                            skill.level === 'Advanced' ? 'text-blue-400' :
-                              'text-yellow-400'
+                          <div className={`text-xs ${skill.level === 'Expert' ? 'text-green-500 dark:text-green-400' :
+                            skill.level === 'Advanced' ? 'text-blue-500 dark:text-blue-400' :
+                              'text-yellow-500 dark:text-yellow-400'
                             }`}>
                             {skill.level}
                           </div>
@@ -692,7 +725,7 @@ export default function CVPage() {
                     x: 10,
                     boxShadow: '0 20px 40px rgba(236, 24, 57, 0.1)'
                   }}
-                  className="relative p-4 ml-8 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 sm:ml-16 md:p-8"
+                  className="relative p-4 ml-8 border shadow-xl bg-white/50 dark:bg-white/5 backdrop-blur-lg rounded-2xl border-gray-200 dark:border-white/20 group sm:p-6 sm:ml-16 md:p-8"
                 >
                   {/* Timeline dot */}
                   <motion.div
@@ -716,11 +749,11 @@ export default function CVPage() {
 
                   <div className="flex flex-col mb-3 sm:mb-4 lg:flex-row lg:items-start lg:justify-between">
                     <div className="flex-1">
-                      <h3 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-primary sm:mb-2 sm:text-xl md:text-2xl">
+                      <h3 className="mb-1 text-lg font-bold text-gray-900 dark:text-white transition-colors group-hover:text-primary sm:mb-2 sm:text-xl md:text-2xl">
                         {exp.title}
                       </h3>
                       <p className="mb-1 text-base font-semibold text-accent sm:text-lg md:text-xl">{exp.company}</p>
-                      <p className="text-xs text-gray-400 sm:text-sm">{exp.location} • {exp.type}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 sm:text-sm">{exp.location} • {exp.type}</p>
                     </div>
                     <motion.div
                       className="flex items-center px-3 py-1 mt-2 space-x-1 border rounded-lg lg:mt-0 bg-primary/10 border-primary/20 sm:px-4 sm:py-2 sm:space-x-2 sm:mt-3"
@@ -730,7 +763,7 @@ export default function CVPage() {
                       <span className="text-xs font-medium text-primary sm:text-sm">{exp.period}</span>
                     </motion.div>
                   </div>
-                  <p className="text-sm leading-relaxed text-gray-200 sm:text-base md:text-lg">{exp.description}</p>
+                  <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-200 sm:text-base md:text-lg">{exp.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -776,7 +809,7 @@ export default function CVPage() {
                   y: -5,
                   boxShadow: '0 25px 50px rgba(236, 24, 57, 0.15)'
                 }}
-                className="relative p-4 overflow-hidden border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 md:p-8"
+                className="relative p-4 overflow-hidden border shadow-xl bg-white/50 dark:bg-white/5 backdrop-blur-lg rounded-2xl border-gray-200 dark:border-white/20 group sm:p-6 md:p-8"
               >
                 <motion.div
                   className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-t-2xl"
@@ -793,8 +826,8 @@ export default function CVPage() {
                   <span className="text-sm font-bold text-primary sm:text-base md:text-lg">{index + 1}</span>
                 </motion.div>
 
-                <div className="mb-3 sm:mb-4">
-                  <h3 className="mb-2 text-lg font-bold text-white transition-colors group-hover:text-primary sm:mb-3 sm:text-xl md:text-2xl">
+                <div className="relative z-10 mb-3 sm:mb-4">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white transition-colors group-hover:text-primary sm:mb-3 sm:text-xl md:text-2xl">
                     {project.title}
                   </h3>
                   <div className="flex flex-wrap gap-2 mb-2 sm:gap-3 sm:mb-3 md:gap-4">
@@ -812,7 +845,7 @@ export default function CVPage() {
                     </motion.span>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed text-gray-200 sm:text-base md:text-lg">{project.description}</p>
+                <p className="relative z-10 text-sm leading-relaxed text-gray-700 dark:text-gray-200 sm:text-base md:text-lg">{project.description}</p>
 
                 {/* Hover effect overlay */}
                 <motion.div
@@ -888,7 +921,7 @@ export default function CVPage() {
                     x: 10,
                     boxShadow: '0 20px 40px rgba(236, 24, 57, 0.1)'
                   }}
-                  className="relative p-4 ml-8 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20 group sm:p-6 sm:ml-16 md:p-8"
+                  className="relative p-4 ml-8 border shadow-xl bg-white/50 dark:bg-white/5 backdrop-blur-lg rounded-2xl border-gray-200 dark:border-white/20 group sm:p-6 sm:ml-16 md:p-8"
                 >
                   {/* Timeline dot */}
                   <motion.div
@@ -912,11 +945,11 @@ export default function CVPage() {
 
                   <div className="flex flex-col mb-3 sm:mb-4 lg:flex-row lg:items-start lg:justify-between">
                     <div className="flex-1">
-                      <h3 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-primary sm:mb-2 sm:text-xl md:text-2xl">
+                      <h3 className="mb-1 text-lg font-bold text-gray-900 dark:text-white transition-colors group-hover:text-primary sm:mb-2 sm:text-xl md:text-2xl">
                         {edu.degree}
                       </h3>
                       <p className="mb-1 text-base font-semibold text-accent sm:text-lg md:text-xl">{edu.institution}</p>
-                      <p className="text-xs text-gray-400 sm:text-sm">{edu.location}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 sm:text-sm">{edu.location}</p>
                     </div>
                     <motion.div
                       className="flex items-center px-3 py-1 mt-2 space-x-1 border rounded-lg lg:mt-0 bg-accent/10 border-accent/20 sm:px-4 sm:py-2 sm:space-x-2 sm:mt-3"
@@ -1052,7 +1085,7 @@ export default function CVPage() {
                   onClick={contact.action}
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative p-4 text-center border shadow-xl bg-gradient-to-br ${contact.color} bg-opacity-10 backdrop-blur-lg rounded-2xl border-white/20 group transition-all duration-300 sm:p-6`}
+                  className={`relative p-4 text-center border shadow-xl bg-gradient-to-br ${contact.color} bg-opacity-10 dark:bg-opacity-10 backdrop-blur-lg rounded-2xl border-white/20 dark:border-white/10 group transition-all duration-300 sm:p-6`}
                 >
                   <motion.div
                     whileHover={{ rotate: 360 }}
@@ -1061,7 +1094,7 @@ export default function CVPage() {
                     <Icon size={32} className="mx-auto mb-3 text-white transition-transform group-hover:scale-110" />
                   </motion.div>
                   <h3 className="mb-1 text-lg font-bold text-white transition-colors group-hover:text-primary">{contact.title}</h3>
-                  <p className="text-sm text-gray-400">{contact.subtitle}</p>
+                  <p className="text-sm text-gray-100 dark:text-gray-400">{contact.subtitle}</p>
                 </motion.button>
               )
             })}
@@ -1077,9 +1110,9 @@ export default function CVPage() {
         >
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="inline-block p-6 border shadow-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border-white/20"
+            className="inline-block p-6 border shadow-xl bg-white/50 dark:bg-white/5 backdrop-blur-lg rounded-2xl border-gray-200 dark:border-white/20"
           >
-            <h3 className="mb-4 text-lg font-bold text-white sm:text-xl">Scan to View Portfolio</h3>
+            <h3 className="mb-4 text-lg font-bold text-gray-900 dark:text-white sm:text-xl">Scan to View Portfolio</h3>
             <motion.div
               className="p-4 bg-white rounded-xl"
               whileHover={{ rotate: 5 }}
@@ -1090,7 +1123,7 @@ export default function CVPage() {
                 className="w-24 h-24 mx-auto sm:w-32 sm:h-32"
               />
             </motion.div>
-            <p className="mt-3 text-xs text-gray-400 sm:text-sm">Scan with your phone camera</p>
+            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400 sm:text-sm">Scan with your phone camera</p>
           </motion.div>
         </motion.section>
 

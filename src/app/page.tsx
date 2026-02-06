@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import ParticleBackground from '../components/ParticleBackground'
-import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
 import Hero from '../components/Hero'
 import About from '../components/About'
+
 import ChatBot from '../components/ChatBot'
 import Services from '../components/Services'
 import Portfolio from '../components/Portfolio'
@@ -22,6 +23,9 @@ import CodeRain from '../components/CodeRain'
 import EasterEgg from '../components/EasterEgg'
 import VisitorCounter from '../components/VisitorCounter'
 import ColorSwitcher from '../components/ColorSwitcher'
+import TechMarquee from '../components/TechMarquee'
+import MusicPlayer from '../components/MusicPlayer'
+import WelcomeModal from '../components/WelcomeModal'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -46,7 +50,7 @@ export default function Home() {
       <BackToTop />
       <FloatingElements />
       <CodeRain />
-      <EasterEgg />
+
       <VisitorCounter />
       <ColorSwitcher />
 
@@ -54,12 +58,14 @@ export default function Home() {
       <ParticleBackground />
 
       {/* Navigation */}
-      <Navbar />
+      <Sidebar />
 
       {/* Main Content */}
       <div className="relative z-10">
         <Hero />
+        <TechMarquee />
         <About />
+
         <Services />
         <Portfolio />
         <GitHubStats />
@@ -68,8 +74,12 @@ export default function Home() {
         <Contact />
       </div>
 
-      {/* ChatBot */}
+      {/* ChatBot & Music Player */}
       <ChatBot />
+      <MusicPlayer />
+
+      {/* Post-Load Popups */}
+      <WelcomeModal />
     </main>
   )
 }

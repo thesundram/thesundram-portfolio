@@ -5,9 +5,12 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTe
 import { Eye, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star, Facebook } from 'lucide-react'
 import SectionBackground from './SectionBackground'
 
+import EasterEgg from './EasterEgg'
+
 export default function Hero() {
   const [text, setText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
+
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -140,52 +143,54 @@ export default function Hero() {
                 <span>Hi, I am</span>
               </motion.p>
 
-              <motion.h1
-                className="relative text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl orbitron"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
-              >
-                <motion.span
-                  className="relative inline-block uppercase gradient-text"
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: 2,
-                    textShadow: "0 0 20px rgba(236, 24, 57, 0.8)"
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
+              <EasterEgg>
+                <motion.h1
+                  className="relative text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl orbitron"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
                 >
-                  Sundram
-                  <motion.div
-                    className="absolute w-2 h-2 rounded-full sm:w-3 sm:h-3 -top-1 -right-1 sm:-top-2 sm:-right-2 bg-primary"
-                    animate={{
-                      scale: [0, 1, 0],
-                      opacity: [0, 1, 0]
+                  <motion.span
+                    className="relative inline-block uppercase gradient-text"
+                    whileHover={{
+                      scale: 1.05,
+                      rotate: 2,
+                      textShadow: "0 0 20px rgba(236, 24, 57, 0.8)"
                     }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                  />
-                </motion.span>
-                <br />
-                <motion.span
-                  className="relative inline-block text-gray-800 uppercase dark:text-white"
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: -2,
-                    textShadow: "0 0 20px rgba(255, 255, 255, 0.8)"
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  Pandey
-                  <motion.div
-                    className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 bg-accent"
-                    animate={{
-                      scale: [0, 1.5, 0],
-                      opacity: [0, 1, 0]
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    Sundram
+                    <motion.div
+                      className="absolute w-2 h-2 rounded-full sm:w-3 sm:h-3 -top-1 -right-1 sm:-top-2 sm:-right-2 bg-primary"
+                      animate={{
+                        scale: [0, 1, 0],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                    />
+                  </motion.span>
+                  <br />
+                  <motion.span
+                    className="relative inline-block text-gray-800 uppercase dark:text-white"
+                    whileHover={{
+                      scale: 1.05,
+                      rotate: -2,
+                      textShadow: "0 0 20px rgba(255, 255, 255, 0.8)"
                     }}
-                    transition={{ duration: 2.5, repeat: Infinity, delay: 2 }}
-                  />
-                </motion.span>
-              </motion.h1>
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    Pandey
+                    <motion.div
+                      className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 bg-accent"
+                      animate={{
+                        scale: [0, 1.5, 0],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: 2 }}
+                    />
+                  </motion.span>
+                </motion.h1>
+              </EasterEgg>
 
               {/* Animated underline */}
               <motion.div
@@ -401,14 +406,36 @@ export default function Hero() {
               className="relative w-64 h-64 sm:w-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] perspective-1000 cursor-pointer"
               onMouseMove={handleMouseMove}
               onMouseLeave={resetTilt}
-              style={{ rotateX, rotateY }}
+              style={{ rotateX, rotateY, z: 100 }}
             >
-              {/* Rotating Border Ring */}
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-70 blur-sm animate-spin-slow" />
-
+              {/* Outer Rotating Conic Ring */}
               <motion.div
-                className="relative z-10 w-full h-full overflow-hidden border-[6px] rounded-full shadow-2xl border-white dark:border-gray-800 bg-gray-100 dark:bg-gray-900"
-                style={{ rotateX, rotateY }}
+                className="absolute -inset-1 rounded-full opacity-80 blur-md"
+                style={{
+                  background: 'conic-gradient(from 0deg, transparent 0deg, #ec1839 120deg, transparent 180deg, #f39c12 300deg, transparent 360deg)',
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              />
+
+              {/* Inner Reverse Rotating Ring */}
+              <motion.div
+                className="absolute -inset-[2px] rounded-full opacity-60 mix-blend-screen"
+                style={{
+                  background: 'conic-gradient(from 180deg, transparent 0deg, #3b82f6 120deg, transparent 180deg, #8b5cf6 300deg, transparent 360deg)',
+                }}
+                animate={{ rotate: -360 }}
+                transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+              />
+
+              {/* Main Image Container */}
+              <motion.div
+                className="relative z-10 w-full h-full overflow-hidden border-[4px] border-white/20 dark:border-white/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] bg-gray-100 dark:bg-gray-900"
+                style={{
+                  rotateX,
+                  rotateY,
+                  transformStyle: "preserve-3d",
+                }}
               >
                 <img
                   src="/images/hero.png"
@@ -416,22 +443,41 @@ export default function Hero() {
                   className="object-cover w-full h-full transform scale-105"
                 />
 
-                {/* No overlay for maximum clarity in both modes */}
+                {/* Gloss/Reflection Overlay */}
+                <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-full" />
+                <motion.div
+                  className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-white/10 to-transparent"
+                  style={{
+                    x: useTransform(mouseX, [-0.5, 0.5], [50, -50]),
+                  }}
+                />
               </motion.div>
 
-              {/* Floating Tech Badges with Parallax */}
+              {/* Floating Tech Badges with Enhanced Parallax & Glow */}
               <motion.div
-                style={{ x: useTransform(mouseX, [-0.5, 0.5], [20, -20]), y: useTransform(mouseY, [-0.5, 0.5], [20, -20]) }}
-                className="absolute p-4 border shadow-2xl -top-6 -right-6 rounded-3xl bg-white/90 dark:bg-black/80 border-gray-200 dark:border-white/10 backdrop-blur-xl"
+                style={{
+                  x: useTransform(mouseX, [-0.5, 0.5], [30, -30]),
+                  y: useTransform(mouseY, [-0.5, 0.5], [30, -30]),
+                  z: 50
+                }}
+                className="absolute p-4 border shadow-2xl -top-4 -right-4 rounded-3xl bg-white/80 dark:bg-black/80 border-white/20 backdrop-blur-3xl group hover:border-primary/50 transition-colors"
+                whileHover={{ scale: 1.1 }}
               >
-                <Code className="text-primary w-8 h-8 drop-shadow-[0_0_10px_rgba(236,24,57,0.5)]" />
+                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Code className="relative z-10 text-primary w-8 h-8 drop-shadow-[0_0_8px_rgba(236,24,57,0.6)]" />
               </motion.div>
 
               <motion.div
-                style={{ x: useTransform(mouseX, [-0.5, 0.5], [-20, 20]), y: useTransform(mouseY, [-0.5, 0.5], [-20, 20]) }}
-                className="absolute p-4 border shadow-2xl -bottom-6 -left-6 rounded-3xl bg-white/90 dark:bg-black/80 border-gray-200 dark:border-white/10 backdrop-blur-xl"
+                style={{
+                  x: useTransform(mouseX, [-0.5, 0.5], [-30, 30]),
+                  y: useTransform(mouseY, [-0.5, 0.5], [-30, 30]),
+                  z: 50
+                }}
+                className="absolute p-4 border shadow-2xl -bottom-4 -left-4 rounded-3xl bg-white/80 dark:bg-black/80 border-white/20 backdrop-blur-3xl group hover:border-accent/50 transition-colors"
+                whileHover={{ scale: 1.1 }}
               >
-                <Zap className="text-accent w-8 h-8 drop-shadow-[0_0_10px_rgba(243,156,18,0.5)]" />
+                <div className="absolute inset-0 bg-accent/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Zap className="relative z-10 text-accent w-8 h-8 drop-shadow-[0_0_8px_rgba(243,156,18,0.6)]" />
               </motion.div>
             </motion.div>
           </motion.div>

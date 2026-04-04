@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion'
-import { Eye, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star, Facebook } from 'lucide-react'
+import { Eye, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star, Facebook, Download, Calendar } from 'lucide-react'
 import SectionBackground from './SectionBackground'
 
 import EasterEgg from './EasterEgg'
@@ -126,6 +126,28 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="p-6 transition-all duration-300 border shadow-2xl space-y-8 sm:p-10 rounded-3xl bg-white/40 dark:bg-white/5 backdrop-blur-xl border-white/20 dark:border-white/10 hover:border-primary/20 hover:bg-white/60 dark:hover:bg-white/10"
           >
+            {/* ✅ Open to Work Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="flex items-center gap-2 flex-wrap"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold backdrop-blur-sm"
+              >
+                <motion.span
+                  className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"
+                  animate={{ opacity: [1, 0.3, 1], scale: [1, 1.4, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+                Open to Work
+              </motion.div>
+              <span className="hidden xs:inline text-xs text-gray-500 dark:text-gray-400">Full-time &amp; Freelance</span>
+            </motion.div>
+
             {/* Enhanced Greeting */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -303,8 +325,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4 }}
-              className="flex flex-wrap gap-3 sm:gap-4"
+              className="flex flex-wrap gap-2 sm:gap-3"
             >
+              {/* View CV */}
               <motion.a
                 href="/cv"
                 whileHover={{
@@ -326,38 +349,36 @@ export default function Hero() {
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
+                <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
                   <Eye size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
                 </motion.div>
                 <span className="relative z-10">View CV</span>
-                <motion.div
-                  className="absolute top-0 left-0 w-full h-full rounded-full bg-white/20"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileHover={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
               </motion.a>
 
+              {/* Download Resume */}
+              <motion.a
+                href="/images/Sundram_CV.pdf"
+                download="Sundram_CV.pdf"
+                whileHover={{ scale: 1.08, y: -8, boxShadow: '0 15px 40px rgba(0,200,100,0.3)' }}
+                whileTap={{ scale: 0.92 }}
+                className="relative flex items-center px-4 py-2 space-x-2 overflow-hidden text-sm font-semibold transition-all duration-500 border-2 rounded-full group border-green-500 text-green-500 hover:text-white sm:px-6 sm:py-3 sm:text-base"
+              >
+                <motion.div className="absolute inset-0 transition-transform duration-500 origin-left transform scale-x-0 bg-gradient-to-r from-green-500 to-emerald-400 group-hover:scale-x-100" />
+                <motion.div animate={{ y: [0, 3, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <Download size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
+                </motion.div>
+                <span className="relative z-10">Resume</span>
+              </motion.a>
+
+              {/* Contact */}
               <motion.a
                 href="#contact"
-                whileHover={{
-                  scale: 1.08,
-                  y: -8,
-                  boxShadow: '0 15px 40px rgba(236, 24, 57, 0.3)'
-                }}
+                whileHover={{ scale: 1.08, y: -8, boxShadow: '0 15px 40px rgba(236, 24, 57, 0.3)' }}
                 whileTap={{ scale: 0.92 }}
                 className="relative flex items-center px-4 py-2 space-x-2 overflow-hidden text-sm font-semibold transition-all duration-500 border-2 rounded-full group border-primary text-primary hover:text-white sm:px-6 sm:py-3 sm:text-base"
               >
-                <motion.div
-                  className="absolute inset-0 transition-transform duration-500 origin-left transform scale-x-0 bg-gradient-to-r from-primary to-accent group-hover:scale-x-100"
-                />
-                <motion.div
-                  whileHover={{ scale: 1.2 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <motion.div className="absolute inset-0 transition-transform duration-500 origin-left transform scale-x-0 bg-gradient-to-r from-primary to-accent group-hover:scale-x-100" />
+                <motion.div whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
                   <Mail size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
                 </motion.div>
                 <span className="relative z-10">Contact Me</span>

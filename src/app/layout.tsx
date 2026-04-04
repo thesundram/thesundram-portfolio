@@ -2,6 +2,7 @@ import './globals.css'
 import ScrollProgress from '../components/ScrollProgress'
 import BirthdayWish from '../components/BirthdayWish'
 import { Toaster } from 'sonner'
+import SmoothScroll from '../components/SmoothScroll'
 
 import type { Metadata } from 'next'
 
@@ -56,10 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased transition-colors duration-300">
-        <ScrollProgress />
-        <BirthdayWish />
-        <Toaster position="top-center" richColors />
-        {children}
+        <SmoothScroll>
+          <ScrollProgress />
+          <BirthdayWish />
+          <Toaster position="top-center" richColors />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   )

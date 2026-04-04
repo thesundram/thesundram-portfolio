@@ -41,7 +41,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; Removed for Lenis Scroll */
 }
 
 /* Reduce motion for accessibility */
@@ -84,7 +84,7 @@ html {
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; Removed for Lenis Scroll */
 }
 
 body {

@@ -24,7 +24,8 @@ import EasterEgg from '../components/EasterEgg'
 import VisitorCounter from '../components/VisitorCounter'
 import ColorSwitcher from '../components/ColorSwitcher'
 import TechMarquee from '../components/TechMarquee'
-import WelcomeModal from '../components/WelcomeModal'
+import TechOrbit from '../components/TechOrbit'
+import Footer from '../components/Footer'
 
 
 export default function Home() {
@@ -69,16 +70,15 @@ export default function Home() {
         <Services />
         <Portfolio />
         <GitHubStats />
+        <TechOrbit />
         <Achievements />
         <Blog />
         <Contact />
+        <Footer />
       </div>
 
       {/* ChatBot */}
       <ChatBot />
-
-      {/* Post-Load Popups */}
-      <WelcomeModal />
     </main>
   )
 }

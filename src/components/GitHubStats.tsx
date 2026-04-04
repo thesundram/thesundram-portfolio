@@ -5,9 +5,35 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Github, Star, GitFork, Users, Calendar, Code, ExternalLink } from 'lucide-react'
 import SectionBackground from './SectionBackground'
+import { GitHubCalendar } from 'react-github-calendar'
 
 export default function GitHubStats() {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [mounted, setMounted] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
+
+  useEffect(() => {
+    setMounted(true)
+    
+    // Check initial theme
+    const checkTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    // Observe theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          checkTheme()
+        }
+      })
+    })
+
+    observer.observe(document.documentElement, { attributes: true })
+
+    return () => observer.disconnect()
+  }, [])
   const [stats, setStats] = useState({
     repos: '35+',
     stars: '1.2k+',
@@ -148,6 +174,36 @@ export default function GitHubStats() {
             )
           })}
         </div>
+
+        {/* GitHub Contributions Calendar */}
+        {mounted && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mb-16 p-8 border shadow-xl dark:shadow-2xl bg-white dark:bg-black/40 backdrop-blur-md rounded-3xl border-gray-200 dark:border-white/10"
+          >
+            <h3 className="flex items-center justify-center mb-8 text-xl font-bold text-gray-900 dark:text-white text-center">
+              <Calendar className="mr-2 text-primary" /> Constantly Building
+            </h3>
+            <div className="flex justify-center items-center overflow-x-auto pb-4">
+              <div className="min-w-max">
+                <GitHubCalendar
+                  username="thesundram"
+                  colorScheme={isDarkMode ? 'dark' : 'light'}
+                  theme={{
+                    light: ['#ebedf0', '#fca5a5', '#ef4444', '#b91c1c', '#7f1d1d'],
+                    dark: ['#161b22', '#fecaca', '#f87171', '#ef4444', '#dc2626']
+                  }}
+                  fontSize={14}
+                  blockSize={14}
+                  blockMargin={6}
+                  blockRadius={3}
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
 
         {/* Languages & Activity Graph */}
         <div className="grid gap-8 lg:grid-cols-2">

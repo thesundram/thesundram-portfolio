@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, MessageSquare, X, Send, User, Bot, Copy, Download, ExternalLink, Clock, Eye } from 'lucide-react'
+import { MessageCircle, MessageSquare, X, Send, User, Bot, Copy, Download, ExternalLink, Clock, Eye, Mic, MicOff, Volume2, VolumeX } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -45,13 +45,16 @@ interface Message {
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
-    { type: 'bot', text: 'Hi! I am Sundram intelligent assistant! 🤖 I know everything about his skills, projects, and experience. Ask me anything!', timestamp: new Date() }
+    { type: 'bot', text: 'Namaste! 🙏 I am Hema, Sundram\'s Personal AI Assistant. I know all about his technical skills, internships, and awesome projects! How can I help you today? \n\n*(You can tap the 🔊 icon to hear me speak!)*', timestamp: new Date() }
   ])
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [unreadCount, setUnreadCount] = useState(1)
   const [showNotification, setShowNotification] = useState(true)
   const [copiedMessageId, setCopiedMessageId] = useState(null)
+  const [isVoiceMode, setIsVoiceMode] = useState(false)
+  const [isListening, setIsListening] = useState(false)
+  const [isSpeaking, setIsSpeaking] = useState(false)
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
@@ -61,6 +64,65 @@ export default function ChatBot() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') window.speechSynthesis.getVoices()
+  }, [])
+
+  const speakResponse = (text: string) => {
+    if (typeof window === 'undefined') return
+    
+    window.speechSynthesis.cancel()
+    
+    // Clean markdown before speaking
+    const cleanText = text.replace(/[#*_~`>]/g, '').replace(/\[(.*?)\]\(.*?\)/g, '$1')
+    const utterance = new SpeechSynthesisUtterance(cleanText)
+    
+    // Prioritize Indian English (en-IN) or Hindi (hi-IN) Female Voices
+    const voices = window.speechSynthesis.getVoices()
+    const preferredVoice = 
+      voices.find(v => (v.lang === 'hi-IN' || v.lang === 'en-IN') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Aditi') || v.name.includes('Veera') || v.name.includes('Swara'))) ||
+      voices.find(v => v.lang.includes('IN')) || 
+      voices.find(v => v.lang.includes('en') && v.name.includes('Female'))
+      
+    if (preferredVoice) utterance.voice = preferredVoice
+    
+    utterance.rate = 1.05
+    utterance.onstart = () => setIsSpeaking(true)
+    utterance.onend = () => setIsSpeaking(false)
+    utterance.onerror = () => setIsSpeaking(false)
+    
+    window.speechSynthesis.speak(utterance)
+  }
+
+  const toggleVoiceMode = () => {
+    const newMode = !isVoiceMode
+    setIsVoiceMode(newMode)
+    if (!newMode) window.speechSynthesis.cancel()
+    else speakResponse("Voice mode activated. I'm listening!")
+  }
+
+  const toggleListening = () => {
+    if (typeof window === 'undefined') return
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+    if (!SpeechRecognition) {
+      alert("Your browser doesn't support Speech Recognition. Try Chrome.")
+      return
+    }
+
+    if (isListening) return
+
+    const recognition = new SpeechRecognition()
+    recognition.lang = 'en-US'
+    recognition.onstart = () => setIsListening(true)
+    recognition.onresult = (event: any) => {
+      setInputText(event.results[0][0].transcript)
+    }
+    recognition.onerror = () => setIsListening(false)
+    recognition.onend = () => setIsListening(false)
+
+    recognition.start()
+  }
 
   const getFollowUpQuestions = (topic: string) => {
     const followUps = {
@@ -149,6 +211,7 @@ export default function ChatBot() {
       setTimeout(() => {
         setMessages(prev => [...prev, { type: 'bot', text: response, followUps, timestamp: new Date() }])
         setIsTyping(false)
+        if (isVoiceMode) speakResponse(response)
       }, typingDelay)
     } catch (error) {
       setTimeout(() => {
@@ -173,6 +236,7 @@ export default function ChatBot() {
       setTimeout(() => {
         setMessages(prev => [...prev, { type: 'bot', text: response, followUps, timestamp: new Date() }])
         setIsTyping(false)
+        if (isVoiceMode) speakResponse(response)
       }, 1500)
     } catch (error) {
       setTimeout(() => {
@@ -288,19 +352,35 @@ export default function ChatBot() {
                       animate={{ rotate: 360 }}
                       transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                     >
-                      <img src="/images/hero.png" alt="Sundram AI" className="w-full h-full object-cover rounded-full" />
+                      <img src="/images/hema_avatar.png" alt="Hema AI" className="w-full h-full object-cover rounded-full" />
                     </motion.div>
                     <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-black">
                       <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75"></div>
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 dark:text-white text-lg">Sundram AI</h3>
-                    <p className="text-xs text-primary/80 font-medium">Online & Ready to Help</p>
+                    <h3 className="font-bold text-gray-900 dark:text-white text-lg">Hema AI Assistant</h3>
+                    <p className="text-xs text-primary/80 font-medium">Sundram's Personal AI</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
+                  <button
+                    onClick={toggleVoiceMode}
+                    className="relative p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors group"
+                    title={isVoiceMode ? "Mute Voice AI" : "Enable Voice AI"}
+                  >
+                    {isVoiceMode ? (
+                      <Volume2 size={18} className={`transition-colors ${isSpeaking ? 'text-green-500' : 'text-primary'}`} />
+                    ) : (
+                      <VolumeX size={18} className="text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors" />
+                    )}
+                    {isSpeaking && (
+                      <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500 pointer-events-none">
+                        <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75"></span>
+                      </span>
+                    )}
+                  </button>
                   <button
                     onClick={downloadCV}
                     className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors group"
@@ -329,7 +409,7 @@ export default function ChatBot() {
                 >
                   <div className={`flex items-start space-x-1 max-w-[90%] sm:max-w-[85%] sm:space-x-1.5 md:space-x-2 ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center overflow-hidden border border-primary/50 sm:w-8 sm:h-8 md:w-9 md:h-9 ${message.type === 'user' ? 'bg-primary' : 'bg-transparent'} shadow-lg flex-shrink-0`}>
-                      {message.type === 'user' ? <User size={14} className="text-white sm:w-4 sm:h-4 md:w-4 md:h-4" /> : <img src="/images/hero.png" alt="Bot" className="w-full h-full object-cover" />}
+                      {message.type === 'user' ? <User size={14} className="text-white sm:w-4 sm:h-4 md:w-4 md:h-4" /> : <img src="/images/hema_avatar.png" alt="Hema Bot" className="w-full h-full object-cover" />}
                     </div>
                     <div className="flex flex-col space-y-1">
                       <div className={`group relative p-2 rounded-xl sm:p-2.5 md:p-3 sm:rounded-2xl shadow-sm ${message.type === 'user' ? 'bg-primary text-white' : 'bg-white dark:bg-white/10 text-gray-800 dark:text-gray-100 border border-gray-100 dark:border-transparent'}`}>
@@ -421,7 +501,7 @@ export default function ChatBot() {
                       }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
-                      <img src="/images/hero.png" alt="Sundram AI" className="w-full h-full object-cover" />
+                      <img src="/images/hema_avatar.png" alt="Hema AI" className="w-full h-full object-cover" />
                     </motion.div>
                     <div className="p-2 bg-white dark:bg-white/10 rounded-xl sm:p-2.5 md:p-3 sm:rounded-2xl border border-gray-100 dark:border-transparent shadow-sm">
                       <div className="flex items-center space-x-0.5 sm:space-x-1">
@@ -472,6 +552,15 @@ export default function ChatBot() {
             {/* Input Area */}
             <div className="p-4 border-t border-gray-200 dark:border-white/5 bg-white/80 dark:bg-white/5 backdrop-blur-md">
               <div className="relative flex items-center gap-2">
+                <button
+                  onClick={toggleListening}
+                  className={`p-2.5 sm:p-3 rounded-full transition-all duration-300 ${isListening 
+                    ? 'bg-primary border border-primary text-white shadow-[0_0_15px_rgba(236,24,57,0.5)]' 
+                    : 'bg-gray-100 dark:bg-white/10 text-gray-500 hover:text-primary hover:bg-primary/10'}`}
+                  title="Voice Input"
+                >
+                  {isListening ? <Mic size={18} className="animate-pulse" /> : <MicOff size={18} />}
+                </button>
                 <input
                   type="text"
                   value={inputText}
@@ -495,7 +584,7 @@ export default function ChatBot() {
               </div>
               <div className="text-center mt-2">
                 <span className="text-[10px] text-gray-400 dark:text-gray-500">
-                  Powered by <span className="text-primary">Sundram AI</span>
+                  Assistant Interface by <span className="text-primary font-semibold">Hema AI</span>
                 </span>
               </div>
             </div>

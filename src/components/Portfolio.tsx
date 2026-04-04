@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Image from 'next/image'
-import { ExternalLink, Github, Eye, Search, Star, Calendar, Users, Code2, Zap, Award } from 'lucide-react'
+import { ExternalLink, Github, Eye, Search, Star, Calendar, Users, Code2, Zap, Award, CheckCircle } from 'lucide-react'
 import SectionBackground from './SectionBackground'
 
 export default function Portfolio() {
@@ -371,55 +371,165 @@ export default function Portfolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-
-              className="w-full max-w-2xl p-6 overflow-y-auto border shadow-2xl bg-gray-900/90 backdrop-blur-xl rounded-2xl max-h-[90vh] border-white/10"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="w-full max-w-5xl p-0 overflow-hidden border shadow-2xl bg-white dark:bg-gray-900 backdrop-blur-xl rounded-3xl flex flex-col max-h-[90vh] border-gray-200 dark:border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                width={600}
-                height={400}
-                className="w-full h-64 object-cover rounded-lg mb-6"
-              />
-              <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
-              <p className="text-primary mb-4">{selectedProject.category}</p>
-              <p className="text-gray-300 mb-6">{selectedProject.description}</p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {selectedProject.tech.map((tech, i) => (
-                  <span key={i} className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">
-                    {tech}
-                  </span>
-                ))}
+               {/* Modal Header Image */}
+              <div className="relative w-full h-48 sm:h-64 md:h-80 shrink-0">
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-gray-900" />
+                
+                {/* Close Button */}
+                <button 
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/80 text-white rounded-full backdrop-blur-md transition-all border border-white/20 hover:scale-110 active:scale-95"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
               </div>
 
-              <div className="flex space-x-4">
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20 transition-colors"
-                >
-                  <Github size={20} />
-                  <span>Code</span>
-                </a>
-                <a
-                  href={selectedProject.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-primary px-4 py-2 rounded-lg hover:bg-primary/80 transition-colors"
-                >
-                  <ExternalLink size={20} />
-                  <span>Live Demo</span>
-                </a>
+              {/* Modal Content */}
+              <div className="p-6 sm:p-8 overflow-y-auto">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                       <span className="text-xs sm:text-sm text-primary font-bold uppercase tracking-wider bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
+                        {selectedProject.category}
+                      </span>
+                      {selectedProject.status && (
+                        <span className="text-xs sm:text-sm text-green-600 dark:text-green-400 font-medium px-3 py-1 bg-green-100 dark:bg-green-500/20 border border-green-200 dark:border-green-500/30 rounded-full">
+                           {selectedProject.status}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">{selectedProject.title}</h3>
+                  </div>
+                  
+                   {/* Action Buttons top right on desktop */}
+                  <div className="flex flex-wrap gap-3 shrink-0 mt-2 md:mt-0">
+                    {selectedProject.github && (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center space-x-2 text-gray-700 bg-gray-100 border border-gray-200 dark:border-white/10 dark:text-white dark:bg-white/5 px-5 py-2.5 rounded-xl hover:bg-gray-200 dark:hover:bg-white/10 transition-all font-semibold text-sm hover:-translate-y-0.5 active:scale-95"
+                      >
+                        <Github size={18} />
+                        <span>Source Code</span>
+                      </a>
+                    )}
+                    {selectedProject.live && (
+                      <a
+                        href={selectedProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center space-x-2 bg-gradient-to-r from-primary to-accent text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-primary/40 transition-all font-semibold text-sm hover:-translate-y-0.5 active:scale-95 border border-primary/50"
+                      >
+                        <ExternalLink size={18} />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+                  {/* Left Column: Description & Features */}
+                  <div className="lg:col-span-2 space-y-8">
+                    <div>
+                      <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center space-x-2">
+                        <Award className="text-primary" size={20} />
+                        <span>Project Overview</span>
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">
+                        {selectedProject.longDescription || selectedProject.description}
+                      </p>
+                    </div>
+
+                    {selectedProject.features && selectedProject.features.length > 0 && (
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center space-x-2">
+                          <Zap className="text-primary" size={20} />
+                          <span>Key Features</span>
+                        </h4>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {selectedProject.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start space-x-3 text-sm sm:text-base text-gray-600 dark:text-gray-300 p-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:border-primary/30 transition-colors">
+                              <CheckCircle size={18} className="text-primary shrink-0 mt-0.5" />
+                              <span className="leading-snug">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Right Column: Details & Tech Stack */}
+                  <div className="space-y-8">
+                    <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 border border-gray-200 dark:border-white/10 shadow-sm">
+                      <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-5 uppercase tracking-wider">At a Glance</h4>
+                      <div className="space-y-5">
+                        <div className="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-white/10">
+                          <div className="flex items-center text-gray-500 dark:text-gray-400 space-x-3">
+                             <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-white/5"><Users size={16} className="text-blue-500" /></div>
+                             <span className="text-sm font-medium">Team</span>
+                          </div>
+                          <span className="text-sm font-bold text-gray-900 dark:text-white">{selectedProject.team || 'Solo'}</span>
+                        </div>
+                        <div className="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-white/10">
+                          <div className="flex items-center text-gray-500 dark:text-gray-400 space-x-3">
+                             <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-white/5"><Calendar size={16} className="text-green-500" /></div>
+                             <span className="text-sm font-medium">Year</span>
+                          </div>
+                          <span className="text-sm font-bold text-gray-900 dark:text-white">{selectedProject.year || '2024'}</span>
+                        </div>
+                         <div className="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-white/10">
+                          <div className="flex items-center text-gray-500 dark:text-gray-400 space-x-3">
+                             <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-white/5"><Code2 size={16} className="text-purple-500" /></div>
+                             <span className="text-sm font-medium">Timeline</span>
+                          </div>
+                          <span className="text-sm font-bold text-gray-900 dark:text-white">{selectedProject.duration || 'N/A'}</span>
+                        </div>
+                         <div className="flex items-center justify-between">
+                          <div className="flex items-center text-gray-500 dark:text-gray-400 space-x-3">
+                             <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-white/5"><Star size={16} className="text-yellow-500" /></div>
+                             <span className="text-sm font-medium">Rating</span>
+                          </div>
+                          <div className="flex items-center space-x-1">
+                             <span className="text-sm font-bold text-gray-900 dark:text-white">{selectedProject.rating || '4.5'}</span>
+                             <span className="text-xs text-gray-400">/5.0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wider flex items-center space-x-2">
+                        <Code2 className="text-primary" size={18} />
+                        <span>Tech Stack</span>
+                      </h4>
+                      <div className="flex flex-wrap gap-2.5">
+                        {selectedProject.tech.map((tech, i) => (
+                          <span key={i} className="px-4 py-2 bg-white dark:bg-white/5 text-gray-800 dark:text-gray-200 rounded-xl text-xs sm:text-sm font-semibold border border-gray-200 dark:border-white/10 shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-colors cursor-default">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>

@@ -24,8 +24,8 @@ import EasterEgg from '../components/EasterEgg'
 import VisitorCounter from '../components/VisitorCounter'
 import ColorSwitcher from '../components/ColorSwitcher'
 import TechMarquee from '../components/TechMarquee'
-import MusicPlayer from '../components/MusicPlayer'
 import WelcomeModal from '../components/WelcomeModal'
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -74,9 +74,8 @@ export default function Home() {
         <Contact />
       </div>
 
-      {/* ChatBot & Music Player */}
+      {/* ChatBot */}
       <ChatBot />
-      <MusicPlayer />
 
       {/* Post-Load Popups */}
       <WelcomeModal />

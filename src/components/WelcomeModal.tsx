@@ -166,8 +166,7 @@ export default function WelcomeModal() {
                                     variants={itemVariants}
                                     className="text-gray-200 mb-8 text-lg font-light leading-relaxed"
                                 >
-                                    Step into my digital universe.<br />
-                                    <span className="text-sm text-gray-400 mt-2 block">Headphones recommended for full immersion.</span>
+                                    Step into my digital universe.
                                 </motion.p>
 
                                 <motion.div variants={itemVariants} className="w-full">

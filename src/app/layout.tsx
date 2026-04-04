@@ -3,25 +3,40 @@ import ScrollProgress from '../components/ScrollProgress'
 import BirthdayWish from '../components/BirthdayWish'
 import { Toaster } from 'sonner'
 
-export const metadata = {
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
   metadataBase: new URL('https://thesundram.vercel.app'),
-  title: 'Sundram Pandey | Software Engineer | Portfolio Website | Full Stack Developer |Software Developer | Mumbai, India',
-  description: 'Software Engineer | Full Stack Developer with expertise in React, Next.js, Node.js, React Native, Flutter, and MongoDB. Skilled in building scalable web and mobile applications.',
-  keywords: 'Sundram Pandey, Software Engineer, Full Stack Developer, Software Developer, React, React Native, Flutter, MongoDB,mobile development, web development, Mysql, HTML, CSS, JavaScript, Next.js, Node.js, Express.js, Bootstrap, GitHub, LinkedIn, Twitter, Instagram, Mumbai, India',
-  author: 'Sundram Pandey',
+  title: 'Sundram Pandey | Software Engineer | Full Stack Developer',
+  description: 'Portfolio of Sundram Pandey. Software Engineer and Full Stack Developer with expertise in React, Next.js, Node.js, React Native, Flutter, and modern web architecture. Building scalable and performant applications.',
+  keywords: ['Sundram Pandey', 'Software Engineer', 'Full Stack Developer', 'React Developer', 'Next.js', 'Node.js', 'React Native', 'Flutter', 'Web Development', 'Mobile App Development', 'Mumbai', 'India', 'Portfolio'],
+  authors: [{ name: 'Sundram Pandey', url: 'https://thesundram.vercel.app' }],
+  creator: 'Sundram Pandey',
   openGraph: {
-    title: 'Sundram Pandey - Software Engineer Portfolio',
-    description: 'Full Stack Developer specializing in modern web and mobile development',
+    title: 'Sundram Pandey - Software Engineer',
+    description: 'Explore my projects, skills, and experience in Full Stack Web and Mobile Development.',
     url: 'https://thesundram.vercel.app',
-    siteName: 'Sundram Pandey Portfolio',
-    images: [{ url: '/images/hero.jpg', width: 1200, height: 630 }],
+    siteName: 'Sundram Pandey | Portfolio',
+    images: [{ url: '/images/hero.png', width: 1200, height: 630, alt: 'Sundram Pandey - Software Engineer' }],
     type: 'website',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sundram Pandey - Software Engineer',
-    description: 'Full Stack Developer specializing in React, Next.js, and mobile development',
-    images: ['/images/hero.jpg'],
+    title: 'Sundram Pandey | Software Engineer',
+    description: 'Explore my projects, skills, and experience in Full Stack Web and Mobile Development.',
+    images: ['/images/hero.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 

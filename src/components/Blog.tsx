@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Image from 'next/image'
@@ -12,6 +12,48 @@ export default function Blog() {
   const [hoveredPost, setHoveredPost] = useState<number | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev === 5 ? 0 : prev + 1)) // 5 is testimonials.length - 1
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const animations = [
+    { // Slide Up Spring
+      initial: { opacity: 0, y: 50, scale: 0.95 },
+      animate: { opacity: 1, y: 0, scale: 1 },
+      exit: { opacity: 0, y: -50, scale: 0.95 },
+      transition: { type: "spring" as const, stiffness: 300, damping: 25 }
+    },
+    { // Slide from Right
+      initial: { opacity: 0, x: 100 },
+      animate: { opacity: 1, x: 0 },
+      exit: { opacity: 0, x: -100 },
+      transition: { type: "spring" as const, stiffness: 250, damping: 25 }
+    },
+    { // Zoom In Fade
+      initial: { opacity: 0, scale: 0.8 },
+      animate: { opacity: 1, scale: 1 },
+      exit: { opacity: 0, scale: 1.2 },
+      transition: { duration: 0.4, ease: "easeOut" as const }
+    },
+    { // 3D Flip
+      initial: { opacity: 0, rotateX: -60 },
+      animate: { opacity: 1, rotateX: 0 },
+      exit: { opacity: 0, rotateX: 60 },
+      transition: { type: "spring" as const, stiffness: 200, damping: 20 }
+    },
+    { // Slide from Left
+      initial: { opacity: 0, x: -100 },
+      animate: { opacity: 1, x: 0 },
+      exit: { opacity: 0, x: 100 },
+      transition: { type: "spring" as const, stiffness: 250, damping: 25 }
+    }
+  ]
+  
+  const currentAnim = animations[currentIndex % animations.length]
 
   const blogPosts = [
     {
@@ -206,10 +248,10 @@ export default function Blog() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3 }}
+              initial={currentAnim.initial}
+              animate={currentAnim.animate}
+              exit={currentAnim.exit}
+              transition={currentAnim.transition as any}
               className="p-8 lg:p-12"
             >
               <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">

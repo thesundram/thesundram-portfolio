@@ -12,27 +12,40 @@
 
 A feature-rich, modern portfolio website built with Next.js 14, featuring advanced 3D elements, smooth animations, interactive components, and comprehensive functionality.
 
+## 📸 Screenshots
+
+<div align="center">
+
+| 🚀 Hero Section | 👤 About Section |
+| :---: | :---: |
+| ![Hero](public/screenshots/hero.png) | ![About](public/screenshots/about.png) |
+| **🛠️ Services Section** | **📁 Portfolio Section** |
+| ![Services](public/screenshots/services.png) | ![Portfolio](public/screenshots/portfolio.png) |
+| **💬 AI Chatbot** | **✍️ Blog Section** |
+| ![Chatbot](public/screenshots/chatbot.png) | ![Blog](public/screenshots/blog.png) |
+| **📬 Contact Section** | **🔚 Footer Section** |
+| ![Contact](public/screenshots/contact.png) | ![Footer](public/screenshots/footer.png) |
+
+</div>
+
 ## ✨ Features
 
 ### 🎨 UI/UX
-- Modern glassmorphism design with gradient accents
-- Fully responsive across all devices
-- Dark theme with dynamic color switching
-- Interactive particle background
-- Smooth scroll animations
-- Custom cursor trail effects
-- Floating elements animation
+- **Modern 3D Depth**: Layered parallax effects and CSS perspective for a premium feel
+- **Glassmorphism Design**: Sleek, transparent UI with vibrant gradient accents
+- **Fully Responsive**: Optimized for seamless experiences on Mobile, Tablet, and Desktop
+- **Dynamic Themes**: Dark mode with customizable primary color accents
+- **Cinematic Motion**: Smooth scroll-triggered reveals and micro-animations
+- **Interactive Backgrounds**: Particle systems and synchronized mouse-parallax grids
 
 ### 🌟 Interactive Components
-- 3D animated hero section
-- Real-time visitor counter
-- Live clock display
-- GitHub statistics integration
-- Interactive portfolio gallery
-- Contact form with email integration
-- Birthday wish feature
-- AI-powered chatbot
-- Easter eggs for enhanced UX
+- **3D Hero Stack**: Multi-layered profile reveal with hardware acceleration
+- **AI Chatbot**: Intelligent assistant powered by Google Gemini AI
+- **Project Showcase**: Filterable portfolio grid with interactive 3D tilt effects
+- **GitHub Integration**: Real-time coding statistics and contribution tracking
+- **Industrial Port**: Specialized section for Industrial Automation and PLC projects
+- **Smart Contact**: Integrated form tracking with Nodemailer and visitor logging
+- **Easter Eggs**: Delightful hidden secrets for an engaging user experience
 
 ### ⚡ Performance & Analytics
 - Performance monitoring

@@ -325,7 +325,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4 }}
-              className="flex flex-wrap gap-2 sm:gap-3"
+              className="flex flex-wrap justify-center gap-3 sm:justify-start sm:gap-4"
             >
               {/* View CV */}
               <motion.a
@@ -353,21 +353,6 @@ export default function Hero() {
                   <Eye size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
                 </motion.div>
                 <span className="relative z-10">View CV</span>
-              </motion.a>
-
-              {/* Download Resume */}
-              <motion.a
-                href="/images/Sundram_CV.pdf"
-                download="Sundram_CV.pdf"
-                whileHover={{ scale: 1.08, y: -8, boxShadow: '0 15px 40px rgba(0,200,100,0.3)' }}
-                whileTap={{ scale: 0.92 }}
-                className="relative flex items-center px-4 py-2 space-x-2 overflow-hidden text-sm font-semibold transition-all duration-500 border-2 rounded-full group border-green-500 text-green-500 hover:text-white sm:px-6 sm:py-3 sm:text-base"
-              >
-                <motion.div className="absolute inset-0 transition-transform duration-500 origin-left transform scale-x-0 bg-gradient-to-r from-green-500 to-emerald-400 group-hover:scale-x-100" />
-                <motion.div animate={{ y: [0, 3, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                  <Download size={18} className="relative z-10 sm:w-[22px] sm:h-[22px]" />
-                </motion.div>
-                <span className="relative z-10">Resume</span>
               </motion.a>
 
               {/* Contact */}
@@ -402,11 +387,11 @@ export default function Hero() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.2, y: -3 }}
+                      whileHover={{ scale: 1.15, y: -2 }}
                       whileTap={{ scale: 0.9 }}
-                      className={`p-2 bg-black/5 dark:bg-white/10 backdrop-blur-sm rounded-full text-gray-600 dark:text-gray-400 transition-all duration-300 hover:bg-black/10 dark:hover:bg-white/20 sm:p-3 ${social.color}`}
+                      className={`p-1.5 bg-black/5 dark:bg-white/10 backdrop-blur-sm rounded-full text-gray-600 dark:text-gray-400 transition-all duration-300 hover:bg-black/10 dark:hover:bg-white/20 sm:p-2 ${social.color}`}
                     >
-                      <Icon size={16} className="sm:w-5 sm:h-5" />
+                      <Icon size={14} className="sm:w-[18px] sm:h-[18px]" />
                     </motion.a>
                   )
                 })}
@@ -509,7 +494,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 0.8 }}
-          className="absolute transform -translate-x-1/2 bottom-4 left-[40%] sm:bottom-8 lg:bottom-12"
+          className="absolute transform -translate-x-1/2 bottom-4 left-1/2 sm:bottom-8 lg:bottom-12"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}

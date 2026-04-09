@@ -93,7 +93,7 @@ export default function Hero() {
     { icon: Linkedin, href: 'http://linkedin.com/in/thesundram', color: 'hover:text-blue-500' },
     { icon: Github, href: 'http://github.com/thesundram', color: 'hover:text-gray-400' },
     { icon: Mail, href: 'mailto:thesundram29@gmail.com', color: 'hover:text-red-500' },
-    { icon: Instagram, href: 'https://www.instagram.com/the.sun29/', color: 'hover:text-pink-500' },
+    { icon: Instagram, href: 'https://www.instagram.com/its.sun29/', color: 'hover:text-pink-500' },
     { icon: Facebook, href: 'https://www.facebook.com/thesundram29', color: 'hover:text-blue-600' },
   ]
 

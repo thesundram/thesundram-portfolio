@@ -18,7 +18,7 @@ const navLinks = [
 const socialLinks = [
   { icon: Linkedin, href: 'https://linkedin.com/in/thesundram', label: 'LinkedIn', color: '#0A66C2' },
   { icon: Github, href: 'https://github.com/thesundram', label: 'GitHub', color: '#24292e', darkColor: true },
-  { icon: Instagram, href: 'https://www.instagram.com/the.sun29/', label: 'Instagram', color: '#E1306C' },
+  { icon: Instagram, href: 'https://www.instagram.com/its.sun29/', label: 'Instagram', color: '#E1306C' },
   { icon: Facebook, href: 'https://www.facebook.com/thesundram29', label: 'Facebook', color: '#1877F2' },
   { icon: Mail, href: 'mailto:thesundram29@gmail.com', label: 'Email', color: '#EC1839' },
 ]
@@ -37,7 +37,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t lg:ml-64 xl:ml-72 border-gray-200 dark:border-white/10 transition-colors duration-500">
       {/* Premium Glow Top Border */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80 shadow-[0_0_15px_rgba(236,24,57,0.5)]" />
-      
+
       {/* Shared Global Background */}
       <SectionBackground />
 
@@ -46,8 +46,8 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="space-y-6 lg:col-span-1">
-            <motion.div 
-              whileHover={{ scale: 1.02 }} 
+            <motion.div
+              whileHover={{ scale: 1.02 }}
               className="inline-block group"
             >
               <div className="flex items-center gap-4">
@@ -106,8 +106,8 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ 
-                      scale: 1.15, 
+                    whileHover={{
+                      scale: 1.15,
                       y: -5,
                       backgroundColor: social.color + '22',
                       borderColor: social.color + '44',
@@ -152,18 +152,18 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Current Location</h4>
             <div className="relative group">
-              <motion.div 
+              <motion.div
                 className="overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl shadow-black/5"
               >
-                <iframe 
-                  width="100%" 
-                  height="140" 
-                  frameBorder="0" 
-                  scrolling="no" 
+                <iframe
+                  width="100%"
+                  height="140"
+                  frameBorder="0"
+                  scrolling="no"
                   src="https://www.openstreetmap.org/export/embed.html?bbox=72.775%2C18.892%2C73.003%2C19.271&amp;layer=mapnik&amp;marker=19.076%2C72.877"
                   className="grayscale hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100"
                 ></iframe>
-                
+
                 {/* Floating Map Label */}
                 <div className="absolute top-2 left-2 px-2 py-1 bg-white/90 dark:bg-black/80 backdrop-blur-md rounded-lg border border-white/20 text-[9px] font-bold text-primary flex items-center gap-1 shadow-lg pointer-events-none">
                   <MapPin size={10} className="fill-primary/20" />
@@ -172,9 +172,9 @@ export default function Footer() {
 
                 {/* Hover Button Overlay */}
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a 
-                    href="https://www.google.com/maps/place/Mumbai,+Maharashtra/@19.0760,72.8777" 
-                    target="_blank" 
+                  <a
+                    href="https://www.google.com/maps/place/Mumbai,+Maharashtra/@19.0760,72.8777"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-white text-black text-[10px] font-bold rounded-xl shadow-xl hover:scale-110 transition-transform flex items-center gap-2"
                   >
@@ -206,8 +206,8 @@ export default function Footer() {
             <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-primary/20" />
             <p className="hidden sm:block">Crafted with Purpose</p>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary"
           >

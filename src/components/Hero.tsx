@@ -14,7 +14,21 @@ export default function Hero() {
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [currentTime, setCurrentTime] = useState('')
   const heroRef = useRef(null)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const date = new Date()
+      setCurrentTime(date.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'Asia/Kolkata' 
+      }))
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
 
 
   // 3D Tilt Effect State
@@ -101,7 +115,7 @@ export default function Hero() {
     <motion.section
       ref={heroRef}
       id="home"
-      className="relative flex items-center justify-center min-h-screen pt-20 overflow-hidden sm:pt-24 lg:pt-0 lg:ml-64 xl:ml-72"
+      className="relative flex items-center justify-center min-h-screen pt-20 overflow-hidden sm:pt-24 lg:pt-0 lg:ml-60 xl:ml-64"
     >
       {/* Enhanced Animated Background */}
       <SectionBackground />
@@ -116,16 +130,32 @@ export default function Hero() {
         transition={{ type: "spring", stiffness: 500, damping: 28 }}
       />
 
-      <div className="container relative z-10 px-4 py-8 mx-auto sm:px-6 sm:py-16">
-        <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-2">
+      <div className="container relative z-10 px-4 py-8 mx-auto sm:px-6 sm:py-12">
+        <div className="grid items-center gap-6 lg:gap-10 lg:grid-cols-2">
 
           {/* Left Content - Glassmorphism Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="p-6 transition-all duration-300 border shadow-2xl space-y-8 sm:p-10 rounded-3xl bg-white/40 dark:bg-white/5 backdrop-blur-xl border-white/20 dark:border-white/10 hover:border-primary/20 hover:bg-white/60 dark:hover:bg-white/10"
+            className="relative p-5 transition-all duration-300 border shadow-2xl space-y-5 sm:p-7 rounded-3xl bg-white/40 dark:bg-white/5 backdrop-blur-xl border-white/20 dark:border-white/10 hover:border-primary/20 hover:bg-white/60 dark:hover:bg-white/10 overflow-hidden group/hero-card"
           >
+            {/* Shimmer Effect */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent w-[200%] -translate-x-full"
+                animate={{
+                  x: ["-100%", "100%"],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  repeatDelay: 2
+                }}
+              />
+            </div>
+
             {/* ✅ Open to Work Badge */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -136,16 +166,20 @@ export default function Hero() {
               <motion.div
                 animate={{ scale: [1, 1.02, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm"
               >
                 <motion.span
-                  className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"
+                  className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"
                   animate={{ opacity: [1, 0.3, 1], scale: [1, 1.4, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
-                Open to Work
+                Available for Projects
               </motion.div>
-              <span className="hidden xs:inline text-xs text-gray-500 dark:text-gray-400">Full-time &amp; Freelance</span>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                <span className="opacity-70">📍 INDIA</span>
+                <span className="w-1 h-3 bg-blue-500/30 rounded-full" />
+                <span>{currentTime || '--:--'}</span>
+              </div>
             </motion.div>
 
             {/* Enhanced Greeting */}
@@ -167,7 +201,7 @@ export default function Hero() {
 
               <EasterEgg>
                 <motion.h1
-                  className="relative text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl orbitron"
+                  className="relative text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl orbitron tracking-tighter"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
@@ -231,8 +265,8 @@ export default function Hero() {
               className="space-y-4 sm:space-y-6"
             >
               <div className="relative">
-                <div className="min-h-[2.5rem] flex flex-wrap items-center gap-2 sm:min-h-[3rem] lg:min-h-[4rem] sm:gap-3">
-                  <h2 className="text-base font-semibold text-gray-800 dark:text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+                <div className="min-h-[2rem] flex flex-wrap items-center gap-2 sm:min-h-[2.5rem] lg:min-h-[3rem] sm:gap-3">
+                  <h2 className="text-sm font-semibold text-gray-800 dark:text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                     I&apos;m a
                   </h2>
                   <motion.div
@@ -242,7 +276,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
                     <motion.span
-                      className="relative text-lg font-bold tracking-wide uppercase text-primary sm:text-xl md:text-2xl lg:text-3xl"
+                      className="relative text-base font-bold tracking-wide uppercase text-primary sm:text-lg md:text-xl lg:text-2xl"
                     >
                       <motion.span
                         key={text}
@@ -336,8 +370,16 @@ export default function Hero() {
                   y: -8
                 }}
                 whileTap={{ scale: 0.92 }}
-                className="relative flex items-center px-4 py-2 space-x-2 overflow-hidden text-sm font-semibold text-white transition-all duration-500 rounded-full group bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 sm:px-6 sm:py-3 sm:text-base"
+                className="relative flex items-center px-5 py-2.5 space-x-2 overflow-hidden text-sm font-bold text-white transition-all duration-500 rounded-2xl group bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 sm:px-6 sm:py-3.5 sm:text-base shadow-xl hover:shadow-primary/40"
               >
+                {/* Button Internal Shimmer */}
+                <motion.div
+                  className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-[100%] -translate-x-full group-hover:animate-[shimmer_2s_infinite]"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.6 }}
+                />
+
                 <motion.div
                   className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-r from-accent via-primary to-accent group-hover:opacity-100"
                   animate={{
@@ -360,7 +402,7 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ scale: 1.08, y: -8, boxShadow: '0 15px 40px rgba(236, 24, 57, 0.3)' }}
                 whileTap={{ scale: 0.92 }}
-                className="relative flex items-center px-4 py-2 space-x-2 overflow-hidden text-sm font-semibold transition-all duration-500 border-2 rounded-full group border-primary text-primary hover:text-white sm:px-6 sm:py-3 sm:text-base"
+                className="relative flex items-center px-5 py-2.5 space-x-2 overflow-hidden text-sm font-bold transition-all duration-500 border-2 rounded-2xl group border-primary/50 text-primary hover:text-white sm:px-6 sm:py-3.5 sm:text-base backdrop-blur-sm"
               >
                 <motion.div className="absolute inset-0 transition-transform duration-500 origin-left transform scale-x-0 bg-gradient-to-r from-primary to-accent group-hover:scale-x-100" />
                 <motion.div whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
@@ -387,11 +429,16 @@ export default function Hero() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.15, y: -2 }}
+                      whileHover={{ 
+                        scale: 1.2, 
+                        y: -5,
+                        boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
+                        transition: { type: "spring", stiffness: 400, damping: 10 }
+                      }}
                       whileTap={{ scale: 0.9 }}
-                      className={`p-1.5 bg-black/5 dark:bg-white/10 backdrop-blur-sm rounded-full text-gray-600 dark:text-gray-400 transition-all duration-300 hover:bg-black/10 dark:hover:bg-white/20 sm:p-2 ${social.color}`}
+                      className={`p-2 bg-black/5 dark:bg-white/10 backdrop-blur-md border border-white/10 rounded-xl text-gray-600 dark:text-gray-400 transition-all duration-300 hover:bg-white dark:hover:bg-white/20 sm:p-2.5 ${social.color} hover:shadow-lg`}
                     >
-                      <Icon size={14} className="sm:w-[18px] sm:h-[18px]" />
+                      <Icon size={16} className="sm:w-[20px] sm:h-[20px]" />
                     </motion.a>
                   )
                 })}
@@ -409,29 +456,47 @@ export default function Hero() {
             className="relative flex items-center justify-center h-full min-h-[400px]"
           >
             <motion.div
-              className="relative w-64 h-64 sm:w-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] perspective-1000 cursor-pointer"
+              className="relative w-64 h-64 sm:w-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] perspective-1000 cursor-pointer"
               onMouseMove={handleMouseMove}
               onMouseLeave={resetTilt}
               style={{ rotateX, rotateY, z: 100 }}
             >
-              {/* Outer Rotating Conic Ring */}
+              {/* Premium Glow Aura */}
               <motion.div
-                className="absolute -inset-1 rounded-full opacity-80 blur-md"
-                style={{
-                  background: 'conic-gradient(from 0deg, transparent 0deg, #ec1839 120deg, transparent 180deg, #f39c12 300deg, transparent 360deg)',
+                className="absolute -inset-10 rounded-full bg-primary/20 blur-[100px] opacity-50"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3],
                 }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
 
-              {/* Inner Reverse Rotating Ring */}
+              {/* Outer Rotating Conic Ring - Enhanced */}
               <motion.div
-                className="absolute -inset-[2px] rounded-full opacity-60 mix-blend-screen"
+                className="absolute -inset-3 rounded-full opacity-80 blur-sm"
+                style={{
+                  background: 'conic-gradient(from 0deg, transparent 0deg, #ec1839 120deg, transparent 180deg, #f39c12 300deg, transparent 360deg)',
+                  boxShadow: '0 0 30px rgba(236, 24, 57, 0.4)',
+                }}
+                animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+                transition={{ 
+                  rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                }}
+              />
+
+              {/* Inner Reverse Rotating Ring - Enhanced */}
+              <motion.div
+                className="absolute -inset-[8px] rounded-full opacity-60 mix-blend-screen"
                 style={{
                   background: 'conic-gradient(from 180deg, transparent 0deg, #3b82f6 120deg, transparent 180deg, #8b5cf6 300deg, transparent 360deg)',
+                  boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
                 }}
-                animate={{ rotate: -360 }}
-                transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+                animate={{ rotate: -360, scale: [1, 1.02, 1] }}
+                transition={{ 
+                  rotate: { duration: 7, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
               />
 
               {/* Main Image Container */}
@@ -485,6 +550,30 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-accent/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 <Zap className="relative z-10 text-accent w-8 h-8 drop-shadow-[0_0_8px_rgba(243,156,18,0.6)]" />
               </motion.div>
+
+              {/* Floating Decorative Particles */}
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-primary rounded-full blur-[1px]"
+                  style={{
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                  }}
+                  animate={{
+                    y: [0, -40, 0],
+                    x: [0, (Math.random() - 0.5) * 40, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0, 1.5, 0],
+                  }}
+                  transition={{
+                    duration: 3 + Math.random() * 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
             </motion.div>
           </motion.div>
         </div>

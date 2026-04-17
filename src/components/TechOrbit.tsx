@@ -129,7 +129,7 @@ export default function TechOrbit() {
   const showLabel = size > 300
 
   return (
-    <section id="tech-orbit" className="relative py-20 overflow-hidden lg:ml-64 xl:ml-72">
+    <section id="tech-orbit" className="relative py-20 overflow-hidden lg:ml-60 xl:ml-64">
       <SectionBackground />
 
       <div className="container relative z-10 px-4 mx-auto sm:px-6" ref={ref}>

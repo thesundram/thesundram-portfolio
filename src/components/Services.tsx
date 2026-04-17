@@ -86,7 +86,7 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-12 sm:py-16 md:py-20 lg:ml-64 xl:ml-72 relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-16 md:py-20 lg:ml-60 xl:ml-64 relative overflow-hidden">
       {/* Enhanced Background */}
       {/* Enhanced Background */}
       <SectionBackground />

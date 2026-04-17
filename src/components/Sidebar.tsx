@@ -95,7 +95,7 @@ export default function Sidebar() {
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="fixed top-0 left-0 z-50 flex-col hidden w-64 h-full border-r xl:w-72 bg-white/90 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-black/5 dark:border-white/5 lg:flex"
+                className="fixed top-0 left-0 z-50 flex-col hidden w-60 h-full border-r xl:w-64 bg-white/90 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-black/5 dark:border-white/5 lg:flex"
             >
                 {/* Enhanced Logo */}
                 <div className="p-6">
@@ -136,7 +136,7 @@ export default function Sidebar() {
 
                         {/* Name */}
                         <motion.h1
-                            className="mb-2 text-2xl font-bold orbitron gradient-text"
+                            className="mb-1 text-xl font-bold orbitron gradient-text"
                             whileHover={{
                                 scale: 1.05,
                                 textShadow: "0 0 10px #ec1839"
@@ -188,7 +188,7 @@ export default function Sidebar() {
                                         animate={isActive ? {
                                             boxShadow: "0 0 20px rgba(236, 24, 57, 0.2)",
                                         } : {}}
-                                        className={`w-full flex items-center space-x-4 px-6 py-4 rounded-2xl transition-all duration-300 group relative overflow-hidden ${isActive
+                                        className={`w-full flex items-center space-x-3 px-5 py-3 rounded-xl transition-all duration-300 group relative overflow-hidden ${isActive
                                             ? 'text-white font-bold'
                                             : 'hover:bg-black/5 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
                                             }`}

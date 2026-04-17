@@ -34,15 +34,15 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative overflow-hidden border-t lg:ml-64 xl:ml-72 border-gray-200 dark:border-white/10 transition-colors duration-500">
+    <footer className="relative overflow-hidden border-t lg:ml-60 xl:ml-64 border-gray-200 dark:border-white/10 transition-colors duration-500">
       {/* Premium Glow Top Border */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80 shadow-[0_0_15px_rgba(236,24,57,0.5)]" />
 
       {/* Shared Global Background */}
       <SectionBackground />
 
-      <div className="container relative z-10 px-4 mx-auto sm:px-6 py-16">
-        <div className="grid gap-12 lg:grid-cols-4 md:grid-cols-2">
+      <div className="container relative z-10 px-4 mx-auto sm:px-6 py-12">
+        <div className="grid gap-8 lg:grid-cols-4 md:grid-cols-2">
 
           {/* Brand Column */}
           <div className="space-y-6 lg:col-span-1">
@@ -52,14 +52,14 @@ export default function Footer() {
             >
               <div className="flex items-center gap-4">
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center font-bold text-white text-xl shadow-2xl transition-transform group-hover:rotate-6"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-white text-lg shadow-2xl transition-transform group-hover:rotate-6"
                   style={{ background: 'linear-gradient(135deg, #ec1839, #f39c12)' }}
                 >
                   SP
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold orbitron gradient-text tracking-tight">Sundram Pandey</h3>
-                  <p className="text-[10px] text-gray-500 dark:text-gray-400 tracking-[0.2em] font-bold uppercase">Software Engineer</p>
+                  <h3 className="text-xl font-bold orbitron gradient-text tracking-tight">Sundram Pandey</h3>
+                  <p className="text-[9px] text-gray-500 dark:text-gray-400 tracking-[0.2em] font-bold uppercase">Software Engineer</p>
                 </div>
               </div>
             </motion.div>
@@ -72,13 +72,13 @@ export default function Footer() {
             <div className="flex flex-col gap-3 pt-2">
               <motion.div
                 whileHover={{ x: 5 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-green-500/10 border border-green-500/20 text-green-500 dark:text-green-400 text-xs font-bold w-fit"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-green-500/10 border border-green-500/20 text-green-500 dark:text-green-400 text-[10px] font-bold uppercase tracking-wide w-fit"
               >
-                <div className="relative w-2 h-2">
+                <div className="relative w-1.5 h-1.5">
                   <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75" />
-                  <span className="relative block w-2 h-2 rounded-full bg-green-500" />
+                  <span className="relative block w-1.5 h-1.5 rounded-full bg-green-500" />
                 </div>
-                Open to Work — Freelance / Fulltime
+                Available for Projects
               </motion.div>
 
               <div className="flex gap-2">
@@ -200,8 +200,8 @@ export default function Footer() {
         <div className="mt-16 mb-8 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent" />
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium text-gray-500 uppercase tracking-widest">
-          <div className="flex items-center gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+          <div className="flex items-center gap-4">
             <p>© {year} Sundram Pandey</p>
             <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-primary/20" />
             <p className="hidden sm:block">Crafted with Purpose</p>

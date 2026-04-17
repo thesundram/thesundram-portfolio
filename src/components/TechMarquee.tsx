@@ -28,7 +28,7 @@ const marqueeTechs = [...techs, ...techs, ...techs]
 
 export default function TechMarquee() {
     return (
-        <div className="relative py-8 sm:py-10 overflow-hidden bg-gray-50/50 dark:bg-white/5 backdrop-blur-sm lg:ml-72 border-y border-gray-200 dark:border-white/5">
+        <div className="relative py-8 sm:py-10 overflow-hidden bg-gray-50/50 dark:bg-white/5 backdrop-blur-sm lg:ml-60 xl:ml-64 border-y border-gray-200 dark:border-white/5">
             {/* Gradient Masks */}
             <div className="absolute top-0 left-0 z-10 w-20 h-full bg-gradient-to-r from-gray-50 dark:from-[#0a0a0a] to-transparent pointer-events-none lg:w-32" />
             <div className="absolute top-0 right-0 z-10 w-20 h-full bg-gradient-to-l from-gray-50 dark:from-[#0a0a0a] to-transparent pointer-events-none lg:w-32" />

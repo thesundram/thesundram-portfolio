@@ -113,7 +113,7 @@ export default function GitHubStats() {
   ]
 
   return (
-    <section id="github-stats" className="relative py-20 overflow-hidden lg:ml-72">
+    <section id="github-stats" className="relative py-20 overflow-hidden lg:ml-60 xl:ml-64">
       {/* Dynamic Background */}
       {/* Dynamic Background */}
       <SectionBackground />

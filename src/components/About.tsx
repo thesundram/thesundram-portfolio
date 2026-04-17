@@ -165,7 +165,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative py-12 pt-20 overflow-hidden sm:py-16 md:py-20 lg:pt-20 lg:ml-64 xl:ml-72">
+    <section id="about" className="relative py-12 pt-16 overflow-hidden sm:py-16 lg:pt-16 lg:ml-60 xl:ml-64">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900/50 dark:to-black/50 pointer-events-none"></div>
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -201,7 +201,7 @@ export default function About() {
           className="mb-8 text-center sm:mb-12 md:mb-16"
         >
           <motion.h2
-            className="relative mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl orbitron gradient-text"
+            className="relative mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl lg:text-4xl orbitron gradient-text"
             whileHover={{
               scale: 1.05,
               textShadow: "0 0 20px rgba(236, 24, 57, 0.8)"

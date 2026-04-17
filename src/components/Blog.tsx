@@ -158,7 +158,7 @@ export default function Blog() {
   ]
 
   return (
-    <section id="blog" className="relative py-20 overflow-hidden lg:ml-72">
+    <section id="blog" className="relative py-20 overflow-hidden lg:ml-60 xl:ml-64">
       {/* Background Elements */}
       {/* Background Elements */}
       <SectionBackground />

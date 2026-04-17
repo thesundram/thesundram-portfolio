@@ -73,7 +73,7 @@ export default function Achievements() {
   ]
 
   return (
-    <section id="achievements" className="py-20 overflow-hidden lg:ml-72 relative">
+    <section id="achievements" className="py-20 overflow-hidden lg:ml-60 xl:ml-64 relative">
       <SectionBackground />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10" ref={ref}>

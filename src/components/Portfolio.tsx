@@ -105,7 +105,7 @@ export default function Portfolio() {
     )
 
   return (
-    <section id="portfolio" className="relative py-12 overflow-hidden sm:py-16 md:py-20 lg:ml-72">
+    <section id="portfolio" className="relative py-12 overflow-hidden sm:py-16 md:py-20 lg:ml-60 xl:ml-64">
       <SectionBackground />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10" ref={ref}>
@@ -114,9 +114,9 @@ export default function Portfolio() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold orbitron gradient-text mb-3 sm:mb-4">My Work</h2>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full sm:w-20 sm:h-1 md:w-24"></div>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mt-4 sm:mt-6 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold orbitron gradient-text mb-3 sm:mb-4">My Work</h2>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full sm:w-20 sm:h-1"></div>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-4 sm:mt-6 max-w-3xl mx-auto leading-relaxed">
             Explore my latest projects showcasing modern web and mobile development
           </p>
 

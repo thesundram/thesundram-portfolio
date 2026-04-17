@@ -153,7 +153,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-20 overflow-hidden lg:ml-64 xl:ml-72">
+    <section id="contact" className="relative py-20 overflow-hidden lg:ml-60 xl:ml-64">
 
       {/* Dynamic Background */}
       {/* Dynamic Background */}

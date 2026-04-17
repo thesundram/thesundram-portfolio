@@ -201,7 +201,7 @@ export default function Hero() {
 
               <EasterEgg>
                 <motion.h1
-                  className="relative text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl orbitron tracking-tighter"
+                  className="relative text-2xl font-extrabold xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl orbitron tracking-tighter"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
@@ -276,7 +276,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
                     <motion.span
-                      className="relative text-base font-bold tracking-wide uppercase text-primary sm:text-lg md:text-xl lg:text-2xl"
+                      className="relative text-sm font-bold tracking-wide uppercase text-primary xs:text-base sm:text-lg md:text-xl lg:text-2xl"
                     >
                       <motion.span
                         key={text}

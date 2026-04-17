@@ -157,11 +157,11 @@ export default function Footer() {
               >
                 <iframe
                   width="100%"
-                  height="140"
+                  height="160"
                   frameBorder="0"
                   scrolling="no"
                   src="https://www.openstreetmap.org/export/embed.html?bbox=72.775%2C18.892%2C73.003%2C19.271&amp;layer=mapnik&amp;marker=19.076%2C72.877"
-                  className="grayscale hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100"
+                  className="grayscale hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100 h-40 sm:h-auto"
                 ></iframe>
 
                 {/* Floating Map Label */}
@@ -200,16 +200,16 @@ export default function Footer() {
         <div className="mt-16 mb-8 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent" />
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] font-bold text-gray-500 uppercase tracking-widest text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
             <p>© {year} Sundram Pandey</p>
             <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-primary/20" />
-            <p className="hidden sm:block">Crafted with Purpose</p>
+            <p>Crafted with Purpose</p>
           </div>
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary my-2 md:my-0"
           >
             <Heart size={14} className="fill-primary animate-pulse" />
             <span>Built in the Heart of India</span>

@@ -11,10 +11,10 @@ const botResponses = {
   'hello': '🚀 Hi there! I am here to showcase Sundram Pandey - a passionate Software Engineer. What would you like to explore?',
   'skills': '💻 Sundram is a Full Stack Developer expert in:\n\n🔹 Frontend: React, Next.js, React Native, Flutter\n🔹 Backend: Node.js, Express, MongoDB, REST APIs\n🔹 Languages: JavaScript, TypeScript, Python\n🔹 Tools: Git, AWS, Firebase, Tailwind CSS\n\nHe builds scalable, modern applications!',
   'experience': '🏆 Sundram has 2+ years of experience:\n\n✅ Built 20+ web & mobile applications\n✅ Specialized in responsive UI/UX design\n✅ Expert in REST API development\n✅ Cloud integration & deployment\n✅ Authentication & security implementation\n\nHe is passionate about creating user-friendly solutions!',
-  'projects': '🎯 Sundram has created amazing projects:\n\n🔸 Threads - Real-time chat app (MERN + Socket.io)\n🔸 Socially - Social media platform (Next.js + PostgreSQL)\n🔸 Bookstore - React Native app with JWT auth\n🔸 E-commerce platforms with payment integration\n🔸 Portfolio websites & dashboards\n\nAll built with modern tech stacks and best practices!',
+  'projects': '🎯 Sundram has created amazing projects:\n\n🔸 InvoiceXtract - AI Invoice Data Extraction (GPT-4o + Google Vision)\n🔸 DermaScan AI - ML-powered Facial Analysis (React Native + Python)\n🔸 SyncSpace - Real-time Collaborative SaaS (Liveblocks + Supabase)\n🔸 Threads - Real-time chat app (MERN + Socket.io)\n🔸 Socially - Social media platform (Next.js + PostgreSQL)\n🔸 Bookstore - React Native app with JWT auth\n\nAll built with modern tech stacks and high-performance architectures!',
   'contact': '📞 Ready to connect with Sundram? Here are all the ways:\n\n📧 Email: thesundram29@gmail.com\n📱 Phone: +91 7897403349\n💼 LinkedIn: linkedin.com/in/thesundram\n🐙 GitHub: github.com/thesundram\n📱 Instagram: @its.sun29\n\n💡 He is available for freelance projects, full-time opportunities, and collaborations!',
   'hire': '💼 Want to hire Sundram? Great choice!\n\n🎯 He is available for:\n✅ Full-time positions (Currently at Uttam Infotech)\n✅ Freelance projects\n✅ Contract work\n✅ Consultations\n\n📧 Email: thesundram29@gmail.com\n💬 Response time: Within 2-4 hours\n💰 Competitive rates & flexible terms',
-  'education': '🎓 Sundram Background:\n\n📚 B.Tech in Computer Science & Engineering\n🏫 Chhatrapati Shivaji Maharaj University (2021-2025)\n🏆 Full Stack Development - LiveWire Training\n📜 Multiple certifications in web development\n💡 Self-taught in mobile app development\n\nAlways upgrading skills to deliver cutting-edge solutions!',
+  'education': '🎓 Sundram Background:\n\n📚 M.Tech in AI & ML (Pursuing, 2026-2028)\n📚 B.Tech in Computer Science & Engineering (2021-2025)\n🏫 Chhatrapati Shivaji Maharaj University\n🏆 Full Stack Development - LiveWire Training\n📜 Multiple certifications in web development\n💡 Self-taught in mobile app development\n\nAlways upgrading skills to deliver cutting-edge solutions!',
   'location': '🌍 Location & Availability:\n\n📍 Based in Mumbai, India\n🌐 Available for remote work globally\n⏰ Flexible with different time zones\n✈️ Open to relocation for right opportunity\n🏢 Currently working at Uttam Infotech Global Ventures\n\nReady to work with international teams!',
   'services': '🛠️ Services Sundram offers:\n\n🔹 Custom Web Development (React, Next.js)\n🔹 Mobile App Development (React Native, Flutter)\n🔹 E-commerce Solutions\n🔹 API Development & Integration\n🔹 UI/UX Design\n🔹 Website Optimization & SEO\n🔹 Technical Consulting\n🔹 Database Design (MongoDB, PostgreSQL)\n\n💯 Quality guaranteed with timely delivery!',
   'achievements': '🏆 Sundram Achievements:\n\n⭐ 500+ GitHub followers\n🚀 35+ repositories\n💼 5+ successful internships\n🎯 100+ GitHub stars\n🏅 Best Intern Award at Uttam Infotech\n📈 2+ years of professional experience\n\nConstantly growing and achieving new milestones!',
@@ -40,6 +40,11 @@ interface Message {
   text: string
   timestamp: Date
   followUps?: string[]
+  action?: {
+    type: 'download' | 'link' | 'scroll'
+    label: string
+    value: string
+  }
 }
 
 export default function ChatBot() {
@@ -55,6 +60,11 @@ export default function ChatBot() {
   const [isVoiceMode, setIsVoiceMode] = useState(false)
   const [isListening, setIsListening] = useState(false)
   const [isSpeaking, setIsSpeaking] = useState(false)
+  const [contactFlow, setContactFlow] = useState({
+    isActive: false,
+    step: 'none', // 'name', 'email', 'message', 'confirm'
+    data: { name: '', email: '', message: '' }
+  })
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
@@ -201,11 +211,55 @@ export default function ChatBot() {
     setInputText('')
     setIsTyping(true)
 
+    // Handle Contact Flow Steps
+    if (contactFlow.isActive) {
+      handleContactFlow(userMessage)
+      return
+    }
+
+    // Check if user wants to contact
+    const lowerMessage = userMessage.toLowerCase()
+    if (lowerMessage.includes('contact') || lowerMessage.includes('message') || lowerMessage.includes('mail') || lowerMessage.includes('reach')) {
+      startContactFlow()
+      return
+    }
+
+    // Check if user wants resume/cv
+    if (lowerMessage.includes('resume') || lowerMessage.includes('cv') || lowerMessage.includes('biodata')) {
+      const response = "Sure! You can download my professional resume directly from here. It contains all my technical expertise and project details in a concise format. 📄"
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          type: 'bot',
+          text: response,
+          timestamp: new Date(),
+          action: { type: 'download', label: 'Download Resume (PDF)', value: '/images/Sundram_CV.pdf' },
+          followUps: ['🎯 Top Projects', '💻 My Tech Stack']
+        }])
+        setIsTyping(false)
+        if (isVoiceMode) speakResponse(response)
+      }, 1000)
+      return
+    }
+
+    // Check for "hire" or "looking for developer" - Project Matchmaker
+    if (lowerMessage.includes('looking for') || lowerMessage.includes('hire') || lowerMessage.includes('need a developer')) {
+      const response = "I'm glad you're looking for a developer! Sundram is an expert in creating **High-Performance Web & Mobile Apps**. \n\nAre you looking for:\n1. 🌐 **Next.js/React Web App**\n2. 📱 **Mobile App (React Native/Flutter)**\n3. 🦾 **AI/ML Integration**\n\nTell me your preference and I'll show you relevant projects!"
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          type: 'bot',
+          text: response,
+          timestamp: new Date(),
+          followUps: ['🌐 Web Apps', '📱 Mobile Apps', '🦾 AI/ML Projects']
+        }])
+        setIsTyping(false)
+        if (isVoiceMode) speakResponse(response)
+      }, 1000)
+      return
+    }
+
     // Get AI response
     try {
       const { response, followUps } = await getAIResponse(userMessage)
-
-      // Realistic typing delay based on response length
       const typingDelay = Math.min(Math.max(response.length * 30, 1000), 3000)
 
       setTimeout(() => {
@@ -224,6 +278,95 @@ export default function ChatBot() {
         setIsTyping(false)
       }, 1000)
     }
+  }
+
+  const startContactFlow = () => {
+    setContactFlow({
+      isActive: true,
+      step: 'name',
+      data: { name: '', email: '', message: '' }
+    })
+
+    const response = "I can definitely help you with that! 📝 Let's send an email to Sundram. First, could you please tell me your **Name**?"
+
+    setTimeout(() => {
+      setMessages(prev => [...prev, { type: 'bot', text: response, timestamp: new Date() }])
+      setIsTyping(false)
+      if (isVoiceMode) speakResponse(response)
+    }, 1000)
+  }
+
+  const handleContactFlow = async (text: string) => {
+    const { step, data } = contactFlow
+    let nextStep = ''
+    let response = ''
+    let newData = { ...data }
+
+    if (step === 'name') {
+      newData.name = text
+      nextStep = 'email'
+      response = `Nice to meet you, **${text}**! 👋 Now, please provide your **Email Address** so Sundram can get back to you.`
+    }
+    else if (step === 'email') {
+      // Basic email validation
+      if (!text.includes('@') || !text.includes('.')) {
+        response = "That doesn't look like a valid email. 😅 Please provide a correct **Email ID**."
+        nextStep = 'email'
+      } else {
+        newData.email = text
+        nextStep = 'message'
+        response = "Perfect! What **Message** or project details would you like to share with Sundram?"
+      }
+    }
+    else if (step === 'message') {
+      newData.message = text
+      nextStep = 'confirm'
+      response = `Great! I've collected your details:\n\n👤 **Name:** ${newData.name}\n📧 **Email:** ${newData.email}\n📝 **Message:** ${text}\n\nShould I go ahead and **Send** this email to Sundram now? (Yes/No)`
+    }
+    else if (step === 'confirm') {
+      if (text.toLowerCase().includes('yes') || text.toLowerCase().includes('send') || text.toLowerCase().includes('sure')) {
+        setIsTyping(true)
+        try {
+          const res = await fetch('/api/send-contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: data.name,
+              email: data.email,
+              subject: `ChatBot Contact from ${data.name}`,
+              message: data.message
+            })
+          })
+
+          if (res.ok) {
+            response = "🚀 **Sent!** Your message has been delivered to Sundram. He usually responds within 2-4 hours. Is there anything else you'd like to know?"
+          } else {
+            response = "Oops! I hit a snag while sending the email. 😅 You can also reach him directly at **thesundram29@gmail.com**. Anything else I can help with?"
+          }
+        } catch (e) {
+          response = "I couldn't send the email right now. Please try the contact form on the website or email **thesundram29@gmail.com**. 📧"
+        }
+        setContactFlow({ isActive: false, step: 'none', data: { name: '', email: '', message: '' } })
+        nextStep = 'none'
+      } else {
+        response = "No problem! I've cancelled the message. What else would you like to know about Sundram?"
+        setContactFlow({ isActive: false, step: 'none', data: { name: '', email: '', message: '' } })
+        nextStep = 'none'
+      }
+    }
+
+    setContactFlow(prev => ({ ...prev, step: nextStep, data: newData }))
+
+    setTimeout(() => {
+      setMessages(prev => [...prev, {
+        type: 'bot',
+        text: response,
+        timestamp: new Date(),
+        followUps: nextStep === 'none' ? ['💻 Skills', '🎯 Projects', '🏆 Experience'] : []
+      }])
+      setIsTyping(false)
+      if (isVoiceMode) speakResponse(response)
+    }, 1200)
   }
 
   const handleQuickQuestion = async (question: string) => {
@@ -272,7 +415,7 @@ export default function ChatBot() {
   const downloadCV = () => {
     const link = document.createElement('a')
     link.href = '/images/Sundram_CV.pdf'
-    link.download = 'Sundram_Pandey_CV.pdf'
+    link.download = 'Sundram_CV.pdf'
     link.click()
   }
 
@@ -455,6 +598,29 @@ export default function ChatBot() {
                             )}
                           </button>
                         </div>
+
+                        {message.type === 'bot' && message.action && (
+                          <motion.button
+                            onClick={() => {
+                              if (message.action.type === 'download') {
+                                const link = document.createElement('a')
+                                link.href = message.action.value
+                                link.download = 'Sundram_CV.pdf'
+                                link.click()
+                              } else if (message.action.type === 'scroll') {
+                                const el = document.getElementById(message.action.value)
+                                if (el) el.scrollIntoView({ behavior: 'smooth' })
+                                setIsOpen(false)
+                              }
+                            }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-full flex items-center justify-center gap-2 mt-3 px-4 py-2 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all text-xs"
+                          >
+                            {message.action.type === 'download' ? <Download size={16} /> : <Eye size={16} />}
+                            {message.action.label}
+                          </motion.button>
+                        )}
 
                         {message.type === 'bot' && message.followUps && (
                           <div className="flex flex-wrap gap-1 mt-1.5 sm:mt-2">

@@ -179,10 +179,16 @@ export default function CVPage() {
 
   const education = [
     {
+      degree: 'M.Tech in Artificial Intelligence & Machine Learning (Pursuing)',
+      institution: 'Chhatrapati Shivaji Maharaj University',
+      period: '2026 — 2028',
+      location: 'Mumbai, Maharashtra'
+    },
+    {
       degree: 'B.Tech in Computer Science & Engineering',
       institution: 'Chhatrapati Shivaji Maharaj University',
       period: 'Nov 2021 — Jun 2025',
-      location: 'Panvel, Navi Mumbai, Maharashtra'
+      location: 'Mumbai, Maharashtra'
     },
     {
       degree: 'Full Stack Development',
@@ -205,6 +211,24 @@ export default function CVPage() {
   ]
 
   const projects = [
+    {
+      title: 'InvoiceXtract – AI-Powered Invoice Extraction',
+      tech: 'Node.js, Express, Next.js, Google Vision OCR, OpenAI GPT-4o, Tailwind CSS',
+      role: 'Full Stack Developer',
+      description: 'Developed an end-to-end invoice processing system to extract structured data (vendor, customer, GST, line items) from images. Built a dual-processing pipeline (GPT-4o Vision + GPT-3.5 Turbo) with fallback logic for 98% extraction accuracy.'
+    },
+    {
+      title: 'DermaScan AI – Face & Skin Analysis',
+      tech: 'React Native, Python, FastAPI, TensorFlow, PyTorch, MediaPipe, OpenCV',
+      role: 'Mobile & ML Developer',
+      description: 'Designed a health-tech mobile platform using React Native for facial scanning. Built a Python Deep Learning backend with MediaPipe and PyTorch to identify skin health metrics and facial features through real-time image processing.'
+    },
+    {
+      title: 'SyncSpace – Real-time Collaborative SaaS',
+      tech: 'Next.js, TypeScript, Supabase, Liveblocks, Tailwind CSS',
+      role: 'Full Stack Developer',
+      description: 'Engineered a real-time multiplayer collaborative platform. Implemented multiplayer state synchronization (CRDTs), live cursor tracking, and presence indicators for low-latency team collaboration.'
+    },
     {
       title: 'Threads – Real-Time Chat App',
       tech: 'MERN, Socket.io, Chakra UI, JWT',

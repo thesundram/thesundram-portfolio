@@ -71,17 +71,24 @@ export default function About() {
     { icon: Award, label: 'Age', value: age, color: 'text-green-400' },
     { icon: Mail, label: 'Email', value: 'Mail Now', color: 'text-red-400', link: 'mailto:thesundram29@gmail.com' },
     { icon: Phone, label: 'Phone', value: 'Call Now', color: 'text-yellow-400', link: 'tel:+917897403349' },
-    { icon: Award, label: 'Degree', value: 'B Tech (CSE)', color: 'text-purple-400' },
+    { icon: Award, label: 'Degree', value: 'M Tech AI/ML', color: 'text-purple-400' },
     { icon: MapPin, label: 'City', value: 'Locate Me', color: 'text-pink-400', link: 'http://maps.google.com/?q=Mumbai, India' },
     { icon: Briefcase, label: 'Freelance', value: 'Available', color: 'text-green-400' },
   ]
 
   const education = [
     {
+      period: '2026 — 2028',
+      title: 'Master of Technology in Artificial Intelligence & Machine Learning (Pursuing)',
+      company: 'Chhatrapati Shivaji Maharaj University',
+      location: 'Mumbai, Maharashtra',
+      description: 'Advanced studies in AI/ML focusing on deep learning, neural networks, and intelligent system architectures.'
+    },
+    {
       period: 'Nov 2021 — Jun 2025',
       title: 'Bachelor of Technology in Computer Science & Engineering',
       company: 'Chhatrapati Shivaji Maharaj University',
-      location: 'Panvel, Navi Mumbai',
+      location: 'Mumbai, Maharashtra',
       description: 'Completed B.Tech in Computer Science & Engineering with solid foundation in computer science fundamentals, programming, and modern software development practices.'
     },
     {
@@ -273,7 +280,8 @@ export default function About() {
                   <span className="absolute bottom-0 font-serif text-4xl -right-2 text-primary/20">&rdquo;</span>
                 </motion.p>
                 <p className="text-gray-600 dark:text-gray-300">
-                  🎓 <strong>B.Tech in Computer Science</strong> from Chhatrapati Shivaji Maharaj University<br />
+                  🎓 <strong>M.Tech in AI & ML </strong> from CSMU (2026-2028)<br />
+                  🎓 <strong>B.Tech in Computer Science</strong> from CSMU (2021-2025)<br />
                   💼 <strong>2+ years</strong> of hands-on development experience<br />
                   🚀 <strong>20+ projects</strong> delivered across web and mobile platforms<br />
                   ⚡ <strong>Full-stack expertise</strong> in React, Node.js, React Native & Flutter

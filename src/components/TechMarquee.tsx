@@ -11,9 +11,11 @@ const techs = [
     { name: 'Next.js', icon: Globe, color: 'text-gray-800 dark:text-white' },
     { name: 'TypeScript', icon: FileCode, color: 'text-blue-600 dark:text-blue-500' },
     { name: 'Node.js', icon: Server, color: 'text-green-600 dark:text-green-500' },
-    { name: 'Tailwind', icon: Layout, color: 'text-cyan-500 dark:text-cyan-400' },
+    { name: 'Tailwind CSS', icon: Layout, color: 'text-cyan-500 dark:text-cyan-400' },
     { name: 'MongoDB', icon: Database, color: 'text-green-500 dark:text-green-400' },
-    { name: 'Flutter', icon: Smartphone, color: 'text-blue-400 dark:text-blue-300' },
+    { name: 'PostgreSQL', icon: Database, color: 'text-blue-400 dark:text-blue-300' },
+    { name: 'Flutter', icon: Smartphone, color: 'text-cyan-400 dark:text-cyan-300' },
+    { name: 'React Native', icon: Smartphone, color: 'text-purple-500 dark:text-purple-400' },
     { name: 'Python', icon: Terminal, color: 'text-yellow-500 dark:text-yellow-400' },
     { name: 'Docker', icon: Box, color: 'text-blue-700 dark:text-blue-600' },
     { name: 'AWS', icon: Cloud, color: 'text-orange-500 dark:text-orange-400' },
@@ -21,6 +23,10 @@ const techs = [
     { name: 'Redux', icon: Layers, color: 'text-purple-600 dark:text-purple-500' },
     { name: 'Firebase', icon: Flame, color: 'text-amber-500 dark:text-yellow-500' },
     { name: 'Git', icon: GitBranch, color: 'text-red-600 dark:text-red-500' },
+    { name: 'NestJS', icon: Server, color: 'text-red-500 dark:text-red-400' },
+    { name: 'Prisma ORM', icon: Database, color: 'text-gray-800 dark:text-white' },
+    { name: 'Supabase', icon: Database, color: 'text-emerald-500 dark:text-emerald-400' },
+    { name: 'OpenAI', icon: Globe, color: 'text-teal-600 dark:text-teal-500' },
 ]
 
 // Duplicate for continuous loop

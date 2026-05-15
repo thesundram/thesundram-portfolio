@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Calendar, MapPin, Phone, Mail, Award, Code, Briefcase, ExternalLink, Eye, Atom, Zap, Palette, Wind, Circle, FileCode, Database, Link, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor, Cpu, Cog, Network, Factory } from 'lucide-react'
+import { Calendar, MapPin, Phone, Mail, Award, Code, Briefcase, ExternalLink, Eye, Atom, Zap, Palette, Wind, Circle, FileCode, Database, Link, Smartphone, Layers, Flame, Settings, GitBranch, Container, Cloud, Monitor, Cpu, Cog, Network, Factory, Server, Globe, Brain, Sparkles, Bot, Layout } from 'lucide-react'
 import Timeline from './Timeline'
 import BirthdayWish from './BirthdayWish'
 
@@ -34,35 +34,53 @@ export default function About() {
   }, [])
 
   const skillCategories = {
-    frontend: [
-      { name: 'React & Next.js', level: 'Expert', icon: Atom, color: 'from-blue-500 to-cyan-500' },
-      { name: 'JavaScript & TypeScript', level: 'Expert', icon: Zap, color: 'from-yellow-500 to-orange-500' },
-      { name: 'HTML5 & CSS3', level: 'Expert', icon: Palette, color: 'from-pink-500 to-rose-500' },
-      { name: 'Tailwind CSS', level: 'Advanced', icon: Wind, color: 'from-teal-500 to-blue-500' }
+    languages: [
+      { name: 'JavaScript & TypeScript', level: 'Expert', icon: Code, color: 'from-yellow-500 to-blue-500' },
+      { name: 'Python', level: 'Advanced', icon: FileCode, color: 'from-blue-600 to-cyan-500' },
+      { name: 'Dart', level: 'Intermediate', icon: Smartphone, color: 'from-blue-400 to-cyan-400' },
+      { name: 'C++ & Java', level: 'Intermediate', icon: Code, color: 'from-red-500 to-orange-500' }
     ],
-    backend: [
-      { name: 'Node.js & Express', level: 'Advanced', icon: Circle, color: 'from-green-500 to-emerald-500' },
-      { name: 'Python & Django', level: 'Intermediate', icon: FileCode, color: 'from-blue-600 to-purple-600' },
-      { name: 'MongoDB & SQL', level: 'Advanced', icon: Database, color: 'from-orange-500 to-red-500' },
-      { name: 'REST APIs', level: 'Expert', icon: Link, color: 'from-indigo-500 to-purple-500' }
+    frontend: [
+      { name: 'React, Next.js & Redux', level: 'Expert', icon: Atom, color: 'from-cyan-400 to-blue-500' },
+      { name: 'Vue.js & Angular', level: 'Intermediate', icon: Layout, color: 'from-green-500 to-red-500' },
+      { name: 'Tailwind CSS & Bootstrap', level: 'Advanced', icon: Wind, color: 'from-teal-400 to-purple-500' },
+      { name: 'HTML5 & CSS3', level: 'Expert', icon: Palette, color: 'from-orange-500 to-pink-500' }
     ],
     mobile: [
       { name: 'React Native', level: 'Advanced', icon: Smartphone, color: 'from-purple-500 to-pink-500' },
-      { name: 'Flutter & Dart', level: 'Intermediate', icon: Layers, color: 'from-blue-400 to-cyan-400' },
+      { name: 'Flutter', level: 'Intermediate', icon: Layers, color: 'from-blue-400 to-cyan-400' },
       { name: 'Firebase', level: 'Advanced', icon: Flame, color: 'from-orange-400 to-yellow-400' },
       { name: 'Expo & CLI', level: 'Advanced', icon: Settings, color: 'from-indigo-500 to-blue-500' }
     ],
+    backend: [
+      { name: 'Node.js, Express & NestJS', level: 'Advanced', icon: Server, color: 'from-green-500 to-red-500' },
+      { name: 'REST APIs & JWT Auth', level: 'Expert', icon: Link, color: 'from-indigo-500 to-purple-500' },
+      { name: 'WebSockets & Redis', level: 'Advanced', icon: Zap, color: 'from-red-500 to-orange-500' },
+      { name: 'Payment & Meta APIs', level: 'Intermediate', icon: Globe, color: 'from-blue-500 to-blue-700' }
+    ],
+    database: [
+      { name: 'MongoDB', level: 'Advanced', icon: Database, color: 'from-green-500 to-emerald-500' },
+      { name: 'PostgreSQL & MySQL', level: 'Advanced', icon: Database, color: 'from-blue-400 to-indigo-500' },
+      { name: 'MSSQL & Redis', level: 'Advanced', icon: Database, color: 'from-red-500 to-orange-500' },
+      { name: 'Prisma ORM, Neon & Supabase', level: 'Advanced', icon: Layers, color: 'from-gray-600 to-gray-800' }
+    ],
+    ai: [
+      { name: 'LLMs, RAG & Prompt Eng.', level: 'Advanced', icon: Brain, color: 'from-purple-500 to-pink-500' },
+      { name: 'OpenAI, Gemini & DeepSeek', level: 'Advanced', icon: Sparkles, color: 'from-blue-500 to-teal-500' },
+      { name: 'Vercel AI SDK & Ollama', level: 'Intermediate', icon: Bot, color: 'from-gray-600 to-gray-800' },
+      { name: 'Antigravity, Cursor & VS Code', level: 'Advanced', icon: Monitor, color: 'from-indigo-500 to-purple-500' }
+    ],
     tools: [
-      { name: 'Git & GitHub', level: 'Expert', icon: GitBranch, color: 'from-gray-600 to-gray-800' },
-      { name: 'Docker', level: 'Intermediate', icon: Container, color: 'from-blue-500 to-blue-700' },
-      { name: 'AWS & Cloud', level: 'Intermediate', icon: Cloud, color: 'from-orange-500 to-yellow-500' },
-      { name: 'VS Code & IDEs', level: 'Expert', icon: Monitor, color: 'from-purple-600 to-indigo-600' }
+      { name: 'Git, GitHub & Docker', level: 'Advanced', icon: Container, color: 'from-blue-500 to-cyan-600' },
+      { name: 'Vercel, Netlify & Railway', level: 'Advanced', icon: Cloud, color: 'from-purple-600 to-indigo-600' },
+      { name: 'Nginx & PM2', level: 'Advanced', icon: Server, color: 'from-green-500 to-teal-500' },
+      { name: 'Postman, Clerk & n8n', level: 'Advanced', icon: Settings, color: 'from-orange-400 to-red-500' }
     ],
     automation: [
       { name: 'PLC Programming', level: 'Advanced', icon: Cpu, color: 'from-emerald-500 to-teal-500' },
-      { name: 'PLC Data Read/Write (Python)', level: 'Advanced', icon: Cog, color: 'from-blue-500 to-indigo-500' },
-      { name: 'SCADA Systems', level: 'Intermediate', icon: Monitor, color: 'from-orange-500 to-red-500' },
-      { name: 'OPC UA', level: 'Intermediate', icon: Network, color: 'from-purple-500 to-violet-500' }
+      { name: 'PLC Data Comm. (Python)', level: 'Advanced', icon: Cog, color: 'from-blue-500 to-indigo-500' },
+      { name: 'SCADA Systems', level: 'Intermediate', icon: Monitor, color: 'from-purple-500 to-violet-500' },
+      { name: 'OPC UA Protocols', level: 'Intermediate', icon: Network, color: 'from-orange-500 to-red-500' }
     ]
   }
 
@@ -236,7 +254,7 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid items-start gap-8 lg:gap-12 lg:grid-cols-2"
+          className="flex flex-col gap-12 sm:gap-16 lg:gap-20"
         >
           {/* Left Column - Personal Info & Description */}
           <div className="space-y-6 sm:space-y-8">
@@ -461,10 +479,13 @@ export default function About() {
           </div>
 
           {/* Right Column - Skills */}
-          <motion.div variants={itemVariants} className="space-y-6 sm:space-y-8">
-            <h4 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white sm:mb-6 sm:text-xl">My Skills</h4>
+          <motion.div variants={itemVariants} className="w-full space-y-6 sm:space-y-8">
+            <div className="mb-8 text-center sm:mb-12">
+              <h4 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white sm:mb-4 sm:text-3xl orbitron gradient-text">My Technical Skills</h4>
+              <div className="w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r from-primary to-accent sm:w-20 sm:h-1" />
+            </div>
 
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 w-full">
               {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
                 <motion.div
                   key={category}
@@ -473,7 +494,7 @@ export default function About() {
                   transition={{ delay: categoryIndex * 0.2, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
 
-                  className="relative p-6 border shadow-2xl bg-white/50 dark:bg-white/5 backdrop-blur-xl rounded-2xl border-gray-100 dark:border-white/10 hover:border-primary/30 group"
+                  className="relative flex flex-col p-6 border shadow-2xl bg-white/50 dark:bg-white/5 backdrop-blur-xl rounded-2xl border-gray-100 dark:border-white/10 hover:border-primary/30 group h-full"
                 >
                   <motion.div
                     className={`absolute top-0 left-0 w-full h-1 rounded-t-xl ${categoryIndex % 2 === 0 ? 'bg-gradient-to-r from-primary to-accent' : 'bg-gradient-to-r from-accent to-primary'
@@ -486,9 +507,12 @@ export default function About() {
                   <h5 className="mb-4 text-lg font-semibold capitalize text-primary">
                     {category === 'frontend' ? 'Frontend' :
                       category === 'backend' ? 'Backend' :
-                        category === 'mobile' ? 'Mobile' :
-                          category === 'tools' ? 'Tools & Others' :
-                            category === 'automation' ? 'Automation & Industrial Systems' : category}
+                        category === 'languages' ? 'Programming Languages' :
+                          category === 'database' ? 'Databases' :
+                            category === 'ai' ? 'AI Tools & Concepts' :
+                              category === 'mobile' ? 'Mobile' :
+                                category === 'tools' ? 'Tools & Others' :
+                                  category === 'automation' ? 'Automation & Industrial Systems' : category}
                   </h5>
 
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">

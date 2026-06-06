@@ -58,7 +58,7 @@ export default function Footer() {
                   SP
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold orbitron gradient-text tracking-tight">Sundram Pandey</h3>
+                  <div className="text-xl font-bold orbitron gradient-text tracking-tight">Sundram Pandey</div>
                   <p className="text-[9px] text-gray-500 dark:text-gray-400 tracking-[0.2em] font-bold uppercase">Software Engineer</p>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function Footer() {
 
           {/* Social Icons Integrated */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Digital Presence</h4>
+            <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Digital Presence</h3>
             <div className="flex flex-wrap items-center gap-2">
               {socialLinks.map((social, i) => {
                 const Icon = social.icon
@@ -106,6 +106,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Follow Sundram on ${social.label}`}
                     whileHover={{
                       scale: 1.15,
                       y: -5,
@@ -131,7 +132,7 @@ export default function Footer() {
 
           {/* Quick Nav */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Site Directory</h4>
+            <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Site Directory</h3>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
               {navLinks.map((link, i) => (
                 <li key={i}>
@@ -150,7 +151,7 @@ export default function Footer() {
 
           {/* Map Column */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Current Location</h4>
+            <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Current Location</h3>
             <div className="relative group">
               <motion.div
                 className="overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl shadow-black/5"
@@ -160,6 +161,7 @@ export default function Footer() {
                   height="160"
                   frameBorder="0"
                   scrolling="no"
+                  title="Sundram Pandey location map on OpenStreetMap"
                   src="https://www.openstreetmap.org/export/embed.html?bbox=72.775%2C18.892%2C73.003%2C19.271&amp;layer=mapnik&amp;marker=19.076%2C72.877"
                   className="grayscale hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100 h-40 sm:h-auto"
                 ></iframe>

@@ -196,6 +196,7 @@ export default function Contact() {
                   href={info.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Contact via ${info.title}: ${info.value}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: info.delay }}
@@ -272,6 +273,7 @@ export default function Contact() {
                 <div className="relative group">
                   <input
                     type="text"
+                    id="name-field"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
@@ -280,7 +282,7 @@ export default function Contact() {
                     className="w-full px-5 py-4 text-white transition-all bg-black/40 border border-white/10 rounded-xl focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none placeholder-transparent peer"
                     placeholder="Name"
                   />
-                  <label className={`absolute left-5 transition-all pointer-events-none text-gray-500
+                  <label htmlFor="name-field" className={`absolute left-5 transition-all pointer-events-none text-gray-500
                                 ${focusedField === 'name' || formData.name ? '-top-3 text-xs bg-black px-1 text-primary' : 'top-4 text-base'}
                             `}>
                     Your Name
@@ -292,6 +294,7 @@ export default function Contact() {
                 <div className="relative group">
                   <input
                     type="email"
+                    id="email-field"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
@@ -300,7 +303,7 @@ export default function Contact() {
                     className="w-full px-5 py-4 text-white transition-all bg-black/40 border border-white/10 rounded-xl focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none placeholder-transparent peer"
                     placeholder="Email"
                   />
-                  <label className={`absolute left-5 transition-all pointer-events-none text-gray-500
+                  <label htmlFor="email-field" className={`absolute left-5 transition-all pointer-events-none text-gray-500
                                 ${focusedField === 'email' || formData.email ? '-top-3 text-xs bg-black px-1 text-primary' : 'top-4 text-base'}
                             `}>
                     Email Address
@@ -314,6 +317,7 @@ export default function Contact() {
               <div className="relative group">
                 <input
                   type="text"
+                  id="subject-field"
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
@@ -322,7 +326,7 @@ export default function Contact() {
                   className="w-full px-5 py-4 text-white transition-all bg-black/40 border border-white/10 rounded-xl focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none placeholder-transparent peer"
                   placeholder="Subject"
                 />
-                <label className={`absolute left-5 transition-all pointer-events-none text-gray-500
+                <label htmlFor="subject-field" className={`absolute left-5 transition-all pointer-events-none text-gray-500
                                 ${focusedField === 'subject' || formData.subject ? '-top-3 text-xs bg-black px-1 text-primary' : 'top-4 text-base'}
                             `}>
                   Subject
@@ -333,6 +337,7 @@ export default function Contact() {
               {/* Message Input */}
               <div className="relative group">
                 <textarea
+                  id="message-field"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
@@ -342,7 +347,7 @@ export default function Contact() {
                   className="w-full px-5 py-4 text-white transition-all bg-black/40 border border-white/10 rounded-xl focus:border-primary/50 focus:ring-1 focus:ring-primary/50 focus:outline-none placeholder-transparent peer resize-none"
                   placeholder="Message"
                 />
-                <label className={`absolute left-5 transition-all pointer-events-none text-gray-500
+                <label htmlFor="message-field" className={`absolute left-5 transition-all pointer-events-none text-gray-500
                             ${focusedField === 'message' || formData.message ? '-top-3 text-xs bg-black px-1 text-primary' : 'top-4 text-base'}
                         `}>
                   Tell me about your project

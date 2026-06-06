@@ -221,6 +221,7 @@ export default function Services() {
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
+                      aria-label={`View details of service ${service.title}`}
                       className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2 bg-primary/20 rounded-full hover:bg-primary/30"
                     >
                       <ArrowRight size={14} className="text-primary sm:w-4 sm:h-4" />

@@ -271,6 +271,7 @@ export default function Sidebar() {
                                         href={social.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label={`Follow Sundram on ${social.label}`}
                                         initial={{ opacity: 0, scale: 0 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: index * 0.1 }}
@@ -368,6 +369,7 @@ export default function Sidebar() {
                         whileHover={{ scale: 1.1, rotate: 180 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setIsOpen(!isOpen)}
+                        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
                         className={`relative p-2 rounded-xl border transition-all duration-300 overflow-hidden sm:p-3 ${isOpen
                             ? 'bg-primary/10 border-primary/50 text-primary'
                             : 'bg-white/50 dark:bg-white/10 border-gray-200 dark:border-white/20 text-gray-800 dark:text-white hover:bg-primary/10 hover:border-primary/30'

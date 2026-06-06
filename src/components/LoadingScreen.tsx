@@ -52,14 +52,14 @@ export default function LoadingScreen() {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(timer)
-          setTimeout(() => setLoading(false), 800)
+          setTimeout(() => setLoading(false), 150)
           return 100
         }
         // Non-linear progress for realism
-        const increment = Math.random() * 15
+        const increment = Math.random() * 20 + 10
         return Math.min(prev + increment, 100)
       })
-    }, 200)
+    }, 30)
 
     // Status Message Rotator
     const statusTimer = setInterval(() => {

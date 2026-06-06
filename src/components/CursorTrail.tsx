@@ -26,6 +26,10 @@ export default function CursorTrail() {
   const ringY = useSpring(mouseY, { damping: 25, stiffness: 120, mass: 0.8 })
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      return
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!isVisible) setIsVisible(true)
 

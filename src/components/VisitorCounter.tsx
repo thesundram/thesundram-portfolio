@@ -64,6 +64,7 @@ export default function VisitorCounter() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsVisible(!isVisible)}
+        aria-label="Toggle live visitor analytics panel"
         className="fixed z-50 flex items-center justify-center w-12 h-12 text-white transition-all duration-300 border rounded-full top-36 right-4 sm:top-36 sm:right-6 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-primary/20 shadow-lg"
       >
         <Users size={20} />
@@ -78,7 +79,7 @@ export default function VisitorCounter() {
         >
           <div className="space-y-4">
             <div className="text-center">
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest">Live Analytics</h4>
+              <div className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest">Live Analytics</div>
               <div className="w-8 h-1 bg-primary mx-auto mt-1 rounded-full" />
             </div>
 

@@ -1,18 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import ParticleBackground from '../components/ParticleBackground'
 import Sidebar from '../components/Sidebar'
 import Hero from '../components/Hero'
 import About from '../components/About'
 
-import ChatBot from '../components/ChatBot'
-import Services from '../components/Services'
-import Portfolio from '../components/Portfolio'
-import GitHubStats from '../components/GitHubStats'
-import Achievements from '../components/Achievements'
-import Blog from '../components/Blog'
-import Contact from '../components/Contact'
 import ThemeToggle from '../components/ThemeToggle'
 import CursorTrail from '../components/CursorTrail'
 import LoadingScreen from '../components/LoadingScreen'
@@ -20,13 +14,20 @@ import FloatingElements from '../components/FloatingElements'
 import ScrollProgress from '../components/ScrollProgress'
 import BackToTop from '../components/BackToTop'
 import CodeRain from '../components/CodeRain'
-import EasterEgg from '../components/EasterEgg'
-import VisitorCounter from '../components/VisitorCounter'
-import ColorSwitcher from '../components/ColorSwitcher'
 import TechMarquee from '../components/TechMarquee'
-import TechOrbit from '../components/TechOrbit'
-import Footer from '../components/Footer'
 
+// Dynamically load below-the-fold/heavy components to reduce initial bundle size
+const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false })
+const Services = dynamic(() => import('../components/Services'), { ssr: false })
+const Portfolio = dynamic(() => import('../components/Portfolio'), { ssr: false })
+const GitHubStats = dynamic(() => import('../components/GitHubStats'), { ssr: false })
+const Achievements = dynamic(() => import('../components/Achievements'), { ssr: false })
+const Blog = dynamic(() => import('../components/Blog'), { ssr: false })
+const Contact = dynamic(() => import('../components/Contact'), { ssr: false })
+const VisitorCounter = dynamic(() => import('../components/VisitorCounter'), { ssr: false })
+const ColorSwitcher = dynamic(() => import('../components/ColorSwitcher'), { ssr: false })
+const TechOrbit = dynamic(() => import('../components/TechOrbit'), { ssr: false })
+const Footer = dynamic(() => import('../components/Footer'), { ssr: false })
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -34,7 +35,8 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000) // 2 seconds loading time
+    }, 400) // 400ms loading time
+
 
     return () => clearTimeout(timer)
   }, [])

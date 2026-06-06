@@ -432,6 +432,7 @@ export default function ChatBot() {
         whileTap={{ scale: 0.9 }}
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
+        aria-label="Open chat assistant window"
         className={`fixed bottom-8 right-6 z-[60] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_200%] animate-gradient-xy rounded-full shadow-2xl hover:shadow-[0_0_40px_rgba(236,24,57,0.5)] transition-all duration-300 ${isOpen ? 'hidden' : 'block'}`}
       >
         <MessageSquare size={28} className="text-white fill-current sm:w-8 sm:h-8" />
@@ -514,6 +515,7 @@ export default function ChatBot() {
                     onClick={toggleVoiceMode}
                     className="relative p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors group"
                     title={isVoiceMode ? "Mute Voice AI" : "Enable Voice AI"}
+                    aria-label={isVoiceMode ? "Mute voice responses" : "Enable voice responses"}
                   >
                     {isVoiceMode ? (
                       <Volume2 size={18} className={`transition-colors ${isSpeaking ? 'text-green-500' : 'text-primary'}`} />
@@ -530,12 +532,14 @@ export default function ChatBot() {
                     onClick={downloadCV}
                     className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors group"
                     title="Download CV"
+                    aria-label="Download CV"
                   >
                     <Download size={18} className="text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors" />
                   </button>
                   <button
                     onClick={() => setIsOpen(false)}
                     className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors group"
+                    aria-label="Close chat window"
                   >
                     <X size={20} className="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
                   </button>
@@ -584,6 +588,7 @@ export default function ChatBot() {
                             onClick={() => copyToClipboard(message.text, index)}
                             className="p-1 transition-colors rounded bg-black/10 dark:bg-black/20 hover:bg-black/20 dark:hover:bg-black/40"
                             title="Copy message"
+                            aria-label="Copy message text to clipboard"
                           >
                             {copiedMessageId === index ? (
                               <motion.div
@@ -726,6 +731,7 @@ export default function ChatBot() {
                     ? 'bg-primary border border-primary text-white shadow-[0_0_15px_rgba(236,24,57,0.5)]'
                     : 'bg-gray-100 dark:bg-white/10 text-gray-500 hover:text-primary hover:bg-primary/10'}`}
                   title="Voice Input"
+                  aria-label="Toggle voice input listening"
                 >
                   {isListening ? <Mic size={18} className="animate-pulse" /> : <MicOff size={18} />}
                 </button>
@@ -742,6 +748,7 @@ export default function ChatBot() {
                   disabled={!inputText.trim() || isTyping}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Send message"
                   className={`p-3 rounded-full transition-all duration-300 ${inputText.trim() && !isTyping
                     ? 'bg-gradient-to-r from-primary to-accent shadow-lg shadow-primary/25'
                     : 'bg-gray-200 dark:bg-white/10 text-gray-400 dark:text-gray-500 cursor-not-allowed'

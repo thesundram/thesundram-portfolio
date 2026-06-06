@@ -144,6 +144,7 @@ export default function ColorSwitcher() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Open theme color switcher"
         className="fixed z-50 p-3 text-white transition-all duration-300 border rounded-full top-64 right-4 sm:top-[5.5rem] sm:right-6 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20"
       >
         <Palette size={20} />
@@ -179,6 +180,7 @@ export default function ColorSwitcher() {
                       : 'hover:bg-white/10'
                       }`}
                     title={theme.label}
+                    aria-label={`Select color theme: ${theme.label}`}
                   >
                     <div
                       className="w-6 h-6 border rounded-full border-white/20"

@@ -295,6 +295,7 @@ export default function Portfolio() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setSelectedProject(project)}
+                        aria-label={`View details of project ${project.title}`}
                         className="p-2 bg-primary/80 backdrop-blur-sm rounded-full text-white hover:bg-primary transition-colors shadow-lg sm:p-3"
                       >
                         <Eye size={16} className="sm:w-5 sm:h-5" />
@@ -304,6 +305,7 @@ export default function Portfolio() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`View GitHub repository for project ${project.title}`}
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: 20, opacity: 0 }}
@@ -318,6 +320,7 @@ export default function Portfolio() {
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`View live demo for project ${project.title}`}
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: 20, opacity: 0 }}
@@ -446,6 +449,7 @@ export default function Portfolio() {
                 {/* Close Button */}
                 <button 
                   onClick={() => setSelectedProject(null)}
+                  aria-label="Close project details modal"
                   className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/80 text-white rounded-full backdrop-blur-md transition-all border border-white/20 hover:scale-110 active:scale-95"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>

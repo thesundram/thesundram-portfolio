@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion'
 import { Eye, Mail, Github, Linkedin, Instagram, ArrowDown, Sparkles, Code, Zap, Star, Facebook, Download, Calendar } from 'lucide-react'
 import SectionBackground from './SectionBackground'
@@ -104,11 +105,11 @@ export default function Hero() {
   }, [text, isDeleting, loopNum])
 
   const socialLinks = [
-    { icon: Linkedin, href: 'http://linkedin.com/in/thesundram', color: 'hover:text-blue-500' },
-    { icon: Github, href: 'http://github.com/thesundram', color: 'hover:text-gray-400' },
-    { icon: Mail, href: 'mailto:thesundram29@gmail.com', color: 'hover:text-red-500' },
-    { icon: Instagram, href: 'https://www.instagram.com/its.sun29/', color: 'hover:text-pink-500' },
-    { icon: Facebook, href: 'https://www.facebook.com/thesundram29', color: 'hover:text-blue-600' },
+    { icon: Linkedin, href: 'http://linkedin.com/in/thesundram', color: 'hover:text-blue-500', label: 'LinkedIn' },
+    { icon: Github, href: 'http://github.com/thesundram', color: 'hover:text-gray-400', label: 'GitHub' },
+    { icon: Mail, href: 'mailto:thesundram29@gmail.com', color: 'hover:text-red-500', label: 'Email' },
+    { icon: Instagram, href: 'https://www.instagram.com/its.sun29/', color: 'hover:text-pink-500', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/thesundram29', color: 'hover:text-blue-600', label: 'Facebook' },
   ]
 
   return (
@@ -429,6 +430,7 @@ export default function Hero() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Follow Sundram on ${social.label}`}
                       whileHover={{
                         scale: 1.2,
                         y: -5,
@@ -508,9 +510,12 @@ export default function Hero() {
                   transformStyle: "preserve-3d",
                 }}
               >
-                <img
+                <Image
                   src="/images/hero.webp"
                   alt="Sundram Pandey"
+                  width={380}
+                  height={380}
+                  priority
                   className="object-cover w-full h-full transform scale-105"
                 />
 
@@ -609,6 +614,7 @@ export default function Hero() {
             {/* Enhanced Explore More Button */}
             <motion.button
               onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+              aria-label="Scroll down to About section"
               whileHover={{ scale: 1.05, y: 5 }}
               whileTap={{ scale: 0.95 }}
               className="flex flex-col items-center justify-center space-y-2 group"

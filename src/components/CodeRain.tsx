@@ -6,6 +6,10 @@ export default function CodeRain() {
   const canvasRef = useRef(null)
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return
+    }
+
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
     

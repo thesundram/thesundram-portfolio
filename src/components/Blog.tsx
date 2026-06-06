@@ -213,7 +213,7 @@ export default function Blog() {
                         <span key={i} className="flex items-center text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-md"><Tag size={10} className="mr-1" />{tag}</span>
                       ))}
                     </div>
-                    <motion.button whileHover={{ x: 5 }} className="flex items-center text-sm font-medium text-accent hover:text-white">Read More <ChevronRight size={16} className="ml-1" /></motion.button>
+                    <motion.button whileHover={{ x: 5 }} aria-label={`Read more about ${post.title}`} className="flex items-center text-sm font-medium text-accent hover:text-white">Read More <ChevronRight size={16} className="ml-1" /></motion.button>
                   </div>
                 </div>
               </div>
@@ -290,13 +290,13 @@ export default function Blog() {
             </motion.div>
           </AnimatePresence>
           <div className="flex items-center justify-between p-6 border-t border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/5">
-            <button onClick={() => setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)} className="p-3 bg-gray-200 dark:bg-white/10 hover:bg-primary/20 rounded-full transition-colors"><ChevronLeft className="text-gray-900 dark:text-white" /></button>
+            <button onClick={() => setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)} aria-label="Previous testimonial" className="p-3 bg-gray-200 dark:bg-white/10 hover:bg-primary/20 rounded-full transition-colors"><ChevronLeft className="text-gray-900 dark:text-white" /></button>
             <div className="flex space-x-2">
               {testimonials.map((_, index) => (
-                <button key={index} onClick={() => setCurrentIndex(index)} className={`w-3 h-3 rounded-full transition-all ${index === currentIndex ? 'bg-primary scale-125' : 'bg-gray-300 dark:bg-white/20'}`} />
+                <button key={index} onClick={() => setCurrentIndex(index)} aria-label={`Go to testimonial ${index + 1}`} className={`w-3 h-3 rounded-full transition-all ${index === currentIndex ? 'bg-primary scale-125' : 'bg-gray-300 dark:bg-white/20'}`} />
               ))}
             </div>
-            <button onClick={() => setCurrentIndex(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)} className="p-3 bg-gray-200 dark:bg-white/10 hover:bg-primary/20 rounded-full transition-colors"><ChevronRight className="text-gray-900 dark:text-white" /></button>
+            <button onClick={() => setCurrentIndex(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)} aria-label="Next testimonial" className="p-3 bg-gray-200 dark:bg-white/10 hover:bg-primary/20 rounded-full transition-colors"><ChevronRight className="text-gray-900 dark:text-white" /></button>
           </div>
         </motion.div>
 

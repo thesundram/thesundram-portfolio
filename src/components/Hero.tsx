@@ -20,11 +20,11 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       const date = new Date()
-      setCurrentTime(date.toLocaleTimeString('en-US', { 
-        hour: '2-digit', 
+      setCurrentTime(date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
         minute: '2-digit',
         hour12: true,
-        timeZone: 'Asia/Kolkata' 
+        timeZone: 'Asia/Kolkata'
       }))
     }, 1000)
     return () => clearInterval(timer)
@@ -429,8 +429,8 @@ export default function Hero() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ 
-                        scale: 1.2, 
+                      whileHover={{
+                        scale: 1.2,
                         y: -5,
                         boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
                         transition: { type: "spring", stiffness: 400, damping: 10 }
@@ -479,7 +479,7 @@ export default function Hero() {
                   boxShadow: '0 0 30px rgba(236, 24, 57, 0.4)',
                 }}
                 animate={{ rotate: 360, scale: [1, 1.05, 1] }}
-                transition={{ 
+                transition={{
                   rotate: { duration: 4, repeat: Infinity, ease: "linear" },
                   scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
                 }}
@@ -493,7 +493,7 @@ export default function Hero() {
                   boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
                 }}
                 animate={{ rotate: -360, scale: [1, 1.02, 1] }}
-                transition={{ 
+                transition={{
                   rotate: { duration: 7, repeat: Infinity, ease: "linear" },
                   scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
@@ -509,7 +509,7 @@ export default function Hero() {
                 }}
               >
                 <img
-                  src="/images/hero.png"
+                  src="/images/hero.webp"
                   alt="Sundram Pandey"
                   className="object-cover w-full h-full transform scale-105"
                 />

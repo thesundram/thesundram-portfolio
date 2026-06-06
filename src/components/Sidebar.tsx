@@ -135,7 +135,9 @@ export default function Sidebar() {
                         </div>
 
                         {/* Name */}
-                        <motion.h1
+                        <motion.div
+                            role="heading"
+                            aria-level={1}
                             className="mb-1 text-xl font-bold orbitron gradient-text"
                             whileHover={{
                                 scale: 1.05,
@@ -143,7 +145,7 @@ export default function Sidebar() {
                             }}
                         >
                             Sundram Pandey
-                        </motion.h1>
+                        </motion.div>
 
                         {/* Subtitle */}
                         <motion.p
@@ -418,7 +420,7 @@ export default function Sidebar() {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="mb-8 text-center"
                             >
-                                <h3 className="text-sm font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase">Menu</h3>
+                                <div className="text-sm font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase">Menu</div>
                                 <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mt-2 rounded-full"></div>
                             </motion.div>
 

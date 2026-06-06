@@ -516,6 +516,7 @@ export default function Hero() {
                   width={380}
                   height={380}
                   priority
+                  fetchPriority="high"
                   className="object-cover w-full h-full transform scale-105"
                 />
 

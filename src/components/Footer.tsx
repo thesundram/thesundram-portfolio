@@ -27,6 +27,7 @@ const socialLinks = [
 
 export default function Footer() {
   const [year] = useState(new Date().getFullYear())
+  const [loadMap, setLoadMap] = useState(false)
 
   const scrollToSection = (href: string) => {
     const el = document.querySelector(href)
@@ -154,36 +155,50 @@ export default function Footer() {
             <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest border-l-2 border-primary pl-3">Current Location</h3>
             <div className="relative group">
               <motion.div
-                className="overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl shadow-black/5"
+                className="overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl shadow-black/5 relative"
               >
-                <iframe
-                  width="100%"
-                  height="160"
-                  frameBorder="0"
-                  scrolling="no"
-                  title="Sundram Pandey location map on OpenStreetMap"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=72.775%2C18.892%2C73.003%2C19.271&amp;layer=mapnik&amp;marker=19.076%2C72.877"
-                  className="grayscale hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100 h-40 sm:h-auto"
-                ></iframe>
-
                 {/* Floating Map Label */}
-                <div className="absolute top-2 left-2 px-2 py-1 bg-white/90 dark:bg-black/80 backdrop-blur-md rounded-lg border border-white/20 text-[9px] font-bold text-primary flex items-center gap-1 shadow-lg pointer-events-none">
+                <div className="absolute top-2 left-2 px-2 py-1 bg-white/90 dark:bg-black/80 backdrop-blur-md rounded-lg border border-white/20 text-[9px] font-bold text-primary flex items-center gap-1 shadow-lg pointer-events-none z-25">
                   <MapPin size={10} className="fill-primary/20" />
                   MUMBAI, IND
                 </div>
 
-                {/* Hover Button Overlay */}
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href="https://www.google.com/maps/place/Mumbai,+Maharashtra/@19.0760,72.8777"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-white text-black text-[10px] font-bold rounded-xl shadow-xl hover:scale-110 transition-transform flex items-center gap-2"
+                {loadMap ? (
+                  <>
+                    <iframe
+                      width="100%"
+                      height="160"
+                      frameBorder="0"
+                      scrolling="no"
+                      title="Sundram Pandey location map on OpenStreetMap"
+                      src="https://www.openstreetmap.org/export/embed.html?bbox=72.775%2C18.892%2C73.003%2C19.271&amp;layer=mapnik&amp;marker=19.076%2C72.877"
+                      className="grayscale hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100 h-40 sm:h-auto"
+                    ></iframe>
+
+                    {/* Hover Button Overlay */}
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <a
+                        href="https://www.google.com/maps/place/Mumbai,+Maharashtra/@19.0760,72.8777"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-white text-black text-[10px] font-bold rounded-xl shadow-xl hover:scale-110 transition-transform flex items-center gap-2"
+                      >
+                        View on Google Maps
+                        <ExternalLink size={12} />
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    onClick={() => setLoadMap(true)}
+                    className="relative w-full h-[160px] bg-gray-100 dark:bg-neutral-900 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 group-hover:bg-gray-200 dark:group-hover:bg-neutral-800"
                   >
-                    View on Google Maps
-                    <ExternalLink size={12} />
-                  </a>
-                </div>
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ec1839_1px,transparent_1px)] [background-size:16px_16px]" />
+                    <MapPin size={32} className="text-primary mb-2 animate-bounce" />
+                    <span className="text-xs font-bold text-gray-700 dark:text-gray-300">Click to Load Map</span>
+                    <span className="text-[10px] text-gray-500">Mumbai, Maharashtra, India</span>
+                  </div>
+                )}
               </motion.div>
             </div>
             <div className="flex gap-4">

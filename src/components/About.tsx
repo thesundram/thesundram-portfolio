@@ -481,7 +481,7 @@ export default function About() {
           {/* Right Column - Skills */}
           <motion.div variants={itemVariants} className="w-full space-y-6 sm:space-y-8">
             <div className="mb-8 text-center sm:mb-12">
-              <h4 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white sm:mb-4 sm:text-3xl orbitron gradient-text">My Technical Skills</h4>
+              <h3 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white sm:mb-4 sm:text-3xl orbitron gradient-text">My Technical Skills</h3>
               <div className="w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r from-primary to-accent sm:w-20 sm:h-1" />
             </div>
 
@@ -504,7 +504,7 @@ export default function About() {
                     transition={{ delay: categoryIndex * 0.1, duration: 0.8 }}
                   />
 
-                  <h5 className="mb-4 text-lg font-semibold capitalize text-primary">
+                  <h4 className="mb-4 text-lg font-semibold capitalize text-primary">
                     {category === 'frontend' ? 'Frontend' :
                       category === 'backend' ? 'Backend' :
                         category === 'languages' ? 'Programming Languages' :
@@ -513,7 +513,7 @@ export default function About() {
                               category === 'mobile' ? 'Mobile' :
                                 category === 'tools' ? 'Tools & Others' :
                                   category === 'automation' ? 'Automation & Industrial Systems' : category}
-                  </h5>
+                  </h4>
 
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                     {skills.map((skill, index) => (

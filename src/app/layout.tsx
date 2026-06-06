@@ -3,8 +3,22 @@ import ScrollProgress from '../components/ScrollProgress'
 import BirthdayWish from '../components/BirthdayWish'
 import { Toaster } from 'sonner'
 import SmoothScroll from '../components/SmoothScroll'
-
+import { Outfit, Space_Grotesk } from 'next/font/google'
 import type { Metadata } from 'next'
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-outfit',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thesundram.vercel.app'),
@@ -48,13 +62,10 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${outfit.variable} ${spaceGrotesk.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased transition-colors duration-300">
         <SmoothScroll>

@@ -505,7 +505,7 @@ export default function ChatBot() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 dark:text-white text-lg">Hema AI Assistant</h3>
+                    <div className="font-bold text-gray-900 dark:text-white text-lg">Hema AI Assistant</div>
                     <p className="text-xs text-primary/80 font-medium">Sundram's Personal AI</p>
                   </div>
                 </div>

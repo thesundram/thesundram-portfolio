@@ -270,7 +270,7 @@ export default function Blog() {
                       <span className="text-lg font-bold text-white">{testimonials[currentIndex].initials}</span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white">{testimonials[currentIndex].name}</h4>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{testimonials[currentIndex].name}</h3>
                       <p className="text-primary font-medium">{testimonials[currentIndex].role}</p>
                       <p className="text-sm text-gray-500 dark:text-gray-400">{testimonials[currentIndex].company}</p>
                     </div>
@@ -330,7 +330,7 @@ export default function Blog() {
                     <span className="text-xs font-bold text-white sm:text-sm">{testimonial.initials}</span>
                   </motion.div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white transition-colors truncate sm:text-base group-hover:text-primary">{testimonial.name}</h4>
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white transition-colors truncate sm:text-base group-hover:text-primary">{testimonial.name}</h3>
                     <p className="text-xs text-gray-500 dark:text-gray-400 truncate sm:text-sm">{testimonial.role}</p>
                     <p className="text-xs text-gray-400 dark:text-gray-500 truncate">{testimonial.company}</p>
                   </div>
